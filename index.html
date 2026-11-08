@@ -297,7 +297,7 @@ background:none;border:0;border-radius:50%;color:rgba(233,239,252,.7);cursor:poi
 
 .themebar{
   position:fixed;top:calc(14px + env(safe-area-inset-top));right:calc(14px + env(safe-area-inset-right));
-  z-index:80;width:100px;height:44px;padding:0 6px;border-radius:16px;
+  z-index:96;width:100px;height:44px;padding:0 6px;border-radius:16px;
 display:flex;align-items:center;justify-content:space-between;
   border:1px solid rgba(255,255,255,.16);
   background:linear-gradient(155deg,rgba(255,255,255,.115),rgba(255,255,255,.035) 46%,rgba(255,255,255,.075));
@@ -440,7 +440,7 @@ border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:rg
 /* ===== 右上角：语言 ===== */
 .langbar{
   position:fixed;top:calc(14px + env(safe-area-inset-top));right:calc(122px + env(safe-area-inset-right));
-  z-index:80;width:62px;height:44px;border-radius:16px;
+  z-index:96;width:62px;height:44px;border-radius:16px;
   display:flex;align-items:center;justify-content:center;gap:4px;
   border:1px solid rgba(255,255,255,.16);cursor:pointer;
   background:linear-gradient(155deg,rgba(255,255,255,.115),rgba(255,255,255,.035) 46%,rgba(255,255,255,.075));
@@ -544,10 +544,91 @@ background:linear-gradient(155deg,rgba(255,255,255,.9),rgba(255,255,255,.58) 44%
 [data-theme="light"] .ask-btn:hover{background:rgba(16,30,54,.08)}
 [data-theme="light"] .ask-btn.primary{border-color:rgba(20,110,170,.34);color:#062037;background:linear-gradient(180deg,rgba(88,178,240,.38),rgba(88,178,240,.18))}
 
+
+/* ===== 兑换码抽奖 / 赞助者名单 ===== */
+.lot{
+  padding:clamp(22px,3vw,30px);border-radius:26px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.11);
+  background:linear-gradient(150deg,rgba(255,255,255,.075),rgba(255,255,255,.03));
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  backdrop-filter:blur(18px) saturate(140%);
+}
+.lot-k{font-family:var(--serif);font-size:14px;letter-spacing:.1em;color:rgba(147,160,190,.95);margin-bottom:10px}
+.lot-prize{
+  font-family:var(--serif);font-weight:600;font-size:clamp(24px,4.6vw,42px);line-height:1.24;
+  min-height:1.3em;letter-spacing:-.01em;color:rgba(238,244,255,.97);
+  transition:filter .3s ease,opacity .3s ease;
+}
+.lot-prize.spinning{filter:blur(.6px);opacity:.9}
+.lot-form{display:flex;gap:10px;margin-top:clamp(16px,2.4vw,22px)}
+.lot-input{
+  flex:1 1 auto;min-width:0;height:48px;padding:0 15px;border-radius:15px;
+  border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);
+  color:#eef4ff;font:inherit;font-size:16px;letter-spacing:.06em;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  -webkit-user-select:text;user-select:text;
+  transition:border-color .3s,background .3s,box-shadow .3s;
+}
+.lot-input::placeholder{color:rgba(147,160,190,.6);letter-spacing:.04em}
+.lot-input:focus{outline:none;border-color:rgba(121,210,255,.52);background:rgba(255,255,255,.08);box-shadow:0 0 0 1px rgba(121,210,255,.22),0 0 24px -6px rgba(121,210,255,.5)}
+.lot-btn{
+  flex:0 0 auto;min-width:104px;height:48px;padding:0 20px;border-radius:15px;
+  border:1px solid rgba(121,210,255,.34);background:linear-gradient(180deg,rgba(121,210,255,.28),rgba(121,210,255,.12));
+  color:#eef7ff;font:inherit;font-size:15px;letter-spacing:.02em;cursor:pointer;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),background .3s,border-color .3s,opacity .3s;
+-webkit-tap-highlight-color:transparent;
+}
+.lot-btn:hover{background:linear-gradient(180deg,rgba(121,210,255,.4),rgba(121,210,255,.2));border-color:rgba(121,210,255,.5)}
+.lot-btn:active{transform:scale(.985)}
+.lot-btn:disabled{opacity:.55;cursor:default;transform:none}
+.lot-btn:focus{outline:none}
+.lot-btn:focus-visible{box-shadow:0 0 0 1px rgba(255,255,255,.5),0 0 26px rgba(121,210,255,.5)}
+.lot-state{margin:12px 0 0;font-size:13.5px;line-height:1.6;color:rgba(147,160,190,.95)}
+.lot-state:empty{display:none}
+.spon{
+  margin-top:12px;padding:clamp(18px,2.4vw,24px) clamp(18px,2.6vw,26px);border-radius:22px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.11);cursor:pointer;
+  background:linear-gradient(150deg,rgba(255,255,255,.075),rgba(255,255,255,.03));
+  -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);
+}
+.spon:hover{border-color:rgba(255,255,255,.2)}
+.spon:focus{outline:none}
+.spon:focus-visible{box-shadow:0 0 0 1px rgba(255,255,255,.5),0 0 26px rgba(121,210,255,.5)}
+.spon-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.spon-k{font-family:var(--serif);font-size:16px;font-weight:600;color:rgba(238,244,255,.96);letter-spacing:.01em}
+.spon-arrow{width:18px;height:18px;color:rgba(147,160,190,.9);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.spon.open .spon-arrow{transform:rotate(180deg)}
+.spon-body{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .5s cubic-bezier(.22,1,.36,1),opacity .35s}
+.spon-body > div{overflow:hidden;min-height:0}
+.spon.open .spon-body{grid-template-rows:1fr;opacity:1}
+.spon-list{margin:14px 0 0;padding:0;list-style:none}
+.spon-list li{position:relative;padding-left:16px;font-size:15px;line-height:1.8;color:rgba(147,160,190,.92)}
+.spon-list li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:50%;background:rgba(121,210,255,.6)}
+[data-theme="light"] .lot,[data-theme="light"] .spon{
+  border-color:rgba(16,30,54,.1);
+  background:linear-gradient(155deg,rgba(255,255,255,.86),rgba(255,255,255,.5) 46%,rgba(255,255,255,.72));
+box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 18px 40px -30px rgba(30,60,110,.5);
+}
+[data-theme="light"] .lot-k{color:#63718a}
+[data-theme="light"] .lot-prize{color:#0d1727}
+[data-theme="light"] .lot-input{background:rgba(255,255,255,.74);border-color:rgba(16,30,54,.14);color:#101b2c}
+[data-theme="light"] .lot-input::placeholder{color:rgba(60,80,110,.52)}
+[data-theme="light"] .lot-btn{border-color:rgba(20,110,170,.34);color:#062037;background:linear-gradient(180deg,rgba(88,178,240,.4),rgba(88,178,240,.18))}
+[data-theme="light"] .lot-state{color:#5b6a82}
+[data-theme="light"] .spon-k{color:#0d1727}
+[data-theme="light"] .spon-list li{color:#4a586f}
+[data-theme="light"] .spon-list li::before{background:rgba(20,110,170,.5)}
+[data-theme="light"] .spon-arrow{color:#63718a}
+@media (prefers-reduced-motion:reduce){
+  .lot-prize{transition:none}
+  .spon-body,.spon-arrow{transition:none}
+  .lot-prize.spinning{filter:none}
+}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .top,.hero h1,.latin,.plate{animation:none}
-  .liquid,.btn,.app,.reveal,.slab,.veil,.ask,.ask-card,.themebar,.themebar .ic{transition:none}
+.liquid,.btn,.app,.reveal,.slab,.veil,.ask,.ask-card,.themebar,.themebar .ic{transition:none}
   .reveal{opacity:1;transform:none}
   .app:hover{transform:none}
 }
@@ -569,7 +650,7 @@ try{
 <div class="themebar" id="themebar" role="switch" tabindex="0" aria-checked="false" data-i18n-aria="themeBarAria" aria-label="深色或浅色模式">
   <span class="ic ic-sun" data-i18n-title="themeLight">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v1.6M12 19.4v1.6M4.9 4.9l1.1 1.1M18 18l1.1 1.1M3 12h1.6M19.4 12h1.6M4.9 19.1l1.1-1.1M18 6l1.1-1.1"/></svg>
-  </span>
+</span>
   <span class="ic ic-moon on" data-i18n-title="themeDark">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M21 12.9A9 9 0 1 1 11.1 3a7 7 0 0 0 9.9 9.9z"/></svg>
   </span>
@@ -584,7 +665,7 @@ try{
 <header class="top">
   <div class="brand">
     <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.2 6.6 6.6 2.2-6.6 2.2L12 21.5l-2.2-6.6L3.2 13l6.6-2.2z" fill="none" stroke="#79d2ff" stroke-width="1.3"/></svg>
-    <span data-i18n="brand">天狼星</span>
+<span data-i18n="brand">天狼星</span>
   </div>
 </header>
 
@@ -633,7 +714,7 @@ try{
           <p class="desc" data-i18n="proj3Desc">安卓上用 Compose 写的一层玻璃：边缘反光、背景实时模糊，四个角跟着屏幕真实圆角走。</p>
         </div>
         <div class="side"><span>2026</span><span class="state dim" data-i18n="proj3State">进行中</span></div>
-      </button>
+</button>
 
       <!-- ▼ 留白 1：下面这一块写你自己的下一个项目 -->
       <div class="slot liquid">
@@ -659,7 +740,7 @@ try{
       <div class="panel glass liquid">
         <div class="panel-k" data-i18n="panelWantK">我想做</div>
         <p class="blank"><span class="mark">—</span><span data-i18n="panelWantText">这里留一行：接下来想做成的样子，给一年后的自己看。</span></p>
-      </div>
+</div>
     </div>
   </section>
 
@@ -673,17 +754,47 @@ try{
       <div class="app liquid" role="link" tabindex="0" data-name="GitHub" data-url="https://github.com/password_reset">
 <div class="app-main"><div class="name"></div></div>
       </div>
-      <!-- ▼ 应用 2 -->
+      <!-- ▼ 应用 2：爱发电 -->
+      <div class="app liquid" role="link" tabindex="0" data-name="爱发电" data-url="https://afdian.com/item/f07bbd96db6b11f193a65254001e7c00">
+        <div class="app-main"><div class="name"></div></div>
+      </div>
       <div class="app liquid" role="link" tabindex="0" data-name="" data-url="">
         <div class="app-main"><div class="name"></div></div>
       </div>
       <!-- ▼ 应用 3 -->
       <div class="app liquid" role="link" tabindex="0" data-name="" data-url="">
-        <div class="app-main"><div class="name"></div></div>
+<div class="app-main"><div class="name"></div></div>
       </div>
       <!-- ▼ 应用 4 -->
       <div class="app liquid" role="link" tabindex="0" data-name="" data-url="">
         <div class="app-main"><div class="name"></div></div>
+      </div>
+    </div>
+
+  <section id="lot" aria-labelledby="lotTitle">
+    <div class="sec-head">
+      <h2 id="lotTitle" data-i18n="lotTitle">一个抽奖活动</h2>
+    </div>
+
+    <div class="lot liquid">
+      <div class="lot-k" data-i18n="lotLabel">你抽到的奖项是</div>
+      <div class="lot-prize" id="lotPrize" aria-live="polite"></div>
+      <p class="lot-state" id="lotState" aria-live="polite"></p>
+      <form class="lot-form" id="lotForm" novalidate>
+        <input class="lot-input" id="lotCode" type="text" name="code" autocomplete="off"
+               autocapitalize="characters" spellcheck="false" maxlength="24"
+               placeholder="7s9-2Gk-8pR-5x" aria-label="兑换码">
+        <button class="lot-btn" id="lotBtn" type="submit" data-i18n="lotBtn">转转转</button>
+</form>
+    </div>
+
+    <div class="spon liquid" id="spon" role="button" tabindex="0" aria-expanded="false" aria-controls="sponBody">
+      <div class="spon-top">
+        <span class="spon-k" data-i18n="sponTitle">赞助者名单</span>
+        <svg class="spon-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="spon-body" id="sponBody">
+        <div><ul class="spon-list"><li data-i18n="sponDefault">服务器抽风了，过一会儿再试试吧</li></ul></div>
       </div>
     </div>
   </section>
@@ -759,6 +870,15 @@ proj1Title: '天狼星验证系统',
       appsSub: '名字只写一处（data-name），网址写 data-url；列表里只显示名字，点开先弹确认。',
       appEmpty: '应用名 · 写在这里',
       appOpenAria: '点击打开',
+      lotTitle: '一个抽奖活动',
+      lotLabel: '你抽到的奖项是',
+      lotIdle: '等你输入兑换码',
+      lotBtn: '转转转',
+      lotInvalid: '这个兑换码不在名单里，看看有没有抄错。',
+      lotUsed: '兑换码已使用',
+      lotNone: '你未中奖',
+sponTitle: '赞助者名单',
+      sponDefault: '服务器抽风了，过一会儿再试试吧',
       askK: '偏好设置',
       askTitle: '是否允许 Claude 记住你的偏好？',
       askP: '允许的话，深浅选择会存在这台设备本地（只存这一项），下次打开直接沿用。不允许就每次跟随系统，不写入任何记录。',
@@ -784,7 +904,7 @@ themeLight: '浅色',
         '三块拼起来：手机上的客户端、手机上的开发者端，还有 Vercel 上一台很轻的服务器——四个接口、一个页面。',
         '开发者生成一个九个一组的激活码（写成 123-456-789），绑在产品代码上，先存在服务器。客户在客户端里选产品、输设备码和校验码，服务器算一遍，把激活码给回去，然后立刻把这个码从服务器删掉。手机本地只留一份。',
         '设备码是六位进、六位出，算法在服务器上，客户端算不出来，只能问它。同一台机器十分钟只能来一次；连着刷五次，这台机器会被停一天，期间它只会看到一句话：服务器不在线。',
-        '开发者端的门禁是三十秒一换的动态码，能导进手表里用。'
+'开发者端的门禁是三十秒一换的动态码，能导进手表里用。'
       ],
       proj_house_title: '会动的房子',
       proj_house_meta: '2026 · 科创赛 · 模型作品',
@@ -808,7 +928,7 @@ themeLight: '浅色',
       heroLatin: 'personal page',
       lede: 'Eighth grade, in Xi\'an. Class by day, code by night — most of what I build is about light, glass and verification: a surface that refracts, a client my classmates can activate, or a house that really turns.',
       grade: '8th grade',
-      city: 'Xi\'an',
+city: 'Xi\'an',
       nowLabel: 'Building now: ',
       nowValue: 'liquid glass components',
       btnWork: 'What I\'m making',
@@ -825,7 +945,7 @@ workSub: 'Three that actually run — tap for details. The last card is left for
       proj3Desc: 'A glass layer written in Compose on Android: edge highlights, real-time backdrop blur, and four corners that follow the screen\'s true radii.',
       proj3State: 'Ongoing',
       slotK: 'Blank · next',
-      slotTitle: 'Write your next project here',
+slotTitle: 'Write your next project here',
       slotBlank: 'Line 1: what it does. Line 2: how far it got, where it\'s stuck.',
       aboutTitle: 'About me',
       aboutSub: 'These two blocks are plain text for you to fill — edit the lines in the code.',
@@ -837,6 +957,15 @@ panelLearnK: 'Learning',
       appsSub: 'Name in data-name, link in data-url; the list shows only the name and asks before opening.',
       appEmpty: 'App name · write here',
       appOpenAria: 'open',
+      lotTitle: 'A raffle',
+      lotLabel: 'You have won',
+      lotIdle: 'Waiting for a code',
+      lotBtn: 'Spin',
+      lotInvalid: 'That code is not on the list — check for a typo.',
+      lotUsed: 'Code already used',
+      lotNone: 'No prize this time',
+      sponTitle: 'Sponsors',
+sponDefault: 'The server is acting up — try again in a moment.',
       askK: 'Preferences',
       askTitle: 'Allow Claude to remember your preference?',
       askP: 'If allowed, the light or dark choice is stored on this device — that one item only — and reused next time. If not, it follows the system every visit and nothing is written.',
@@ -856,7 +985,7 @@ confirmTitle: 'About to open',
       allow: 'Allow',
       noUrl: 'No link yet for this one — set data-url in the code.',
       langFail: 'Language pack failed to load — switched back to Chinese.',
-      proj_verify_title: 'Sirius verification',
+proj_verify_title: 'Sirius verification',
       proj_verify_meta: '2026 · live · two Android apps + one web page + one light server',
       proj_verify_body: [
         'Three pieces: the client on the phone, the developer app on the phone, and a very light server on Vercel — four endpoints and one page.',
@@ -864,7 +993,7 @@ confirmTitle: 'About to open',
 'Device codes are six digits in, six digits out; the algorithm lives on the server, so the client can only ask. One machine can ask once every ten minutes; five requests in a row and it is frozen for a day, seeing exactly one sentence: the server is offline.',
         'The developer app\'s gate is a 30-second rotating code that can be exported to a watch.'
       ],
-      proj_house_title: 'The moving house',
+proj_house_title: 'The moving house',
       proj_house_meta: '2026 · science fair · model',
       proj_house_body: [
         'A house that turns itself. In the judges\' functional test, the structure, the drive train and the live demo all have to pass on the spot.',
@@ -876,7 +1005,7 @@ proj_glass_meta: '2026 · ongoing · Kotlin + Compose + AGSL',
       proj_glass_body: [
         'The glass is not a pasted image, it is computed: real-time backdrop blur, a rim highlight, a little refracted brightness at the bottom, and a very light noise layer on top.',
         'Every mistake is written down: texture sampling has to enable linear filtering explicitly, or the rounded corners show a one-pixel staircase; blending needs saveLayer first, or the blend mode simply does nothing.',
-        'The four corners are not one hard-coded radius — they read the phone\'s real corner radii, which differ per device. Split screen and free-form windows fall back to a fixed value, or the corners no longer match the window.'
+'The four corners are not one hard-coded radius — they read the phone\'s real corner radii, which differ per device. Split screen and free-form windows fall back to a fixed value, or the corners no longer match the window.'
       ]
     }
   };
@@ -899,7 +1028,7 @@ function put(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
 
   function detect(){
     var l = (navigator.languages && navigator.languages[0]) || navigator.language || 'zh';
-    l = String(l).toLowerCase();
+l = String(l).toLowerCase();
     if (l.indexOf('zh') === 0) return 'zh';
     if (l.indexOf('en') === 0) return 'en';
     return 'zh';
@@ -932,7 +1061,7 @@ return {
       el.textContent = t(el.getAttribute('data-i18n'));
     });
     Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-title]'), function(el){
-      el.setAttribute('title', t(el.getAttribute('data-i18n-title')));
+el.setAttribute('title', t(el.getAttribute('data-i18n-title')));
     });
     Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-aria]'), function(el){
       el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
@@ -954,7 +1083,7 @@ return {
           var pack = PACKS[code];
           if (!pack) throw new Error('pack missing: ' + code);
           var missing = REQUIRED.filter(function(k){ return typeof pack[k] !== 'string'; });
-          if (missing.length) throw new Error('pack incomplete: ' + missing.join(','));
+if (missing.length) throw new Error('pack incomplete: ' + missing.join(','));
           resolve(pack);
         }catch(err){
           reject(err);
@@ -991,7 +1120,7 @@ return {
   function toggle(){ setLang(current === 'zh' ? 'en' : 'zh', true); }
   if (btn){
     btn.addEventListener('click', toggle);
-    btn.addEventListener('keydown', function(e){
+btn.addEventListener('keydown', function(e){
       if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
     });
   }
@@ -1029,7 +1158,7 @@ function buildStars(){
     }
   }
 function resize(){
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+var dpr = Math.min(window.devicePixelRatio || 1, 2);
     w = window.innerWidth; h = window.innerHeight;
     canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
     canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
@@ -1115,7 +1244,7 @@ var gv = Math.max(0, L.g + flick);
       var r = el.getBoundingClientRect();
       return {
 x: Math.min(99, Math.max(1, ((e.clientX - r.left) / Math.max(r.width, 1)) * 100)),
-        y: Math.min(99, Math.max(1, ((e.clientY - r.top) / Math.max(r.height, 1)) * 100))
+y: Math.min(99, Math.max(1, ((e.clientY - r.top) / Math.max(r.height, 1)) * 100))
       };
     }
 
@@ -1149,7 +1278,7 @@ L.tx = p.x; L.ty = p.y; L.tg = 0.36;
 var p = pos(e);
       L.tx = p.x; L.ty = p.y; L.tg = Math.max(L.tg, 0.36);
       kick();
-    });
+});
 
     function release(){
       L.pressed = false; L.tg = 0.16;
@@ -1183,7 +1312,7 @@ var dlgMeta = document.getElementById('dlgMeta');
   function showProject(id){
     var p = window.SiriusI18N.project(id);
     if (!p || !p.title) return;
-    lastProject = id;
+lastProject = id;
     dlgTitle.textContent = p.title;
     dlgMeta.textContent = p.meta;
     dlgBody.textContent = '';
@@ -1212,9 +1341,8 @@ var dlgMeta = document.getElementById('dlgMeta');
     if (typeof paintApps === 'function') paintApps();
     if (dlg.open && lastProject) showProject(lastProject);
   });
-
-  /* ===== 应用卡片：点整张卡就进 ===== */
-  var URL_RE = /^https?:\/\/[^\s]+$/i;
+/* ===== 应用卡片：点整张卡就进 ===== */
+  var URL_RE = /^(https?:|wxp:|weixin:|alipays?:)\/\/[^\s]+$/i;
 
   function confirmOpen(url, name){
     dlgTitle.textContent = T('confirmTitle');
@@ -1238,7 +1366,7 @@ no.addEventListener('click', closeDlg);
     dlgBody.appendChild(p);
     dlgBody.appendChild(acts);
     if (typeof dlg.showModal === 'function') dlg.showModal();
-    else dlg.setAttribute('open', '');
+else dlg.setAttribute('open', '');
     if (yes.focus) setTimeout(function(){ yes.focus(); }, 60);
   }
 
@@ -1269,7 +1397,7 @@ var nameEl = card.querySelector('.name');
         return;
       }
       confirmOpen(url, nm);
-    }
+}
     card.addEventListener('click', go);
     card.addEventListener('keydown', function(e){
       if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); }
@@ -1294,7 +1422,7 @@ var idx = parseInt(el.getAttribute('data-i') || '0', 10);
     }, {rootMargin: '0px 0px -8% 0px', threshold: 0.12});
 
     var groups = ['.rows', '.panels', '.apps'];
-    groups.forEach(function(sel){
+groups.forEach(function(sel){
       var box = document.querySelector(sel);
       if (!box) return;
       Array.prototype.forEach.call(box.children, function(child, i){
@@ -1317,9 +1445,144 @@ var idx = parseInt(el.getAttribute('data-i') || '0', 10);
 </script>
 
 <script>
+/* ===== 兑换码抽奖：码表内联、记录只写本机、不联网 ===== */
+(function(){
+  'use strict';
+
+  var CODES = '7s9-2Gk-8pR-5x B6d-zT3-9F7-h2 4N2-vQ7-J5g-s8 t5P-6cM-2W9-k4 G3x-8rS-D2b-7n 9hK-4A6-qY2-m5 Z7f-3nR-5B8-p1 d2V-7X9-sC4-g6 5Jm-8wP-F3z-r9 L4b-6T2-kD7-x3 q8S-2N5-G9c-h7 3vM-7Kp-B6d-s2 R5z-9gA-4Xn-w8 c7D-2J6-pF3-k1 8Yr-4sV-N5b-m6 W2k-6G9-hB7-q4 n3F-8pS-A5d-z9 6bP-2rK-D7g-x5 S9v-5J3-cM8-h2 2Xm-7Bf-N4q-p6 k5G-9dR-V3s-w7 4pA-6nT-F8b-j1 h8D-3zY-M5c-r9 7rB-2W6-sK4-g3 N6x-5J9-vP2-d8 m3S-8G7-bF5-q4 9cK-4nR-A6p-z2 F5d-7xV-2sN-k6 p2G-9rM-C4b-h8 v8K-3fS-7Dn-x1 5zB-6Pm-W2g-q9 d7N-4sJ-F9c-r3 T2x-8bV-G5k-m7 w4R-9pD-3Jz-n2 8cF-2gM-S7b-k5 n5V-6Kp-B3d-z8 r9A-4xJ-D7s-m1 3Pm-7bF-N2g-k6 G6z-8sR-5Bd-w4 k2D-9vM-J7n-x3 7bN-4pS-F5g-r8 m8J-3zV-9Dc-h2 S5d-6Gk-2Bn-q7 p3R-8vA-7Jf-w1 2Fz-9bM-D5s-k4 W7c-4nP-G8d-r6 v5B-6sK-3Jm-x9 9gA-2pN-F7b-h3 d6R-8zM-5Bk-w2 T3m-7sD-J9c-n5 4bF-6vG-2Pz-k8 n7K-9pM-D3s-r1 5Jz-2sB-G8d-x6 m2P-7vF-N9c-h4 8sR-3bD-5Gk-w7 B6z-9pJ-F2d-n3 v3N-7sM-D5b-k9 2gK-6pA-J8r-x1 F7d-9bP-3Sz-m5 T5R-2vG-N8c-h6 p9B-6sJ-D2k-w3 4zM-7bF-G5d-n8 k6s-9pD-J3B-r2 7vN-2gP-F8c-x4 m5D-6sR-B9k-h7 3Jz-8pM-G2d-n1 8bA-5vS-N7F-k6 F2R-9pD-3Gm-w5 T6N-2sB-J5d-r8 p7K-4vM-D9z-x3 5gB-8sP-F2c-n7 m9R-3bJ-G6d-k1 2vD-7pN-S5B-w4 8Jz-6sF-N9k-r2 F5M-2bP-G7d-x6 T3B-9vD-J5s-n8 p6R-7gN-D2F-k3 4sK-8bM-F9z-w5 7vJ-2pB-G5d-n1 m2N-6sD-S8k-r7 9gR-3pF-J5B-x4 F6D-8vN-G2s-k9 T5P-2bJ-D7z-n3 p3M-9sB-F5d-w6 8vK-6
+pR-J2G-r1 2gN-7bD-S9F-x5 m7B-3pJ-G6s-k8 5sR-8vM-D2z-n4 F9P-2bN-J7d-w1 T6D-7gK-S5B-r3 p2J-9sM-F8G-x6 4vN-6pD-J5z-k2 7gB-3sR-G9d-n5 m5K-8bP-D2F-w7 8sD-2vJ-N6r-k9 F3R-7pM-G5B-x1 T9N-6bD-J2s-r4 p6M-3vF-S8d-k7 2gK-7sB-D5z-n2 5vJ-9pR-F6G-x8 m8B-2sN-G7d-k3 7sF-6vM-J5B-r1 F2D-8pK-N9z-x4 T5R-3bM-G6s-w9 p9J-7vB-D2F-n5 8gN-2sP-J7d-k6 3vM-6pD-S5R-x2 F6B-9sK-G2d-n8 T2P-7vJ-D5z-r3 p5D-8bN-F9G-x1 7gR-3sM-J6B-k4 m9K-2vF-S8d-n7 5sB-6pJ-G7z-x9 F8M-3vD-N2R-k5 T6J-7bP-D5s-w2 p2N-9sF-G8B-x6 4vR-6pM-J9d-k1 7gD-3sB-F5z-n8 m5P-8vK-S2G-r4 8sJ-2bN-G7d-x3 F3B-9vM-D6R-k7 T9D-6pF-J5z-n2 p6K-3sN-G8B-x5 2gM-7vD-F5d-w9 5vB-8sR-J7G-k1 m8D-2pN-S9z-x6 7sP-6vJ-G2B-r3 F2R-9bM-D5d-n4 T5N-3pK-J8s-w7 p9F-7vB-S6G-k2 8gJ-2sM-F5z-n9 3vD-6pB-G7R-x1 F6N-9sK-J2d-k5 T2B-7vM-D8z-r6 p5M-8sF-G9B-k3 7gK-3pD-J5R-n8 m9B-2vN-S6d-x4 5sD-6pJ-F7z-k1 F8R-3vM-G2d-n7 T6P-7bN-J5B-x2 p2J-9sD-S8z-k6 4vM-6pR-G5F-n3 7gN-3sB-J9d-k8 m5B-8vK-S2R-x4 8sF-2pM-G7z-n9 F3D-9vJ-D6B-k1 T9R-6pN-J2s-w5 p6M-3sK-G8d-n7 2gB-7vF-S5z-x3 5vN-8sJ-G7B-k6 m8K-2pD-F9R-n1 7sB-6vM-J5d-x4 F2P-9bR-G8z-n8 T5D-3pM-S6B-k2 p9N-7vJ-D5F-x7 8gR-2sK-G2d-n3 3vF-6pB-J7z-k5 F6M-9sN-D8R-x1 T2K-7vD-G5B-w6 p5B-8sM-J9d-n4 7gJ-3pF-S2z-k8 m9D-2vR-G7B-x2 5sN-6pK-F8d-n5 F8B-3vM-J2R-k7 T6R-7bD-S5z-x3 p2F-9sJ-G8B-n6 4vK-6pM-D7d-k1 7gM-3sB-J5F-x9 m5N-8vR-S2d-k4 8sD-2pK-G7z-n7 F3R-9vB-J8d-k2 T9M-6pF-S5B-x5 p6B-3sD-G2R-n8 2gK-7vN-F9z-k1 5vJ-8sM-G7d-x6 m8R-2pB-S5F-k3 7sM-6vD-J2B-n9 F2N-9bK-G8z-x4 T5F-3pJ-D7R-k7 p9D-7vM-S6B-x2 8gB-2sR-G5d-n5 3vM-6pN-J9z-k8 F6K-9sB-D2F-x1 T2R-7vJ-G7B-w6 p5N-8sD-J5R-n3 7gD-3pM-S8z-k4 m9F-2vB-G2d-n7 5sB-6pR-J7F-k1 F8M-3vK-S5d-n9 T6D-7bJ-G8B-x3 p2R-9sM-D5z-k6 4vN-6pB-G7d-n2 7gK-3sF-J8R-x5 m5J-8vD-S2B-k8 8sM-2pN-G9z-x1 F3B-9vR-J5d-k7 T9F-6pK-S8B-x4 p6D-3sM-G2z-n9 2gR-7vB-J5F-k3 5vM-8sD-G7B-n6 m8N-2pF-S9d-k2 7sJ-6vK-G5z-x8 F2B-9bM-D8R-n1 T5K-3pB-J7d-x4 p9M-7vF-S2B-k7 8gD-2sN-G5R-x3 3vB-6pJ-J8z-k6 F6R-9sM-D7B-n2 T2N-7vK-G9d-x5 p5F-8sB-J2R-k8 7gM-3pD-S5z-n1 m9B-2vN-G8d-k4 5sD-6pM-J7B-x7 F8R-3vF-S9z-k2 T6M-7bK-G5d-n5 p2B-9sD-J8F-x3 4vJ-6pR-G2B-n8 7gN-3sM-D5z
+-k1 m5K-8vB-S7R-x6 8sF-2pD-G9B-k4 F3D-9vM-J5d-n7 T9B-6pF-S2z-x2 p6R-3sK-G7d-n9 2gM-7vD-J8B-k5 5vN-8sR-G2d-x1 m8J-2pB-S5z-k6 7sB-6vM-G8R-x3 F2K-9bD-J5B-n4 T5M-3pN-S7d-k8 p9F-7vB-G2z-x5 8gR-2sM-J8d-n2 3vD-6pK-G5B-x7 F6B-9sJ-S9R-k1 T2F-7vM-G7d-n4 p5D-8sN-J2B-k6 7gJ-3pR-S5z-n9 m9M-2vD-G8B-x3 5sN-6pF-J7d-k5 F8D-3vK-S2R-n8 T6B-7bM-G5z-x2 p2M-9sD-J8R-k7 4vR-6pB-G2d-n1 7gB-3sN-J5F-x4 m5F-8vM-S7B-k6 8sK-2pD-G9R-n3 F3M-9vJ-S5z-x8 T9D-6pR-G2B-k5 p6F-3sB-J7d-n1 2gN-7vK-G8z-x7 5vB-8sM-S2d-k4 m8R-2pJ-G5B-n9 7sD-6vF-J8z-x2 F2R-9bN-S7R-k5 T5B-3pM-G2d-n8 p9K-7vD-J5B-x3 8gM-2sR-S9z-k6 3vJ-6pF-G7d-n1 F6D-9sK-J2R-x4 T2B-7vM-G8B-n7 p5M-8sD-S5z-k2 7gF-3pB-J9d-n5 m9D-2vR-G2B-k8 5sR-6pM-S7z-x3 F8B-3vN-J5d-k6 T6F-7bK-G8R-n1 p2D-9sM-S2B-k4 4vM-6pJ-G5z-n7 7gK-3sD-J8d-k2 m5B-8vF-S9R-x5 8sM-2pN-G7B-k8 F3R-9vD-J2z-n3 T9M-6pB-S5d-k6 p6B-3sM-G8z-k1 2gF-7vR-J7B-n4 5vD-8sK-G2d-k9 m8N-2pM-S5z-x2 7sJ-6vB-G8d-k5 F2D-9bR-J7R-x7 T5R-3pK-S2B-n3 p9B-7vM-G5z-k8 8gD-2sF-J8B-x1 3vM-6pD-S7R-k4 F6N-9sB-G2d-n6 T2K-7vJ-S5z-k9 p5R-8sM-J8d-n2 7gB-3pF-G7B-x5 m9F-2vK-S2d-k7 5sM-6pR-J5z-n3 F8R-3vD-G8B-k6 T6D-7bN-S5R-x1 p2N-9sK-J7d-k4 4vB-6pM-G2z-n8 7gJ-3sR-S9B-k5 m5K-8vD-G7R-x2 8sD-2pF-J5B-k7 F3B-9vM-S2z-n1 T9R-6pD-G8d-k3 p6M-3sB-J7z-n6 2gD-7vF-S5B-k8 5vN-8sM-G7d-n4 m8F-2pK-S9z-x9 7sR-6vM-J8B-k2 F2M-9bD-G5R-x5 T5F-3pB-J7B-n7 p9D-7vK-S2z-x3 8gB-2sM-G8d-k6 3vK-6pR-S7B-n1 F6M-9sD-J2z-k4 T2D-7vB-G5d-k8 p5B-8sF-S8R-x2 7gR-3pM-J5z-n5 m9J-2vD-G7B-k3 5sB-6pK-S2d-n9 F8M-3vR-J8z-x6 T6R-7bM-G5B-k1 p2F-9sD-J7R-n4 4vD-6pB-G8z-x7 7gN-3sM-S5d-k2 m5M-8vK-J2B-n5 8sB-2pR-G7z-k8 F3D-9vF-S9B-k3 T9F-6pM-J5d-n6 p6D-3sK-G2z-x1 2gR-7vB-S7R-k4 5vM-8sD-G8B-n7 m8B-2pF-J5z-k2 7sM-6vD-S5d-k5 F2B-9bK-G7R-x8 T5K-3pN-J8B-n1 p9M-7vD-S2z-k6 8gF-2sR-G5d-k3 3vB-6pM-J7B-n9 F6R-9sF-S8z-x4 T2M-7vK-G5R-x7 p5D-8sB-J2d-k1 7gD-3pR-S9z-n5 m9B-2vM-G8B-k8 5sR-6pD-J7z-n2 F8B-3vN-S5B-k6 T6F-7bJ-G2d-k4 p2R-9sM-S7z-x9 4vJ-6pK-G8R-n3 7gM-3sB-J5B-k7 m5N-8vF-S2z-x1 8sF-2pD-G7d-k5 F3R-9vM-S9B-k8 T9B-6pF-G5z-n4 p6K-3sD-J8d-k2 2gB-7vR-S7B-n6 5vD-8sM-J2z-k9 m8M-2pB-G5d-k3 7s
+D-6vK-S8R-x7 F2D-9bM-J7B-n1 T5R-3pF-S2z-k4 p9F-7vD-G8d-k6 8gJ-2sM-S5B-k2 3vD-6pB-G7R-n5 F6B-9sK-J2z-k8 T2R-7vM-S9d-k3 p5M-8sD-G5B-x1 7gK-3pN-J8R-n4 m9F-2vB-S7z-k7 5sM-6pF-G2d-k5 F8D-3vK-J7B-k8 T6B-7bR-S5z-x2 p2M-9sD-G8R-n6 4vR-6pM-J5d-k1 7gB-3sF-S9B-k4 m5B-8vD-G7z-n3 8sR-2pK-J8B-k5 F3M-9vB-S2d-k7 T9D-6pR-G5z-n8 p6F-3sM-J7d-k2 2gN-7vF-G8B-n1 5vB-8sM-S5R-x4 m8K-2pD-J2z-k6 7sB-6vM-G7d-k3 F2R-9bK-S8B-n5 T5B-3pM-G7z-x8 p9D-7vR-J5B-k1 8gM-2sD-S2d-k4 3vJ-6pF-G5B-n7 F6D-9sB-J8z-k2 T2F-7vM-S7R-x5 p5R-8sK-G8d-k9 7gJ-3pB-S5B-k3 m9M-2vD-J7z-n6 5sD-6pM-G8R-k8 F8R-3vF-S2d-k1 T6M-7bD-G7B-x4 p2B-9sR-J5z-n5 4vM-6pD-G7d-k7 7gF-3sM-S9z-k2 m5F-8vB-G8B-n6 8sM-2pR-S5d-k4 F3B-9vK-J7z-n9 T9M-6pB-S8R-x3 p6B-3sD-G5B-k5 2gK-7vD-J2d-k8 5vN-8sF-G7z-n1 m8D-2pM-S5B-k4 7sJ-6vB-G8R-x6 F2M-9bF-J5z-k3 T5D-3pK-S7d-k7 p9B-7vM-G2B-n2 8gR-2sB-J5z-k5 3vM-6pN-G8B-k8 F6N-9sD-S5R-x1 T2K-7vJ-G7d-k4 p5B-8sM-J8z-n6 7gD-3pF-S2B-k3 m9B-2vR-G5z-k7 5sR-6pD-J8B-n2 F8M-3vM-S7z-k5 T6R-7bK-G2d-k8 p2D-9sB-S5B-x4 4vB-6pR-J7d-k1 7gM-3sD-G8z-n6 m5K-8vF-G5B-k3 8sD-2pM-S7R-x7 F3R-9vD-J2B-k9 T9R-6pF-G8d-k2 p6M-3sB-S5z-n5 2gF-7vB-J7B-k8 5vD-8sM-G5z-n4 m8B-2pK-J8d-k6 7sR-6vD-G2B-k1 F2B-9bM-S5R-x3 T5F-3pB-J7z-k7 p9M-7vK-G8B-n2 8gD-2sR-S5d-k5 3vK-6pM-J7B-k8 F6M-9sD-G2z-n1 T2B-7vF-G5R-x4 p5D-8sK-J8B-k6 7gB-3pR-S7z-n3 m9J-2vM-G8d-k7 5sM-6pB-J5B-k2 F8B-3vD-S2R-n5 T6D-7bF-G7z-x8 p2F-9sM-G5d-k4 4vD-6pK-G8B-n1 7gN-3sM-J2z-k6 m5M-8vD-S5B-k3 8sB-2pF-G7R-x7 F3D-9vB-J8z-k5 T9F-6pM-S5d-k8 p6D-3sK-G2B-k2 2gR-7vD-S7z-n4 5vM-8sB-G5B-k1 m8F-2pR-J7d-k6 7sM-6vK-G8z-n3 F2R-9bD-S5B-k7 T5R-3pM-J2R-n5 p9D-7vB-G7d-k8 8gB-2sM-S2z-k4 3vB-6pD-G5B-n1 F6R-9sF-J8B-k6 T2M-7vM-S7z-x2 p5M-8sD-G8R-n3 7gJ-3pK-S5d-k5 m9D-2vB-J7z-k8 5sB-6pM-G8B-k4 F8R-3vF-S7B-k1 T6F-7bM-G2z-n6 p2R-9sD-J5d-k3 4vJ-6pB-G7R-n7 7gK-3sR-J8B-k2 m5N-8vM-S2z-k5 8sF-2pD-G8d-k8 F3M-9vK-J5B-n4 T9B-6pF-S7z-x1 p6B-3sD-G5R-k6 2gD-7vF-J7B-k3 5vN-8sM-G8z-n7 m8M-2pB-S5d-k2 7sD-6vM-J5R-x5 F2D-9bK-G5B-k8 T5K-3pD-S7z-n4 p9F-7vD-J8d-k1 8gJ-2sB-G2B-n6 3vD-6pM-S5R-k3 F6B-9sM-G7z-k5 T2R-7vJ-G8B-k7 p5R-8sF-
+S2d-k2 7gM-3pB-J5z-n4 m9F-2vK-G7B-k6 5sR-6pD-G8d-k8 F8D-3vM-J2B-k1 T6B-7bR-S5z-n3 p2M-9sB-G7R-n5 4vR-6pK-J8B-k7 7gB-3sF-S5d-k2 m5B-8vD-J2z-n4 8sR-2pM-G8B-k6 F3R-9vB-S7z-k8 T9D-6pF-G5B-n1 p6K-3sM-J8d-k3 2gB-7vR-S2B-k5 5vD-8sM-G7R-n7 m8K-2pD-G2z-k2 7sB-6vF-J8B-k4 F2M-9bM-S5d-k6 T5B-3pF-G8z-n8 p9M-7vM-J7B-k1 8gM-2sD-S5z-k3 3vJ-6pB-G8B-n5 F6D-9sK-J7R-x7 T2F-7vD-S5B-k2 p5D-8sM-G2z-n4 7gD-3pM-J8d-k6 m9M-2vB-G5B-k8 5sM-6pF-J7z-n1 F8B-3vK-G7R-x3 T6M-7bD-S8B-k5 p2B-9sR-J2d-k7 4vM-6pD-G5z-k2 7gF-3sB-S7B-n4 m5F-8vM-J8R-x6 8sM-2pK-G2d-k8 F3B-9vF-G8z-n1 T9M-6pM-S5B-k3 p6F-3sD-J7B-k5 2gN-7vD-G8R-n7 5vB-8sF-J5z-k2 m8D-2pB-G7B-k4 7sJ-6vB-S5d-k6 F2R-9bF-J8z-k8 T5R-3pK-G2B-n1 p9B-7vD-G7R-x3 8gR-2sM-J5d-k5 3vM-6pD-S8B-k7 F6N-9sB-G5z-n2 T2K-7vJ-J7B-k4 p5B-8sM-G8R-n6 m9B-2vR-G7d-k1 5sD-6pM-J5R-x3 F8M-3vM-G2B-k5 T6R-7bK-S7z-n7 p2D-9sD-G8B-k2 4vB-6pR-S5d-k4 7gK-3sD-J7z-n6 m5K-8vF-G7B-k8 8sD-2pM-G5R-x1 F3D-9vK-J8B-k3 T9R-6pF-G7d-k5 p6M-3sB-S2z-n7 2gF-7vB-J5B-k2 5vM-8sM-G8R-n4 m8B-2pK-G2z-k6 7sR-6vD-G7B-k8 F2B-9bM-S5R-x1 T5F-3pB-J8z-k3 p9D-7vM-G5d-k5 8gD-2sB-S7B-k7 3vK-6pM-G2R-n2 F6M-9sD-J7z-k4 T2D-7vF-G8B-k6 p5R-8sK-G5B-k8 7gB-3pR-J8d-k1 m9J-2vM-S5z-n3 5sB-6pD-G7R-x5 F8R-3vD-G8B-k7 T6D-7bF-S2d-k2 p2F-9sM-G7z-n4 4vD-6pB-J5R-k6 7gM-3sM-G5B-k8 m5M-8vD-J2z-n1 8sB-2pF-G8d-k3 F3R-9vB-S7B-k5 T9F-6pM-J5z-n7 p6D-3sK-G2d-k2 2gR-7vD-J7B-k4 5vD-8sB-S5R-n6 m8F-2pR-G8B-k8 7sM-6vK-G7d-k1 F2D-9bD-J2z-k3 T5D-3pM-G7B-n5 p9M-7vB-G5R-x7 8gB-2sM-S2z-k2 3vB-6pF-G7B-k4 F6R-9sK-G8d-k6 T2M-7vJ-S5z-k8 p5M-8sD-J7B-k1 7gD-3pB-G8R-n3 m9D-2vB-S5d-k5 5sR-6pM-J2z-n7 F8B-3vF-G5B-k2 T6R-7bM-G8z-n4 p2R-9sD-J7d-k6 4vJ-6pK-G2B-k8 7gN-3sR-J5z-n1 m5F-8vM-G8B-k3 8sF-2pD-S7R-x5 F3M-9vM-J7d-k7 T9B-6pF-G2z-k2 p6B-3sD-G7B-k4 2gK-7vF-J8R-n6 5vN-8sM-G5d-k8 m8M-2pB-J7z-k1 7sD-6vM-G8B-k3 F2R-9bK-S5R-x5 T5B-3pD-J2B-n7 p9F-7vD-G7z-k2 8gJ-2sB-G5R-n4 3vD-6pM-G8B-k6 F6B-9sM-S5d-k8 T2R-7vJ-J7z-n1 p5D-8sF-G8d-k3 7gM-3pK-J5B-k5 m9F-2vR-G2R-x7 5sM-6pB-G7B-k2 F8D-3vM-J8z-n4 T6B-7bR-G5d-k6 p2M-9sB-J7B-k8 4vR-6pM-S2z-n1 7gB-3sF-J8d-k3 m5B-8vD-G7R-x5
+8sR-2pM-G2B-k7 F3B-9vB-S5z-k2 T9D-6pF-G8B-n4 p6K-3sM-J5d-k6 2gD-7vR-G7z-k8 5vM-8sB-J2R-n1 m8K-2pD-G5B-k3 7sB-6vF-J7R-x5 F2M-9bM-G8d-k7 T5M-3pF-S5z-k2 p9B-7vM-J8B-k4 8gM-2sD-G2z-n6 3vJ-6pB-G7d-k8 F6D-9sK-J5B-k1 T2F-7vD-G7R-x3 p5R-8sM-S5B-k5 7gJ-3pM-J8z-n7 m9M-2vB-G5d-k2 5sB-6pF-G8B-k4 F8R-3vK-J2R-n6 T6F-7bD-S7z-k8 p2B-9sR-G5B-k1 4vM-6pD-J7d-k3 7gF-3sB-J2z-n5 m5K-8vM-G8R-x7 8sM-2pK-G7B-k2 F3R-9vF-G5d-k4 T9M-6pM-J8z-n6 p6F-3sD-S5B-k8 2gN-7vD-J7R-n1 5vB-8sF-G2B-k3 m8D-2pB-G5z-n5 7sJ-6vB-J8d-k7 F2B-9bF-S7B-k2 T5R-3pK-G7R-n4 p9D-7vB-G8z-n6 8gR-2sM-G5B-k8 3vM-6pD-J2B-k1 F6N-9sB-G8R-n3 T2K-7vJ-S5d-k5 p5M-8sM-G7z-n7 7gD-3pF-G5B-k2 m9B-2vR-J8R-x4 5sD-6pM-S7z-k6 F8M-3vM-G8d-k8 T6R-7bK-J2B-k1 p2D-9sD-G5R-n3 4vB-6pR-J7B-k5 7gK-3sD-J8z-n7 m5N-8vF-G5d-k2 8sD-2pM-G2R-n4 F3D-9vK-G7B-k6 T9R-6pF-G8z-k8 p6M-3sB-J5d-k1 2gF-7vB-S7B-k3 5vD-8sM-J8R-n5 m8B-2pK-G7z-n7 7sR-6vD-G5B-k2 F2R-9bM-G8R-n4 T5F-3pB-G7d-k6 p9M-7vM-J2z-k8 8gD-2sB-G5R-x1 3vK-6pM-G8B-k3 F6M-9sD-S7z-n5 T2D-7vF-J7B-k7 p5B-8sK-G8d-k2 7gB-3pR-J5B-k4 m9J-2vM-G7R-x6 5sR-6pD-G2z-n8 F8B-3vD-G5d-k1 T6D-7bF-J8B-k3 p2F-9sM-G7R-n5 4vD-6pB-S5z-k7 7gM-3sM-J8d-k2 m5M-8vD-G5B-k4 8sB-2pF-G7z-n6 F3M-9vB-G8B-k8 T9F-6pM-J5d-k1 p6D-3sK-G7B-k3 2gR-7vD-J2R-n5 5vM-8sB-G5z-n7 m8F-2pR-G8d-k2 7sM-6vK-J7B-k4 F2D-9bD-G5R-x6 T5D-3pM-G8z-k8 p9B-7vB-J5d-k1 8gB-2sM-G7B-k3 3vB-6pF-G8R-n5 F6R-9sK-J2z-n7 T2M-7vJ-G5d-k2 p5D-8sD-G7B-k4 7gJ-3pB-S5z-n6 m9D-2vB-G8B-k8 5sM-6pM-J7R-x1 F8R-3vF-G5B-k3 T6M-7bM-J8d-k5 p2R-9sR-G2z-n7 4vJ-6pK-G7B-k2 7gN-3sR-G8d-k4 m5F-8vM-J7z-n6 8sF-2pD-G5B-k8 F3B-9vM-G8R-n1 T9B-6pF-J2B-k3 p6B-3sD-G5z-n5 2gK-7vF-J7d-k7 5vN-8sM-G7B-k2 m8M-2pB-G8R-n4 7sD-6vM-G5z-n6 F2M-9bK-J8B-k8 T5K-3pD-G7R-x1 p9F-7vD-G2d-k3 8gJ-2sB-G8z-n5 3vD-6pM-G5B-k7 F6B-9sM-J8R-n2 T2R-7vJ-G5d-k4 p5M-8sF-G7B-k6 7gM-3pK-J2z-n8 m9F-2vR-G8B-k1 5sB-6pB-G7R-x3 F8D-3vM-J5d-k5 T6B-7bR-G2z-n7 p2M-9sB-G8B-k2 4vR-6pM-G7d-k4 7gB-3sF-J5R-n6 m5B-8vD-G5z-k8 8sR-2pM-J8B-k1 F3R-9vB-G7R-n3 T9D-6pF-G5B-k5 p6K-3sM-J8z-n7 2gD-7vR-G5d-k2 5vM-8sB-G8B-k4 m8K-2pD-J7R-n6 7sB-6vF-G2z-n8 F2R-9
+bM-G7d-k1 T5B-3pF-G5B-k3 p9M-7vM-G8R-n5 8gM-2sD-J7z-n7 3vJ-6pB-G8B-k2 F6D-9sK-G5d-k4 T2F-7vD-J2B-k6 p5R-8sM-G7R-n8 7gD-3pM-G5z-k1 m9M-2vB-J8d-k3 5sR-6pF-G7B-k5 F8B-3vK-G8R-n7 T6R-7bD-G5B-k2 p2B-9sR-J7z-n4 4vM-6pD-G8d-k6 7gF-3sB-J5B-k8 m5K-8vM-G7R-x1 8sM-2pK-J2z-n3 F3M-9vF-G5B-k5 T9M-6pM-G7d-k7 p6F-3sD-J8B-k2 2gN-7vD-G5R-n4 5vB-8sF-G7z-n6 m8D-2pB-G8B-k8 7sJ-6vB-G5d-k1 F2D-9bF-G7B-k3 T5R-3pK-J8R-n5 p9D-7vB-G2z-n7 8gR-2sM-G7d-k2 3vM-6pD-J5B-k4 F6N-9sB-G5R-n6 T2K-7vJ-G8B-k8 p5B-8sM-G2d-k1 7gJ-3pF-G7z-n3 m9B-2vR-G5B-k5 5sD-6pM-J8R-x7 F8M-3vM-G7B-k2 T6R-7bK-G5d-k4 p2D-9sD-J8z-n6 4vB-6pR-G7B-k8 7gK-3sD-G5B-k1 m5N-8vF-G8R-n3 8sD-2pM-J7z-n5 F3D-9vK-G5d-k7 T9R-6pF-G7B-k2 p6M-3sB-G8R-n4 2gF-7vB-G5z-n6 5vD-8sM-J2B-k8 m8B-2pK-G7d-k1 7sR-6vD-G8B-k3 F2B-9bM-G5R-n5 T5F-3pB-G7z-n7 p9M-7vM-G8d-k2 8gD-2sB-G5B-k4 3vK-6pM-J7R-n6 F6M-9sD-G8B-k8 T2D-7vF-G5z-n1 p5R-8sK-G7d-k3 7gB-3pR-J2B-k5 m9J-2vM-G5R-x7 5sM-6pD-G7B-k2 F8R-3vD-G8z-n4 T6D-7bF-G5B-k6 p2F-9sM-G7d-k8 4vD-6pB-G2R-n1 7gM-3sM-G8B-k3 m5M-8vD-G7R-x5 8sB-2pF-G5z-n7 F3R-9vB-G5d-k2 T9F-6pM-G8B-k4 p6D-3sK-G7z-n6 2gR-7vD-G5B-k8 5vM-8sB-J8R-n1 m8F-2pR-G7B-k3 7sM-6vK-G5d-k5 F2R-9bD-G8z-n7 T5D-3pM-G5B-k2 p9B-7vB-J7R-n4 8gB-2sM-G8B-k6 3vB-6pF-G5z-n8 F6R-9sK-G7d-k1 T2M-7vJ-G5B-k3 p5D-8sD-G8R-n5 7gD-3pB-G7B-k7 m9D-2vB-G5z-n2 5sB-6pM-G8d-k4 F8B-3vF-G7R-n6 T6M-7bM-G5B-k8 p2R-9sR-G8z-n1 4vJ-6pK-G5d-k3 7gN-3sR-G7B-k5 m5F-8vM-G8R-x7 8sF-2pD-G5z-n2 F3B-9vM-G7d-k4 T9B-6pF-G5B-k6 p6B-3sD-G8R-n8 2gK-7vF-G5B-k1 5vN-8sM-G7z-n3 m8M-2pB-G5d-k5 7sD-6vM-G8B-k7 F2M-9bK-G7R-n2 T5K-3pD-G8B-k4 p9F-7vD-G5z-n6 8gJ-2sB-G7d-k8 3vD-6pM-G5R-n1 F6B-9sM-G8B-k3 T2R-7vJ-G5B-k5 p5M-8sF-G7z-n7 7gM-3pK-G8d-k2 m9F-2vR-G5B-k4 5sR-6pB-G7R-x6 F8D-3vM-G8z-n8 T6B-7bR-G5d-k1 p2M-9sB-G7B-k3 4vR-6pM-G8R-n5 7gB-3sF-G5z-n7 m5B-8vD-G8B-k2 8sR-2pM-G7d-k4 F3D-9vB-G5B-k6 T9D-6pF-G7R-n8 p6K-3sM-G8B-k1 2gD-7vR-G5z-n3 5vM-8sB-G7d-k5 m8K-2pD-G8B-k7 7sB-6vF-G5R-n2 F2B-9bM-G8B-k4 T5M-3pF-G7z-n6 p9B-7vM-G5d-k8 8gM-2sD-G7B-k1 3vJ-6pB-G8R-n3 F6D-9sK-G5z-n5 T2F-7vD-G7d-k7 p5B-8sM-G5B-k2 7gJ-3pM-G8B
+-k4 m9M-2vB-G7R-n6 5sM-6pF-G5z-n8 F8R-3vK-G7d-k1 T6F-7bD-G8B-k3 p2B-9sR-G5R-n5 4vM-6pD-G7z-n7 7gF-3sB-G5B-k2 m5K-8vM-G8d-k4 8sM-2pK-G7B-k6 F3R-9vF-G5R-n8 T9M-6pM-G7B-k1 p6F-3sD-G5z-n3 2gN-7vD-G7d-k5 5vB-8sF-G8B-k7 m8D-2pB-G5R-n2 7sJ-6vB-G7z-n4 F2R-9bF-G8B-k6 T5R-3pK-G5d-k8 p9D-7vB-G7B-k1 8gR-2sM-G8R-n3 3vM-6pD-G7z-n5 F6N-9sB-G8d-k7 T2K-7vJ-G5B-k2 p5M-8sM-G5R-n4 7gD-3pF-G8B-k6 m9B-2vR-G5z-n8 5sD-6pM-G7d-k1 F8M-3vM-G5B-k3 T6R-7bK-G8R-n5 p2D-9sD-G5z-n7 4vB-6pR-G8d-k2 7gK-3sD-G7B-k4 m5N-8vF-G5R-n6 8sD-2pM-G5B-k8 F3M-9vK-G7z-n1 T9R-6pF-G5d-k3 p6M-3sB-G7B-k5 2gF-7vB-G5R-n7 5vD-8sM-G8B-k2 m8B-2pK-G5z-n4 7sR-6vD-G7d-k6 F2D-9bM-G8B-k8 T5F-3pB-G5R-n1 p9M-7vM-G7B-k3 8gD-2sB-G5z-n5 3vK-6pM-G7d-k7 F6M-9sD-G5B-k2 T2D-7vF-G8R-n4 p5D-8sK-G5z-n6 7gB-3pR-G8B-k8 m9J-2vM-G7d-k1 5sR-6pD-G5B-k3 F8B-3vD-G7R-n5 T6D-7bF-G8z-n7 p2F-9sM-G5d-k2 4vD-6pB-G8B-k4 7gM-3sM-G5R-n6 m5M-8vD-G7z-n8 8sB-2pF-G8d-k1 F3B-9vB-G5B-k3 T9F-6pM-G7R-n5 p6D-3sK-G8B-k7 2gR-7vD-G5z-n2 5vM-8sB-G7d-k4 m8F-2pR-G5B-k6 7sM-6vK-G8R-n8 F2B-9bD-G5z-n1 T5D-3pM-G7d-k3 p9B-7vB-G5B-k5 8gB-2sM-G7R-n7 3vB-6pF-G8B-k2 F6R-9sK-G5z-n4 T2M-7vJ-G7d-k6 p5R-8sD-G5B-k8 7gD-3pB-G5R-n1 m9D-2vB-G7B-k3 5sB-6pM-G5z-n5 F8R-3vF-G8d-k7 T6M-7bM-G5R-n2 p2R-9sR-G8B-k4 4vJ-6pK-G5z-n6 7gN-3sR-G5d-k8 m5F-8vM-G5B-k1 8sF-2pD-G7B-k3 F3M-9vM-G8R-n5 T9B-6pF-G5z-n7 p6B-3sD-G7d-k2 2gK-7vF-G8B-k4 5vN-8sM-G5R-n6 m8M-2pB-G5z-n8 7sD-6vM-G7d-k1 F2R-9bK-G5B-k3 T5K-3pD-G7R-n5 p9F-7vD-G8z-n7 8gJ-2sB-G5d-k2 3vD-6pM-G5B-k4 F6B-9sM-G7B-k6 T2R-7vJ-G5R-n8 p5M-8sF-G5z-n1 7gM-3pK-G7d-k3 m9F-2vR-G8B-k5 5sM-6pB-G5B-k7 F8D-3vM-G7R-n2 T6B-7bR-G8z-n4 p2M-9sB-G5d-k6 4vR-6pM-G7B-k8 7gB-3sF-G8R-n1 m5B-8vD-G5z-n3 8sR-2pM-G7d-k5 F3R-9vB-G5B-k7 T9D-6pF-G5R-n2 p6K-3sM-G5z-n4 2gD-7vR-G8d-k6 5vM-8sB-G5B-k8 m8K-2pD-G7R-n1 7sB-6vF-G5z-n3 F2M-9bM-G7d-k5 T5B-3pF-G8B-k7 p9M-7vM-G5R-n2 8gM-2sD-G5z-n4 3vJ-6pB-G7B-k6 F6D-9sK-G8R-n8 T2F-7vD-G5d-k1 p5R-8sM-G5B-k3 7gJ-3pM-G5z-n5 m9M-2vB-G8B-k7 5sR-6pF-G7d-k2 F8B-3vK-G5R-n4 T6R-7bD-G5z-n6 p2B-9sR-G7B-k8 4vM-6pD-G5d-k1 7gF-3sB-G8R-n3 m5K-8vM-G5B-k5 8s
+M-2pK-G7z-n7 F3B-9vF-G5d-k2 T9M-6pM-G8B-k4 p6F-3sD-G5R-n6 2gN-7vD-G5z-n8 5vB-8sF-G7B-k1 m8D-2pB-G8R-n3 7sJ-6vB-G5d-k5 F2D-9bF-G5z-n7 T5R-3pK-G7B-k2 p9D-7vB-G5R-n4 8gR-2sM-G8B-k6 3vM-6pD-G5z-n8 F6N-9sB-G7d-k1 T2K-7vJ-G5B-k3 p5B-8sM-G7R-n5 7gD-3pF-G5z-n7 m9B-2vR-G8d-k2 5sD-6pM-G5B-k4 F8M-3vM-G7B-k6 T6R-7bK-G5z-n8 p2D-9sD-G8B-k1 4vB-6pR-G5R-n3 7gK-3sD-G5B-k5 m5N-8vF-G7z-n7 8sD-2pM-G7d-k2 F3D-9vK-G8B-k4 T9R-6pF-G5B-k6 p6M-3sB-G7z-n8 2gF-7vB-G8d-k1 5vD-8sM-G7B-k3 m8B-2pK-G5R-n5 7sR-6vD-G5z-n7 F2R-9bM-G7d-k2 T5F-3pB-G8B-k4 p9M-7vM-G7R-n6 8gD-2sB-G5z-n8 3vK-6pM-G7d-k1 F6M-9sD-G5B-k3 T2D-7vF-G7R-n5 p5R-8sK-G7z-n7 7gB-3pR-G8d-k2 m9J-2vM-G5B-k4 5sM-6pD-G7B-k6 F8R-3vD-G5z-n8 T6D-7bF-G8B-k1 p2F-9sM-G7R-n3 4vD-6pB-G5B-k5 7gM-3sM-G5z-n7 m5M-8vD-G8d-k2 8sB-2pF-G7B-k4 F3M-9vB-G5R-n6 T9F-6pM-G5z-n8 p6D-3sK-G8B-k1 2gR-7vD-G7d-k3 5vM-8sB-G5B-k5 m8F-2pR-G7R-n7 7sM-6vK-G5z-n2 F2B-9bD-G8d-k4 T5D-3pM-G5B-k6 p9B-7vB-G7z-n8 8gB-2sM-G5d-k1 3vB-6pF-G8B-k3 F6R-9sK-G7R-n5 T2M-7vJ-G5z-n7 p5D-8sD-G8d-k2 7gD-3pB-G8B-k4 m9D-2vB-G5R-n6 5sB-6pM-G5z-n8 F8B-3vF-G7B-k1 T6M-7bM-G5R-n3 p2R-9sR-G5d-k5 4vJ-6pK-G7z-n7 7gN-3sR-G8B-k2 m5F-8vM-G5d-k4 8sF-2pD-G5B-k6 F3R-9vM-G7z-n8 T9B-6pF-G8d-k1 p6B-3sD-G5B-k3 2gK-7vF-G7R-n5 5vN-8sM-G5z-n7 m8M-2pB-G8d-k2 7sD-6vM-G5B-k4 F2M-9bK-G7B-k6 T5K-3pD-G5z-n8 p9F-7vD-G5R-n1 8gJ-2sB-G8B-k3 3vD-6pM-G5d-k5 F6B-9sM-G7z-n7 T2R-7vJ-G8B-k2 p5M-8sF-G5d-k4 7gM-3pK-G5B-k6 m9F-2vR-G7z-n8 5sR-6pB-G8B-k1 F8D-3vM-G7d-k3 T6B-7bR-G5R-n5 p2M-9sB-G5z-n7 4vR-6pM-G8d-k2 7gB-3sF-G5B-k4 m5B-8vD-G7R-n6 8sR-2pM-G5z-n8 F3B-9vB-G8B-k1 T9D-6pF-G7d-k3 p6K-3sM-G5B-k5 2gD-7vR-G7z-n7 5vM-8sB-G8d-k2 m8K-2pD-G5B-k4 7sB-6vF-G7R-n6 F2R-9bM-G5z-n8 T5M-3pF-G8B-k1 p9B-7vM-G7d-k3 8gM-2sD-G5B-k5 3vJ-6pB-G7z-n7 F6D-9sK-G7d-k2 T2F-7vD-G5B-k4 7gJ-3pM-G5z-n8 m9M-2vB-G5d-k1 5sM-6pF-G8B-k3 F8R-3vK-G7B-k5 T6F-7bD-G5z-n7 p2B-9sR-G7d-k2 4vM-6pD-G5B-k4 7gF-3sB-G7R-n6 m5K-8vM-G5z-n8 8sM-2pK-G8B-k1 F3M-9vF-G5d-k3 T9M-6pM-G7B-k5 p6F-3sD-G5z-n7 2gN-7vD-G7d-k2 5vB-8sF-G5B-k4 m8D-2pB-G7R-n6 7sJ-6vB-G5z-n8 F2B-9bF-G8d-k1 T5R-3pK-
+G5B-k3 p9D-7vB-G7z-n5 8gR-2sM-G7d-k7 3vM-6pD-G8B-k2 F6N-9sB-G5R-n4 T2K-7vJ-G5z-n6 p5M-8sM-G8B-k8 7gD-3pF-G7d-k1 m9B-2vR-G5B-k3 5sD-6pM-G7z-n5 F8M-3vM-G7d-k7 T6R-7bK-G5B-k2 p2D-9sD-G7R-n4 4vB-6pR-G5z-n6 7gK-3sD-G8B-k8 m5N-8vF-G5d-k1 8sD-2pM-G7B-k3 F3R-9vK-G7z-n5 T9R-6pF-G8d-k7 p6M-3sB-G5B-k2 2gF-7vB-G7R-n4 5vD-8sM-G5z-n6 m8B-2pK-G8B-k8 7sR-6vD-G5d-k1 F2D-9bM-G7B-k3 T5F-3pB-G7z-n5 p9M-7vM-G8d-k7 8gD-2sB-G5B-k2 3vK-6pM-G7R-n4 F6M-9sD-G5z-n6 T2D-7vF-G8B-k8 p5R-8sK-G7d-k1 7gB-3pR-G7B-k3 m9J-2vM-G5z-n5 5sR-6pD-G7d-k7 F8B-3vD-G8B-k2 T6D-7bF-G5R-n4 p2F-9sM-G5z-n6 4vD-6pB-G8d-k8 7gM-3sM-G5B-k1 m5M-8vD-G7R-n3 8sB-2pF-G5z-n5 F3D-9vB-G7d-k7 T9F-6pM-G8B-k2 p6D-3sK-G7R-n4 2gR-7vD-G5z-n6 5vM-8sB-G8d-k8 m8F-2pR-G5B-k1 7sM-6vK-G7B-k3 F2R-9bD-G5z-n5 T5D-3pM-G7R-n7 p9B-7vB-G5B-k2 8gB-2sM-G5d-k4 3vB-6pF-G7z-n6 F6R-9sK-G8B-k8 T2M-7vJ-G5d-k1 p5D-8sD-G7B-k3 7gD-3pB-G7R-n5 m9D-2vB-G5z-n7 5sB-6pM-G8d-k2 F8R-3vF-G5B-k4 T6M-7bM-G7z-n6 p2R-9sR-G8B-k8 4vJ-6pK-G5d-k1 7gN-3sR-G7B-k3 m5F-8vM-G7z-n5 8sF-2pD-G8d-k7 F3B-9vM-G5B-k2 T9B-6pF-G7R-n4 p6B-3sD-G5z-n6 2gK-7vF-G8B-k8 5vN-8sM-G5d-k1 m8M-2pB-G7B-k3 7sD-6vM-G7R-n5 F2M-9bK-G5z-n7 T5K-3pD-G8d-k2 p9F-7vD-G5B-k4 8gJ-2sB-G7z-n6 3vD-6pM-G8B-k8 F6B-9sM-G5d-k1 T2R-7vJ-G7B-k3 p5M-8sF-G7z-n5 7gM-3pK-G8d-k7 m9F-2vR-G5B-k2 5sM-6pB-G7R-n4 F8D-3vM-G5z-n6 T6B-7bR-G8B-k8 p2M-9sB-G5d-k1 4vR-6pM-G7B-k3 7gB-3sF-G7z-n5 m5B-8vD-G8d-k7 8sR-2pM-G5B-k2 F3R-9vB-G7R-n4 T9D-6pF-G5z-n6 p6K-3sM-G8B-k8 2gD-7vR-G5d-k1 5vM-8sB-G7B-k3 m8K-2pD-G7z-n5 7sB-6vF-G8d-k7 F2B-9bM-G5B-k2 T5B-3pF-G7R-n4 p9M-7vM-G5z-n6 8gM-2sD-G8B-k8 3vJ-6pB-G5d-k1 F6D-9sK-G7B-k3 T2F-7vD-G7z-n5 p5R-8sM-G7d-k7 7gJ-3pM-G5B-k2 m9M-2vB-G7R-n4 5sR-6pF-G5z-n6 F8B-3vK-G8B-k8 T6R-7bD-G5d-k1 p2B-9sR-G7B-k3 4vM-6pD-G7z-n5 7gF-3sB-G5d-k7 m5K-8vM-G7R-n2 8sM-2pK-G5B-k4 F3B-9vF-G7z-n6 T9M-6pM-G8d-k8 p6F-3sD-G5B-k1 2gN-7vD-G7R-n3 5vB-8sF-G5z-n5 m8D-2pB-G8d-k7 7sJ-6vB-G5B-k2 F2R-9bF-G7R-n4 T5R-3pK-G5z-n6 p9D-7vB-G8B-k8 8gR-2sM-G5d-k1 3vM-6pD-G7B-k3 F6N-9sB-G7z-n5 T2K-7vJ-G5d-k7 p5B-8sM-G7B-k2 7gD-3pF-G5R-n4 m9B-2vR-G5z-n6
+5sD-6pM-G8B-k8 F8M-3vM-G5d-k1 T6R-7bK-G7B-k3 p2D-9sD-G7z-n5 4vB-6pR-G8d-k7 7gK-3sD-G5B-k2 m5N-8vF-G7R-n4 8sD-2pM-G5z-n6 F3M-9vK-G8B-k8 T9R-6pF-G5d-k1 p6M-3sB-G7B-k3 2gF-7vB-G7z-n5 5vD-8sM-G5d-k7 m8B-2pK-G7R-n2 7sR-6vD-G5B-k4 F2D-9bM-G5z-n6 T5F-3pB-G8B-k8 p9M-7vM-G7d-k1 8gD-2sB-G7B-k3 3vK-6pM-G5z-n5 F6M-9sD-G5d-k7 T2D-7vF-G7B-k2 p5R-8sK-G7R-n4 7gB-3pR-G5z-n6 m9J-2vM-G8B-k8 5sM-6pD-G5d-k1 F8R-3vD-G7B-k3 T6D-7bF-G7z-n5 p2F-9sM-G8d-k7 4vD-6pB-G7B-k2 7gM-3sM-G5R-n4 m5M-8vD-G5z-n6 8sB-2pF-G8B-k8 F3R-9vB-G5d-k1 T9F-6pM-G7B-k3 p6D-3sK-G7z-n5 2gR-7vD-G5B-k7 5vM-8sB-G7R-n2 m8F-2pR-G5z-n4 7sM-6vK-G8d-k6 F2B-9bD-G7B-k8 T5D-3pM-G5z-n1 p9B-7vB-G5d-k3 8gB-2sM-G7R-n5 3vB-6pF-G5z-n7 F6R-9sK-G5B-k2 T2M-7vJ-G7d-k4 p5D-8sD-G7z-n6 7gD-3pB-G8B-k8 m9D-2vB-G5d-k1 5sB-6pM-G7B-k3 F8B-3vF-G7R-n5 T6M-7bM-G5z-n7 p2R-9sR-G5d-k2 4vJ-6pK-G8B-k4 7gN-3sR-G5z-n6 m5F-8vM-G5B-k8 8sF-2pD-G7d-k1 F3M-9vM-G7B-k3 T9B-6pF-G5z-n5 p6B-3sD-G5d-k7 2gK-7vF-G7R-n2 5vN-8sM-G7z-n4 m8M-2pB-G8B-k6 7sD-6vM-G5d-k8 F2R-9bK-G7B-k1 T5K-3pD-G5R-n3 p9F-7vD-G5z-n5 8gJ-2sB-G7d-k7 3vD-6pM-G5B-k2 F6B-9sM-G7R-n4 T2R-7vJ-G5z-n6 p5M-8sF-G8B-k8 7gM-3pK-G5d-k1 m9F-2vR-G7B-k3 5sR-6pB-G7z-n5 F8D-3vM-G7d-k7 T6B-7bR-G5B-k2 p2M-9sB-G7R-n4 4vR-6pM-G5z-n6 7gB-3sF-G5B-k8 m5B-8vD-G7d-k1 8sR-2pM-G7B-k3 F3B-9vB-G7z-n5 T9D-6pF-G5d-k7 p6K-3sM-G7B-k2 2gD-7vR-G7R-n4 5vM-8sB-G5z-n6 m8K-2pD-G8B-k8 7sB-6vF-G5d-k1 F2M-9bM-G7B-k3 T5M-3pF-G7z-n5 p9B-7vM-G7d-k7 8gM-2sD-G5B-k2 3vJ-6pB-G7R-n4 F6D-9sK-G5z-n6 T2F-7vD-G8B-k8 p5B-8sM-G5d-k1 7gJ-3pM-G7B-k3 m9M-2vB-G7z-n5 5sM-6pF-G5B-k7 F8R-3vK-G5R-n2 T6F-7bD-G7d-k4 p2B-9sR-G5z-n6 4vM-6pD-G8B-k8 7gF-3sB-G5d-k1 m5K-8vM-G7B-k3 8sM-2pK-G7R-n5 F3R-9vF-G5z-n7 T9M-6pM-G8d-k2 p6F-3sD-G7B-k4 2gN-7vD-G7z-n6 5vB-8sF-G8B-k8 m8D-2pB-G5d-k1 7sJ-6vB-G7R-n3 F2D-9bF-G7z-n5 T5R-3pK-G8B-k7 p9D-7vB-G5d-k2 8gR-2sM-G7B-k4 3vM-6pD-G5z-n6 F6N-9sB-G8B-k8 T2K-7vJ-G5d-k1 p5M-8sM-G7B-k3 7gD-3pF-G7z-n5 m9B-2vR-G5d-k7 5sD-6pM-G7R-n2 F8M-3vM-G5B-k4 T6R-7bK-G7z-n6 p2D-9sD-G8B-k8 4vB-6pR-G5d-k1 7gK-3sD-G7B-k3 m5N-8vF-G7R-n5 8sD-2pM-G5z-n7 F3D-9
+vK-G5B-k2 T9R-6pF-G7z-n4 p6M-3sB-G8d-k6 2gF-7vB-G5B-k8 5vD-8sM-G7R-n1 m8B-2pK-G7B-k3 7sR-6vD-G5z-n5 F2R-9bM-G7d-k7 T5F-3pB-G5B-k2 p9M-7vM-G7R-n4 8gD-2sB-G5z-n6 3vK-6pM-G8B-k8 F6M-9sD-G5d-k1 T2D-7vF-G7B-k3 p5R-8sK-G7z-n5 7gB-3pR-G5B-k7 m9J-2vM-G7R-n2 5sR-6pD-G5z-n4 F8B-3vD-G8d-k6 T6D-7bF-G7B-k8 p2F-9sM-G5z-n1 4vD-6pB-G7B-k3 7gM-3sM-G5R-n5 m5M-8vD-G7z-n7 8sB-2pF-G5B-k2 F3M-9vB-G7R-n4 T9F-6pM-G5z-n6 p6D-3sK-G8d-k8 2gR-7vD-G5B-k1 m8F-2pR-G7z-n5 7sM-6vK-G5d-k7 F2B-9bD-G5B-k2 T5D-3pM-G7R-n4 p9B-7vB-G5z-n6 8gB-2sM-G8B-k8 3vB-6pF-G5d-k1 F6R-9sK-G7B-k3 T2M-7vJ-G7R-n5 p5D-8sD-G5z-n7 7gD-3pB-G8d-k2 m9D-2vB-G5B-k4 5sB-6pM-G7z-n6 F8R-3vF-G5B-k8 T6M-7bM-G5d-k1 p2R-9sR-G7B-k3 4vJ-6pK-G7R-n5 7gN-3sR-G5z-n7 m5F-8vM-G5B-k2 8sF-2pD-G5d-k4 F3B-9vM-G7z-n6 T9B-6pF-G5B-k8 p6B-3sD-G5d-k1 2gK-7vF-G7B-k3 5vN-8sM-G7R-n5 m8M-2pB-G5z-n7 7sD-6vM-G8B-k2 F2M-9bK-G7R-n4 T5K-3pD-G5z-n6 p9F-7vD-G5B-k8 8gJ-2sB-G5d-k1 3vD-6pM-G7B-k3 F6B-9sM-G7z-n5 T2R-7vJ-G5B-k7 p5M-8sF-G5d-k2 7gM-3pK-G7R-n4 m9F-2vR-G5z-n6 5sM-6pB-G8B-k8 F8D-3vM-G5d-k1 T6B-7bR-G7B-k3 p2M-9sB-G7z-n5 4vR-6pM-G5B-k7 7gB-3sF-G7R-n2 m5B-8vD-G5z-n4 8sR-2pM-G8d-k6 F3R-9vB-G5B-k8 T9D-6pF-G7z-n1 p6K-3sM-G7B-k3 2gD-7vR-G5d-k5 5vM-8sB-G7B-k7 m8K-2pD-G5z-n2 7sB-6vF-G7R-n4 F2B-9bM-G5z-n6'.split(' ');
+var KEYS = Object.create(null);
+  CODES.forEach(function(c){ KEYS[c.replace(/-/g,'').toUpperCase()] = c; });
+
+  var PRIZES = {
+    zh: ['一等奖','二等奖','三等奖','四等奖','再来一次','神秘奖励','谢谢参与','差一点'],
+    en: ['First prize','Second prize','Third prize','Fourth prize','One more spin','Mystery prize','Thanks for playing','So close']
+  };
+  var USED_KEY = 'sirius.lot.used.v1';
+  var DURATION = 10000;
+
+  var prizeEl = document.getElementById('lotPrize');
+  var stateEl = document.getElementById('lotState');
+  var input = document.getElementById('lotCode');
+  var btn = document.getElementById('lotBtn');
+  var form = document.getElementById('lotForm');
+  var spon = document.getElementById('spon');
+  var sponBody = document.getElementById('sponBody');
+
+  function T(k){ return window.SiriusI18N ? window.SiriusI18N.t(k) : k; }
+  function lang(){ return (window.SiriusI18N && window.SiriusI18N.current() === 'en') ? 'en' : 'zh'; }
+
+  function readUsed(){
+    try{
+      var v = JSON.parse(localStorage.getItem(USED_KEY) || '[]');
+return Array.isArray(v) ? v : [];
+    }catch(e){ return []; }
+  }
+  var used = readUsed();
+  function remember(key){
+    if (used.indexOf(key) >= 0) return;
+    used.push(key);
+    try{ localStorage.setItem(USED_KEY, JSON.stringify(used)); }catch(e){}
+  }
+  function norm(s){ return String(s || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); }
+
+  var spinning = false, timer = 0, lastText = '';
+
+  function setIdle(){ if (!spinning) prizeEl.textContent = T('lotIdle'); }
+  setIdle();
+
+  function pick(){
+    var pool = PRIZES[lang()];
+    var t = pool[Math.floor(Math.random() * pool.length)];
+    if (t === lastText) t = pool[(pool.indexOf(t) + 1) % pool.length];
+    lastText = t;
+    return t;
+  }
+
+  function start(){
+    if (spinning) return;
+    var raw = input.value.trim();
+    var key = norm(raw);
+
+    if (!key){
+      stateEl.textContent = T('lotIdle');
+      return;
+    }
+    if (key.length !== 11 || !KEYS[key]){
+      stateEl.textContent = T('lotInvalid');
+      return;
+    }
+    if (used.indexOf(key) >= 0){
+stateEl.textContent = '';
+      prizeEl.textContent = T('lotUsed');
+      input.value = '';
+      return;
+    }
+
+    stateEl.textContent = '';
+    spinning = true;
+    btn.disabled = true;
+    prizeEl.classList.add('spinning');
+
+    var t0 = Date.now();
+    function tick(){
+      var el = Date.now() - t0;
+      if (el >= DURATION){ finish(key); return; }
+      prizeEl.textContent = pick();
+      var p = Math.max(0, (el - 5200) / (DURATION - 5200));
+      timer = setTimeout(tick, 55 + p * p * 360);
+    }
+    tick();
+  }
+
+  function finish(key){
+    spinning = false;
+    clearTimeout(timer);
+    prizeEl.classList.remove('spinning');
+    prizeEl.textContent = T('lotNone');
+    remember(key);
+    input.value = '';
+    btn.disabled = false;
+    if (input.focus) input.focus();
+  }
+
+  if (form) form.addEventListener('submit', function(e){ e.preventDefault(); start(); });
+
+  document.addEventListener('sirius:i18n', function(){
+    if (spinning) return;
+    if (!prizeEl.textContent || prizeEl.textContent === T('lotIdle')){ setIdle(); return; }
+if (prizeEl.textContent === '你未中奖' || prizeEl.textContent === 'No prize this time') prizeEl.textContent = T('lotNone');
+    if (prizeEl.textContent === '兑换码已使用' || prizeEl.textContent === 'Code already used') prizeEl.textContent = T('lotUsed');
+  });
+
+  /* ---- 赞助者名单：点开才展开 ---- */
+  function toggle(){
+    var open = spon.classList.toggle('open');
+    spon.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  if (spon){
+    spon.addEventListener('click', toggle);
+    spon.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  }
+})();
+</script>
+
+<script>
 /* ===== 右上角液态玻璃：转过去 → 页面模糊 → 换色 → 转回来 → 化开 ===== */
 (function(){
-'use strict';
+  'use strict';
   var root = document.documentElement;
   var bar = document.getElementById('themebar');
   if (!bar) return;
@@ -1327,7 +1590,7 @@ var idx = parseInt(el.getAttribute('data-i') || '0', 10);
   var sun = bar.querySelector('.ic-sun');
   var moon = bar.querySelector('.ic-moon');
   var veil = document.getElementById('veil');
-  var ask = document.getElementById('ask');
+var ask = document.getElementById('ask');
   var mqDark = window.matchMedia('(prefers-color-scheme: dark)');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1340,26 +1603,25 @@ var idx = parseInt(el.getAttribute('data-i') || '0', 10);
   function put(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
 
   /* ---- 位置：玻璃片压在哪个图标上，由实测算出来 ---- */
-  var 一半 = 21;
+  var HALF = 21;
   var MIN = 0, MAX = 0;
-  function 测量(){
+  function measure(){
     var r = bar.getBoundingClientRect();
     var a = sun.getBoundingClientRect();
 var b = moon.getBoundingClientRect();
-    MIN = (a.左 + a.width / 2) - r.左 - 一半;
-    MAX = (b.左 + b.width / 2) - r.左 - 一半;
+    MIN = (a.left + a.width / 2) - r.left - HALF;
+    MAX = (b.left + b.width / 2) - r.left - HALF;
     if (MAX < MIN) { var t = MIN; MIN = MAX; MAX = t; }
   }
   function mid(){ return (MIN + MAX) / 2; }
   function clamp(v){ return Math.min(MAX, Math.max(MIN, v)); }
-
-  function setX(x){ slab.style.setProperty('--x', x.toFixed(1) + 'px'); }
+function setX(x){ slab.style.setProperty('--x', x.toFixed(1) + 'px'); }
   function setRY(d){ slab.style.setProperty('--ry', d.toFixed(1) + 'deg'); }
   function setSC(v){ slab.style.setProperty('--sc', String(v)); }
   function nowX(){ return parseFloat(slab.style.getPropertyValue('--x')) || (mode === 'dark' ? MAX : MIN); }
 
-  function 地方(instant){
-    测量();
+  function place(instant){
+    measure();
     if (instant){
       bar.classList.add('snap');
       setX(mode === 'dark' ? MAX : MIN);
@@ -1377,143 +1639,162 @@ mode = m;
     sun.classList.toggle('on', m === 'light');
     moon.classList.toggle('on', m === 'dark');
     bar.setAttribute('aria-checked', m === 'dark' ? 'true' : 'false');
-    if (save && 同意 === 'yes') 放(TKey, m);
+    if (save && consent === 'yes') put(TKEY, m);
   }
 
   /* ---- 切换主流程 ---- */
-  var 忙碌的 = false;
-  function 跑(下一个){
-    if (忙碌的) return;
-    if (下一个 === mode){ 地方(false); return; }
-    测量();
-    var tx = 下一个 === 'dark' ? MAX : MIN;
+var busy = false, seq = 0;
+  function run(next){
+    measure();
+    seq++;
+    var myseq = seq;
 
-    if (减少){
-      apply(下一个, true);
-      地方(false);
-      返回;
+    if (next === mode && !busy){
+      place(false);
+      return;
+    }
+    if (next === mode){
+      veil.classList.remove('on');
+      busy = false;
+      place(false);
+      return;
     }
 
-    忙碌的 = true;
+    var tx = next === 'dark' ? MAX : MIN;
+
+    if (reduce){
+      busy = false;
+      apply(next, true);
+      place(false);
+      return;
+    }
+
+    busy = true;
     setSC(1);
-    SETX(TX);
+    setX(tx);
     setRY(86);          /* 1. 先转到侧面 */
 
     setTimeout(function(){
-      面纱.classList.添加('on');          /* 2. 转过去之后，整页糊住 */
+      if (myseq !== seq) return;
+      veil.classList.add('on');          /* 2. 转过去之后，整页糊住 */
       setTimeout(function(){
-        apply(下一个, true);               /* 3. 糊住了才换色 */
+        if (myseq !== seq) return;
+        apply(next, true);               /* 3. 糊住了才换色 */
         setRY(0);                        /* 4. 在落点上转回正面 */
         setTimeout(function(){
-          面纱.classList.remove('on');   /* 5. 转回来了再化开 */
-          setTimeout(function(){ 忙碌的 = false; }, 860);
-}, 520);
-      }, 280);
-    }, 500);
+          if (myseq !== seq) return;
+          veil.classList.remove('on');   /* 5. 转回来了再化开 */
+          setTimeout(function(){ if (myseq === seq) busy = false; }, 460);
+}, 300);
+      }, 160);
+    }, 280);
   }
 
   /* ---- 长按放大 + 左右拖动 ---- */
-  var 向下 = false, hold = false, 已移动 = false, sx = 0, x0 = 0, holdTimer = 0;
+  var down = false, hold = false, moved = false, sx = 0, x0 = 0, holdTimer = 0;
 
-  酒吧.addEventListener('指向下', function(e){
-    if (忙碌的) 返回;
-    if (e.pointerType === '鼠标' && e.button !== 0) return;
-    向下 = true; hold = false; 已移动 = false;
-    SX = e.ClientX;
-    var rect = 酒吧.getBoundingClientRect();
+  bar.addEventListener('pointerdown', function(e){
+    if (busy) return;
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    down = true; hold = false; moved = false;
+    sx = e.clientX;
+    var rect = bar.getBoundingClientRect();
     /* 手指 / 鼠标落在哪一格，玻璃就先滑到那一格，再跟着走 */
-    x0 = 夹紧(e.ClientX - rect.左 - 一半);
-    SETX(x0);
-    尝试 { 酒吧.setPointerCapture(e.pointerId); } catch(err){}
+    x0 = clamp(e.clientX - rect.left - HALF);
+    setX(x0);
+    try { bar.setPointerCapture(e.pointerId); } catch(err){}
     clearTimeout(holdTimer);
     holdTimer = setTimeout(function(){
-      if (!向下) 返回;
+      if (!down) return;
       hold = true;
-      酒吧.classList.添加('保持');
+      bar.classList.add('hold');
       setSC(1.3);
     }, 210);
   });
 
-  酒吧.addEventListener('pointintermove', function(e){
-    if (!向下) 返回;
-    var DX = e.ClientX - SX;
-    if (!hold && 数学.防抱死制动系统(DX) > 6){
+  bar.addEventListener('pointermove', function(e){
+    if (!down) return;
+    var dx = e.clientX - sx;
+    if (!hold && Math.abs(dx) > 6){
       hold = true;
-      酒吧.classList.添加('保持');
+      bar.classList.add('hold');
       setSC(1.24);
     }
-    if (!hold) 返回;
-    酒吧.classList.添加('拖动');
-var x = 夹紧(x0 + DX);
-    SETX(x);
-    setRY(((x - 中间的()) / 数学.最大值(1, (最大值 - MIN) / 2)) * 26);
-    已移动 = true;
+    if (!hold) return;
+    bar.classList.add('drag');
+var x = clamp(x0 + dx);
+    setX(x);
+    setRY(((x - mid()) / Math.max(1, (MAX - MIN) / 2)) * 26);
+    moved = true;
   });
-  function 解决(e){
-    if (!向下) return;
-    向下 = false;
+  function settle(e){
+    if (!down) return;
+    down = false;
     clearTimeout(holdTimer);
     bar.classList.remove('drag', 'hold');
     var x = nowX();
-    var 下一个 = x > mid() ? 'dark' : 'light';
+    var next = x > mid() ? 'dark' : 'light';
     setSC(1);
-    if (下一个 === mode){ 地方(false); return; }
-    跑(下一个);
+    if (next === mode){ place(false); return; }
+    run(next);
   }
 
-  bar.addEventListener('指针连接', 解决);
-  bar.addEventListener('pointcancel', function(){
-    向下 = false; clearTimeout(holdTimer);
-    酒吧.classList.remove('拖动', '保持'); setSC(1); 地方(false);
+  bar.addEventListener('pointerup', settle);
+  bar.addEventListener('pointercancel', function(){
+    down = false; clearTimeout(holdTimer);
+    bar.classList.remove('drag', 'hold'); setSC(1); place(false);
   });
 
   /* 点太阳 / 点月亮 */
-  sun.addEventListener('click', function(e){ e.stopPropagation(); if (!忙碌的) 跑('light'); });
-  moon.addEventListener('click', function(e){ e.stopPropagation(); if (!忙碌的) 跑('dark'); });
+  sun.addEventListener('click', function(e){ e.stopPropagation(); if (!busy) run('light'); });
+  moon.addEventListener('click', function(e){ e.stopPropagation(); if (!busy) run('dark'); });
 
   /* 键盘 */
-  酒吧.addEventListener('keydown', function(e){
-    if (e.key === 'ArrowLeft'){ e.preventDefault(); if (!忙碌的) 跑('light'); }
-    else if (e.key === 'ArrowRight'){ e.preventDefault(); if (!忙碌的) 跑('dark'); }
-else if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); if (!忙碌的) 跑(mode === 'dark' ? 'light' : 'dark'); }
+  bar.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowLeft'){ e.preventDefault(); if (!busy) run('light'); }
+    else if (e.key === 'ArrowRight'){ e.preventDefault(); if (!busy) run('dark'); }
+else if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); if (!busy) run(mode === 'dark' ? 'light' : 'dark'); }
   });
 
   /* 系统主题变了：没记过偏好就继续跟 */
-  function 跟随(){
-    if (忙碌的) 返回;
-    if (同意 === 'yes'){ var t = 得到(TKey); if (t === 'light' || t === 'dark') 返回; }
-    var m = mqDark.匹配 ? 'dark' : 'light';
-    if (m !== mode){ apply(m, false); 地方(false); }
+  function follow(){
+    if (busy) return;
+    if (consent === 'yes'){ var t = get(TKEY); if (t === 'light' || t === 'dark') return; }
+    var m = mqDark.matches ? 'dark' : 'light';
+    if (m !== mode){ apply(m, false); place(false); }
   }
-  if (mqDark.addEventListener) mqDark.addEventListener('change', 跟随);
-  else if (mqDark.addListener) mqDark.addListener(跟随);
+  if (mqDark.addEventListener) mqDark.addEventListener('change', follow);
+  else if (mqDark.addListener) mqDark.addListener(follow);
 
-  窗户.addEventListener('调整大小', function(){ 测量(); 地方(true); }, {passive:true});
+  window.addEventListener('resize', function(){ measure(); place(true); }, {passive:true});
 
-/* ---- 首次进入：问一次要不要记住偏好 ---- *//* ---- 首次进入：问一次要不要记住偏好 ---- */
-if(询问&&同意===空){if (问 && 同意 === null){
-    setTimeout(function(){ 问.classList.添加('on'); }, 900);
-    document.getElementById('询问是').addEventListener('click', function(){
-      同意 = 'yes'; 放(CKEY, 'yes'); 放(TKey, mode);
-      问.classList.remove('on');
+  /* ---- 首次进入：问一次要不要记住偏好 ---- */
+  if (ask && consent === null){
+    setTimeout(function(){ ask.classList.add('on'); }, 900);
+    document.getElementById('askYes').addEventListener('click', function(){
+      consent = 'yes'; put(CKEY, 'yes'); put(TKEY, mode);
+      ask.classList.remove('on');
     });
-文件。getElementById('askNo').AddEventListener('click'，功能(){
-      同意 = 'no'; 放(CKEY, 'no');
-      尝试 { localStorage.removeItem(TKey); } catch(e){}
-      问.classList.remove('on');
-      var m = mqDark.匹配 ? 'dark' : 'light';
-      if (m !== mode){ apply(m, false); 地方(false); }
+    document.getElementById('askNo').addEventListener('click', function(){
+      consent = 'no'; put(CKEY, 'no');
+      try { localStorage.removeItem(TKEY); } catch(e){}
+      ask.classList.remove('on');
+      var m = mqDark.matches ? 'dark' : 'light';
+      if (m !== mode){ apply(m, false); place(false); }
     });
-document.addEventListener('keydown'，函数(e){
-      if (e.key === 'Escape' && 问.classList.contains('on')) document.getElementById('askNo').click();
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && ask.classList.contains('on')) document.getElementById('askNo').click();
+    });
+    ask.addEventListener('click', function(e){
+      if (e.target === ask) document.getElementById('askNo').click();
     });
   }
 
-应用(模式，假)；
-  地方(true);
-  窗户.addEventListener('load', function(){ 测量(); 地方(true); }, {once:true});
-if(document.fonts&&document.fonts.准备好了)document.fonts.准备好了.then(函数(){测量()；place(true)；})；if (document.fonts && document.fonts.准备好了) document.fonts.准备好了.then(function(){ 测量(); 地方(true); });
+  apply(mode, false);
+  place(true);
+  window.addEventListener('load', function(){ measure(); place(true); }, {once:true});
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ measure(); place(true); });
 })();
-</script>脚本>
-</body>身体>
-</超文本标记语言>超文本标记语言>超文本标记语言>超文本标记语言>
+</script>
+</body>
+</html>
