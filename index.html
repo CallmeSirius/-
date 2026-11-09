@@ -170,7 +170,7 @@ section{padding-top:clamp(60px,9vw,108px);scroll-margin-top:24px}
   background:linear-gradient(150deg,rgba(255,255,255,.075),rgba(255,255,255,.03));
   -webkit-backdrop-filter:blur(18px) saturate(140%);
   backdrop-filter:blur(18px) saturate(140%);
-  color:inherit;font:inherit;text-align:left;cursor:pointer;overflow:hidden;
+  color:inherit;font:inherit;text-align:left;cursor:pointer;overflow:hidden;text-decoration:none;
   -webkit-touch-callout:none;user-select:none;
 }
 .row:hover{border-color:rgba(255,255,255,.2);background:linear-gradient(150deg,rgba(255,255,255,.1),rgba(255,255,255,.042))}
@@ -259,7 +259,7 @@ background:none;border:0;border-radius:50%;color:rgba(233,239,252,.7);cursor:poi
   -webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);
   opacity:0;pointer-events:none;
   transform:translate3d(14px,-10px,0) scale(.96);
-  transition:opacity .36s cubic-bezier(.22,1,.36,1),transform .36s cubic-bezier(.22,1,.36,1);
+transition:opacity .36s cubic-bezier(.22,1,.36,1),transform .36s cubic-bezier(.22,1,.36,1);
 }
 .toast.on{opacity:1;transform:none}
 
@@ -289,7 +289,7 @@ background:none;border:0;border-radius:50%;color:rgba(233,239,252,.7);cursor:poi
 :root{color-scheme:dark}
 [data-theme="light"]{
   color-scheme:light;
-  --accent:#1577b8;
+--accent:#1577b8;
   --accent-2:#6a5bd8;
   --muted:#5d6b86;
   --line:rgba(16,30,54,.12);
@@ -310,7 +310,6 @@ display:flex;align-items:center;justify-content:space-between;
 }
 .themebar:focus{outline:none}
 .themebar:focus-visible{box-shadow:0 0 0 1px rgba(255,255,255,.5),0 0 30px rgba(121,210,255,.45),0 18px 42px -24px rgba(0,0,0,.92)}
-
 .themebar .ic{
   width:30px;height:30px;display:grid;place-items:center;border-radius:9px;
   color:rgba(233,239,252,.55);position:relative;z-index:1;
@@ -330,7 +329,7 @@ display:flex;align-items:center;justify-content:space-between;
   background:linear-gradient(155deg,rgba(255,255,255,.4),rgba(255,255,255,.1) 44%,rgba(255,255,255,.19));
   -webkit-backdrop-filter:blur(4px) saturate(205%) brightness(1.12);
   backdrop-filter:blur(4px) saturate(205%) brightness(1.12);
-  box-shadow:
+box-shadow:
     inset 0 1px 0 rgba(255,255,255,.78),
     inset 1px 0 0 rgba(255,255,255,.22),
     inset -1px 0 0 rgba(150,210,255,.24),
@@ -383,7 +382,7 @@ inset 0 -12px 22px -12px rgba(165,225,255,.7),
 .veil.on{
   opacity:1;
   -webkit-backdrop-filter:blur(20px) saturate(145%) brightness(1.04);
-  backdrop-filter:blur(20px) saturate(145%) brightness(1.04);
+backdrop-filter:blur(20px) saturate(145%) brightness(1.04);
   transition:opacity .3s ease,backdrop-filter .3s ease,-webkit-backdrop-filter .3s ease;
 }
 
@@ -471,7 +470,7 @@ border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:rg
   background:
     radial-gradient(120% 80% at 84% -14%, #d3e6ff 0%, rgba(211,230,255,0) 58%),
     radial-gradient(95% 70% at 4% 108%, #e8e1ff 0%, rgba(232,225,255,0) 62%),
-    linear-gradient(180deg,#f4f8ff 0%,#e9f1ff 46%,#f7faff 100%);
+linear-gradient(180deg,#f4f8ff 0%,#e9f1ff 46%,#f7faff 100%);
   background-attachment:fixed;
 }
 [data-theme="light"] #sky{filter:invert(.86) hue-rotate(180deg) saturate(1.35);opacity:.5}
@@ -619,6 +618,26 @@ box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 18px 40px -30px rgba(30,60,110,.
 [data-theme="light"] .spon-list li{color:#4a586f}
 [data-theme="light"] .spon-list li::before{background:rgba(20,110,170,.5)}
 [data-theme="light"] .spon-arrow{color:#63718a}
+
+/* ===== 彩色超链接 ===== */
+.me-link{
+  display:inline-block;margin-top:14px;font-size:15px;font-weight:600;letter-spacing:.01em;
+  text-decoration:none;cursor:pointer;
+  background:linear-gradient(90deg,#79d2ff,#b7a7ff,#ffb86b,#7ef0c8,#79d2ff);
+background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-fill-color:transparent;
+  animation:meHue 9s linear infinite;
+  transition:filter .3s ease;
+}
+.me-link:hover{filter:brightness(1.18) saturate(1.15)}
+.me-link:focus-visible{outline:2px solid rgba(121,210,255,.7);outline-offset:4px;border-radius:6px}
+@keyframes meHue{from{background-position:0% 50%}to{background-position:260% 50%}}
+[data-theme="light"] .me-link{
+  background-image:linear-gradient(90deg,#0b74b8,#6a4fd6,#c4560c,#0b8a63,#0b74b8);
+}
+@media (prefers-reduced-motion:reduce){.me-link{animation:none}}
+
 @media (prefers-reduced-motion:reduce){
   .lot-prize{transition:none}
   .spon-body,.spon-arrow{transition:none}
@@ -628,9 +647,9 @@ box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 18px 40px -30px rgba(30,60,110,.
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .top,.hero h1,.latin,.plate{animation:none}
-.liquid,.btn,.app,.reveal,.slab,.veil,.ask,.ask-card,.themebar,.themebar .ic{transition:none}
+  .liquid,.btn,.app,.reveal,.slab,.veil,.ask,.ask-card,.themebar,.themebar .ic{transition:none}
   .reveal{opacity:1;transform:none}
-  .app:hover{transform:none}
+.app:hover{transform:none}
 }
 </style>
 <script>
@@ -680,6 +699,9 @@ try{
         <a class="btn" href="#work" data-i18n="btnWork">在做的事</a>
         <a class="btn ghost" href="#apps" data-i18n="btnApps">我的应用</a>
       </div>
+
+      <!-- ↓ 链接留空：把 href="" 里填成你要跳转的网址即可 -->
+      <a class="me-link" href="" data-i18n="meLink" onclick="if(!this.getAttribute('href')){event.preventDefault()}">叫我天狼星</a>
     </div>
   </section>
 
@@ -688,27 +710,10 @@ try{
       <h2 id="workTitle" data-i18n="workTitle">在做的事</h2>
 </div>
     <div class="rows">
-      <button class="row liquid" data-project="verify">
-        <div>
-          <h3 data-i18n="proj1Title">天狼星验证系统</h3>
-          <p class="desc" data-i18n="proj1Desc">未填写</p>
-        </div>
-        <div class="side"><span>2026</span></div>
-      </button>
-      <button class="row liquid" data-project="house">
-        <div>
-<h3 data-i18n="proj2Title">会动的房子</h3>
-          <p class="desc" data-i18n="proj2Desc">未填写</p>
-</div>
-        <div class="side"><span>2026</span></div>
-      </button>
-      <button class="row liquid" data-project="glass">
-        <div>
-          <h3 data-i18n="proj3Title">液态玻璃渲染</h3>
-          <p class="desc" data-i18n="proj3Desc">未填写</p>
-        </div>
-        <div class="side"><span>2026</span></div>
-      </button>
+      <a class="row liquid" href="https://www.scratchcn.cn/user/cmw79ub9z00002bvay0bd15pk" target="_blank" rel="noopener noreferrer">
+        <div><h3 data-i18n="scratchTitle">我的中社主页</h3></div>
+<div class="side"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </a>
 
       <!-- ▼ 留白 1：下面这一块写你自己的下一个项目 -->
       <div class="slot liquid">
@@ -729,13 +734,12 @@ try{
       </div>
       <!-- ▼ 留白 3：我想做 -->
       <div class="panel glass liquid">
-<div class="panel-k" data-i18n="panelWantK">我想做</div>
+        <div class="panel-k" data-i18n="panelWantK">我想做</div>
         <p class="blank" data-i18n="panelWantText">未填写</p>
       </div>
     </div>
   </section>
-
-  <section id="apps" aria-labelledby="appsTitle">
+<section id="apps" aria-labelledby="appsTitle">
     <div class="sec-head">
       <h2 id="appsTitle" data-i18n="appsTitle">我的应用</h2>
     </div>
@@ -752,11 +756,11 @@ try{
         <div class="app-main"><div class="name"></div></div>
       </div>
       <!-- ▼ 应用 3 -->
-<div class="app liquid" role="link" tabindex="0" data-name="" data-url="">
+      <div class="app liquid" role="link" tabindex="0" data-name="" data-url="">
         <div class="app-main"><div class="name"></div></div>
       </div>
       <!-- ▼ 应用 4 -->
-      <div class="app liquid" role="link" tabindex="0" data-name="" data-url="">
+<div class="app liquid" role="link" tabindex="0" data-name="" data-url="">
         <div class="app-main"><div class="name"></div></div>
       </div>
     </div>
@@ -775,12 +779,12 @@ try{
         <input class="lot-input" id="lotCode" type="text" name="code" autocomplete="off"
                autocapitalize="characters" spellcheck="false" maxlength="24"
                placeholder="7s9-2Gk-8pR-5x" aria-label="兑换码">
-<button class="lot-btn" id="lotBtn" type="submit" data-i18n="lotBtn">转转转</button>
+        <button class="lot-btn" id="lotBtn" type="submit" data-i18n="lotBtn">转转转</button>
       </form>
     </div>
 
     <div class="spon liquid" id="spon" role="button" tabindex="0" aria-expanded="false" aria-controls="sponBody">
-      <div class="spon-top">
+<div class="spon-top">
         <span class="spon-k" data-i18n="sponTitle">赞助者名单</span>
         <svg class="spon-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
@@ -801,11 +805,12 @@ try{
 </dialog>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <div class="ask" id="ask" role="dialog" aria-modal="true" aria-labelledby="askTitle">
 <div class="ask-card">
     <p class="ask-k" data-i18n="askK">偏好设置</p>
     <h3 id="askTitle" data-i18n="askTitle">是否允许 Claude 记住你的偏好？</h3>
-    <p class="ask-p" data-i18n="askP">允许的话，深浅选择会存在这台设备本地（只存这一项），下次打开直接沿用。不允许就每次跟随系统，不写入任何记录。</p>
+<p class="ask-p" data-i18n="askP">允许的话，深浅选择会存在这台设备本地（只存这一项），下次打开直接沿用。不允许就每次跟随系统，不写入任何记录。</p>
     <div class="ask-row">
       <button class="ask-btn" id="askNo" type="button" data-i18n="askNo">不保存</button>
       <button class="ask-btn primary" id="askYes" type="button" data-i18n="askYes">允许</button>
@@ -832,16 +837,12 @@ try{
       lede: '只是些东西，慢慢补。',
       btnWork: '在做的事',
       btnApps: '我的应用',
+      meLink: '叫我天狼星',
       workTitle: '在做的事',
       workSub: '',
-proj1Title: '天狼星验证系统',
-      proj1Desc: '未填写',
       proj1State: '未填写',
-proj2Title: '会动的房子',
-      proj2Desc: '未填写',
       proj2State: '未填写',
-      proj3Title: '液态玻璃渲染',
-      proj3Desc: '未填写',
+      scratchTitle: '我的中社主页',
       proj3State: '未填写',
       slotK: '未填写',
       slotTitle: '未填写',
@@ -850,7 +851,7 @@ proj2Title: '会动的房子',
       aboutSub: '',
       panelLearnK: '我在学',
       panelLearnText: '未填写',
-      panelWantK: '我想做',
+panelWantK: '我想做',
       panelWantText: '未填写',
       appsTitle: '我的应用',
       appsSub: '',
@@ -875,7 +876,7 @@ themeLight: '浅色',
       themeBarAria: '深色或浅色模式',
       langAria: '切换语言',
       langLabel: '中',
-docTitle: '天狼星 · 个人主页',
+      docTitle: '天狼星 · 个人主页',
       docDesc: '天狼星的主页。',
       confirmTitle: '即将打开',
       confirmBody: '即将打开「{name}」，确认是你要去的网页吗？',
@@ -884,34 +885,21 @@ docTitle: '天狼星 · 个人主页',
       allow: '允许',
       noUrl: '未填写',
       langFail: '语言包加载失败，已切回中文。',
-      proj_verify_title: '天狼星验证系统',
-      proj_verify_meta: '2026',
-      proj_verify_body: ['未填写'],
-      proj_house_title: '会动的房子',
-      proj_house_meta: '2026',
-      proj_house_body: ['未填写'],
-      proj_glass_title: '液态玻璃渲染',
-      proj_glass_meta: '2026',
-      proj_glass_body: ['未填写']
     },
 
     en: {
       brand: 'Sirius',
-      heroName: 'Sirius',
+heroName: 'Sirius',
       heroLatin: 'personal page',
       lede: 'Just some things, filled in slowly.',
       btnWork: 'What I\'m making',
       btnApps: 'My apps',
+      meLink: 'Call me Sirius',
       workTitle: 'In progress',
 workSub: '',
-      proj1Title: 'Sirius verification',
-      proj1Desc: 'Not filled in',
       proj1State: 'Not filled in',
-      proj2Title: 'The moving house',
-      proj2Desc: 'Not filled in',
-proj2State: 'Not filled in',
-      proj3Title: 'Liquid glass rendering',
-      proj3Desc: 'Not filled in',
+      proj2State: 'Not filled in',
+      scratchTitle: 'My ScratchCN page',
       proj3State: 'Not filled in',
       slotK: 'Not filled in',
       slotTitle: 'Not filled in',
@@ -932,13 +920,13 @@ panelLearnK: 'Learning',
       lotBtn: 'Spin',
       lotInvalid: 'That code is not on the list — check for a typo.',
       lotUsed: 'Code already used',
-      lotNone: 'No prize this time',
+lotNone: 'No prize this time',
       sponTitle: 'Sponsors',
       sponDefault: 'The server is acting up — try again in a moment.',
       askK: 'Preferences',
       askTitle: 'Allow Claude to remember your preference?',
       askP: 'If allowed, the light or dark choice is stored on this device — that one item only — and reused next time. If not, it follows the system every visit and nothing is written.',
-askNo: 'Don\'t save',
+      askNo: 'Don\'t save',
       askYes: 'Allow',
       themeLight: 'Light',
       themeDark: 'Dark',
@@ -954,20 +942,11 @@ confirmTitle: 'About to open',
       allow: 'Allow',
       noUrl: 'Not filled in',
       langFail: 'Language pack failed to load — switched back to Chinese.',
-      proj_verify_title: 'Sirius verification',
-      proj_verify_meta: '2026',
-      proj_verify_body: ['Not filled in'],
-      proj_house_title: 'The moving house',
-      proj_house_meta: '2026',
-      proj_house_body: ['Not filled in'],
-      proj_glass_title: 'Liquid glass rendering',
-proj_glass_meta: '2026',
-      proj_glass_body: ['Not filled in']
-    }
+}
   };
 
   var REQUIRED = ['brand','heroName','lede','workTitle','aboutTitle','appsTitle',
-'confirmTitle','confirmBody','cancel','allow','appEmpty','noUrl','docTitle',
+                  'confirmTitle','confirmBody','cancel','allow','appEmpty','noUrl','docTitle',
                   'langFail','askTitle','themeLight','themeDark'];
 
   function get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
@@ -992,10 +971,10 @@ function put(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
 
   function t(key, params){
     var v = PACKS[current] && PACKS[current][key];
-    if (typeof v !== 'string') v = PACKS.zh[key];
+if (typeof v !== 'string') v = PACKS.zh[key];
     if (typeof v !== 'string') v = key;
     if (params){
-v = v.replace(/\{(\w+)\}/g, function(m, k){
+      v = v.replace(/\{(\w+)\}/g, function(m, k){
         return (params[k] !== undefined && params[k] !== null) ? params[k] : m;
       });
     }
@@ -1021,9 +1000,9 @@ return {
     });
     Array.prototype.forEach.call(document.querySelectorAll('[data-i18n-aria]'), function(el){
       el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
-    });
+});
     document.documentElement.setAttribute('lang', current === 'zh' ? 'zh-CN' : 'en');
-document.title = t('docTitle');
+    document.title = t('docTitle');
     var md = document.querySelector('meta[name="description"]');
     if (md) md.setAttribute('content', t('docDesc'));
     Array.prototype.forEach.call(document.querySelectorAll('.lang-opt'), function(el){
@@ -1046,12 +1025,12 @@ document.title = t('docTitle');
         }
       }, 40);
     });
-  }
+}
 
   function setLang(code, byUser){
     return load(code).then(function(){
       current = code;
-if (byUser){ manual = true; put(LKEY, code); }
+      if (byUser){ manual = true; put(LKEY, code); }
       apply();
       return true;
     }).catch(function(){
@@ -1084,11 +1063,12 @@ if (byUser){ manual = true; put(LKEY, code); }
   window.SiriusI18N = {
     t: t,
     project: project,
-    current: function(){ return current; },
+current: function(){ return current; },
     setLang: setLang
   };
 })();
 </script>
+
 <script>
 (function(){
   'use strict';
@@ -1116,9 +1096,9 @@ function resize(){
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     w = window.innerWidth; h = window.innerHeight;
     canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
-    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-buildStars();
+    buildStars();
   }
   function draw(t){
     ctx.clearRect(0, 0, w, h);
@@ -1146,10 +1126,10 @@ resize();
   window.addEventListener('resize', resize, {passive:true});
   if (reduce) draw(0); else rafId = requestAnimationFrame(loop);
   document.addEventListener('visibilitychange', function(){
-    if (reduce) return;
+if (reduce) return;
     cancelAnimationFrame(rafId);
     if (!document.hidden) rafId = requestAnimationFrame(loop);
-});
+  });
   window.addEventListener('pointermove', function(e){
     tx = (e.clientX / Math.max(w, 1) - 0.5) * 16;
     ty = (e.clientY / Math.max(h, 1) - 0.5) * 16;
@@ -1174,11 +1154,11 @@ var gv = Math.max(0, L.g + flick);
         L.el.style.setProperty('--glow', gv.toFixed(3));
         L.el.style.setProperty('--mx', L.x.toFixed(2) + '%');
         L.el.style.setProperty('--my', L.y.toFixed(2) + '%');
-        busy = true;
+busy = true;
       }
     }
     if (busy) requestAnimationFrame(step); else running = false;
-}
+  }
 
   function spawn(el, cls, xp, yp, life){
     var s = document.createElement('span');
@@ -1204,9 +1184,9 @@ x: Math.min(99, Math.max(1, ((e.clientX - r.left) / Math.max(r.width, 1)) * 100)
     }
 
     el.addEventListener('pointerdown', function(e){
-      if (e.pointerType === 'mouse' && e.button !== 0) return;
+if (e.pointerType === 'mouse' && e.button !== 0) return;
       var p = pos(e);
-L.sx = e.clientX; L.sy = e.clientY;
+      L.sx = e.clientX; L.sy = e.clientY;
       L.x = L.tx = p.x; L.y = L.ty = p.y;
       L.g = Math.max(L.g, 0.34); L.tg = 0.94; L.pressed = true;
       kick();
@@ -1241,8 +1221,9 @@ var p = pos(e);
     }
     el.addEventListener('pointerup', release);
     el.addEventListener('pointercancel', release);
-    el.addEventListener('pointerleave', release);
-el.addEventListener('focus', function(){
+el.addEventListener('pointerleave', release);
+
+    el.addEventListener('focus', function(){
       if (el.matches && el.matches(':focus-visible')){ L.tg = 0.72; kick(); }
     });
     el.addEventListener('blur', function(){ L.tg = 0.16; kick(); });
@@ -1272,9 +1253,9 @@ var dlgMeta = document.getElementById('dlgMeta');
     dlgBody.textContent = '';
     p.body.forEach(function(para){
       var el = document.createElement('p');
-      el.textContent = para;
+el.textContent = para;
       dlgBody.appendChild(el);
-});
+    });
     if (dlg.open) return;
     if (typeof dlg.showModal === 'function') dlg.showModal();
     else dlg.setAttribute('open', '');
@@ -1283,7 +1264,9 @@ var dlgMeta = document.getElementById('dlgMeta');
   Array.prototype.forEach.call(document.querySelectorAll('.row'), function(row){
     row.addEventListener('click', function(){
       if (row.dataset.suppress) return;
-      showProject(row.getAttribute('data-project'));
+      var pid = row.getAttribute('data-project');
+      if (!pid) return;
+      showProject(pid);
     });
 });
 
@@ -1301,10 +1284,10 @@ var dlgMeta = document.getElementById('dlgMeta');
 
   function confirmOpen(url, name){
     dlgTitle.textContent = T('confirmTitle');
-    dlgMeta.textContent = url;
+dlgMeta.textContent = url;
     dlgBody.textContent = '';
     var p = document.createElement('p');
-p.textContent = name ? T('confirmBody', {name: name}) : T('confirmBodyNoName');
+    p.textContent = name ? T('confirmBody', {name: name}) : T('confirmBodyNoName');
     var acts = document.createElement('div');
     acts.className = 'dlg-acts';
     var no = document.createElement('button');
@@ -1327,8 +1310,8 @@ no.addEventListener('click', closeDlg);
 
   function paintApps(){
     Array.prototype.forEach.call(document.querySelectorAll('.app'), function(card){
-      var nameEl = card.querySelector('.name');
-var nm = (card.getAttribute('data-name') || '').trim();
+var nameEl = card.querySelector('.name');
+      var nm = (card.getAttribute('data-name') || '').trim();
       if (nm){
         nameEl.textContent = nm;
         nameEl.classList.remove('empty');
@@ -1360,8 +1343,8 @@ var nameEl = card.querySelector('.name');
   });
 
   /* ===== 滚动进场 ===== */
-  var revealables = document.querySelectorAll('.row, .slot, .panel, .app, .sec-head');
-if (reduce || !('IntersectionObserver' in window)){
+var revealables = document.querySelectorAll('.row, .slot, .panel, .app, .sec-head');
+  if (reduce || !('IntersectionObserver' in window)){
     Array.prototype.forEach.call(revealables, function(el){ el.classList.add('reveal', 'in'); });
   } else {
     Array.prototype.forEach.call(revealables, function(el){ el.classList.add('reveal'); });
@@ -1382,10 +1365,10 @@ var idx = parseInt(el.getAttribute('data-i') || '0', 10);
       if (!box) return;
       Array.prototype.forEach.call(box.children, function(child, i){
         child.setAttribute('data-i', String(i));
-      });
+});
     });
     Array.prototype.forEach.call(revealables, function(el){ io.observe(el); });
-}
+  }
 
   /* ===== toast ===== */
   var toastEl = document.getElementById('toast');
@@ -1404,21 +1387,22 @@ var idx = parseInt(el.getAttribute('data-i') || '0', 10);
 (function(){
   'use strict';
 
-  var CODES = '7s9-2Gk-8pR-5x B6d-zT3-9F7-h2 4N2-vQ7-J5g-s8 t5P-6cM-2W9-k4 G3x-8rS-D2b-7n 9hK-4A6-qY2-m5 Z7f-3nR-5B8-p1 d2V-7X9-sC4-g6 5Jm-8wP-F3z-r9 L4b-6T2-kD7-x3 q8S-2N5-G9c-h7 3vM-7Kp-B6d-s2 R5z-9gA-4Xn-w8 c7D-2J6-pF3-k1 8Yr-4sV-N5b-m6 W2k-6G9-hB7-q4 n3F-8pS-A5d-z9 6bP-2rK-D7g-x5 S9v-5J3-cM8-h2 2Xm-7Bf-N4q-p6 k5G-9dR-V3s-w7 4pA-6nT-F8b-j1 h8D-3zY-M5c-r9 7rB-2W6-sK4-g3 N6x-5J9-vP2-d8 m3S-8G7-bF5-q4 9cK-4nR-A6p-z2 F5d-7xV-2sN-k6 p2G-9rM-C4b-h8 v8K-3fS-7Dn-x1 5zB-6Pm-W2g-q9 d7N-4sJ-F9c-r3 T2x-8bV-G5k-m7 w4R-9pD-3Jz-n2 8cF-2gM-S7b-k5 n5V-6Kp-B3d-z8 r9A-4xJ-D7s-m1 3Pm-7bF-N2g-k6 G6z-8sR-5Bd-w4 k2D-9vM-J7n-x3 7bN-4pS-F5g-r8 m8J-3zV-9Dc-h2 S5d-6Gk-2Bn-q7 p3R-8vA-7Jf-w1 2Fz-9bM-D5s-k4 W7c-4nP-G8d-r6 v5B-6sK-3Jm-x9 9gA-2pN-F7b-h3 d6R-8zM-5Bk-w2 T3m-7sD-J9c-n5 4bF-6vG-2Pz-k8 n7K-9pM-D3s-r1 5Jz-2sB-G8d-x6 m2P-7vF-N9c-h4 8sR-3bD-5Gk-w7 B6z-9pJ-F2d-n3 v3N-7sM-D5b-k9 2gK-6pA-J8r-x1 F7d-9bP-3Sz-m5 T5R-2vG-N8c-h6 p9B-6sJ-D2k-w3 4zM-7bF-G5d-n8 k6s-9pD-J3B-r2 7vN-2gP-F8c-x4 m5D-6sR-B9k-h7 3Jz-8pM-G2d-n1 8bA-5vS-N7F-k6 F2R-9pD-3Gm-w5 T6N-2sB-J5d-r8 p7K-4vM-D9z-x3 5gB-8sP-F2c-n7 m9R-3bJ-G6d-k1 2vD-7pN-S5B-w4 8Jz-6sF-N9k-r2 F5M-2bP-G7d-x6 T3B-9vD-J5s-n8 p6R-7gN-D2F-k3 4sK-8bM-F9z-w5 7vJ-2pB-G5d-n1 m2N-6sD-S8k-r7 9gR-3pF-J5B-x4 F6D-8vN-G2s-k9 T5P-2bJ-D7z-n3 p3M-9sB-F5d-w6 8vK-6pR-J2G-r1 2gN-7bD-S9F-x5 m7B-3pJ-G6s-k8 5sR-8vM-D2z-n4 F9P-2bN-J7d-w1 T6D-7gK-S5B-r3 p2J-9sM-F8G-x6 4vN-6pD-J5z-k2 7gB-3sR-G9d-n5 m5K-8bP-D2F-w7 8sD-2vJ-N6r-k9 F3R-7pM-G5B-x1 T9N-6bD-J2s-r4 p6M-3vF-S8d-k7 2gK-7sB-D5z-n2 5vJ-9pR-F6G-x8 m8B-2sN-G7d-k3 7sF-6vM-J5B-r1 F2D-8pK-N9z-x4 T5R-3bM-G6s-w9 p9J-7vB-D2F-n5 8gN-2sP-J
-7d-k6 3vM-6pD-S5R-x2 F6B-9sK-G2d-n8 T2P-7vJ-D5z-r3 p5D-8bN-F9G-x1 7gR-3sM-J6B-k4 m9K-2vF-S8d-n7 5sB-6pJ-G7z-x9 F8M-3vD-N2R-k5 T6J-7bP-D5s-w2 p2N-9sF-G8B-x6 4vR-6pM-J9d-k1 7gD-3sB-F5z-n8 m5P-8vK-S2G-r4 8sJ-2bN-G7d-x3 F3B-9vM-D6R-k7 T9D-6pF-J5z-n2 p6K-3sN-G8B-x5 2gM-7vD-F5d-w9 5vB-8sR-J7G-k1 m8D-2pN-S9z-x6 7sP-6vJ-G2B-r3 F2R-9bM-D5d-n4 T5N-3pK-J8s-w7 p9F-7vB-S6G-k2 8gJ-2sM-F5z-n9 3vD-6pB-G7R-x1 F6N-9sK-J2d-k5 T2B-7vM-D8z-r6 p5M-8sF-G9B-k3 7gK-3pD-J5R-n8 m9B-2vN-S6d-x4 5sD-6pJ-F7z-k1 F8R-3vM-G2d-n7 T6P-7bN-J5B-x2 p2J-9sD-S8z-k6 4vM-6pR-G5F-n3 7gN-3sB-J9d-k8 m5B-8vK-S2R-x4 8sF-2pM-G7z-n9 F3D-9vJ-D6B-k1 T9R-6pN-J2s-w5 p6M-3sK-G8d-n7 2gB-7vF-S5z-x3 5vN-8sJ-G7B-k6 m8K-2pD-F9R-n1 7sB-6vM-J5d-x4 F2P-9bR-G8z-n8 T5D-3pM-S6B-k2 p9N-7vJ-D5F-x7 8gR-2sK-G2d-n3 3vF-6pB-J7z-k5 F6M-9sN-D8R-x1 T2K-7vD-G5B-w6 p5B-8sM-J9d-n4 7gJ-3pF-S2z-k8 m9D-2vR-G7B-x2 5sN-6pK-F8d-n5 F8B-3vM-J2R-k7 T6R-7bD-S5z-x3 p2F-9sJ-G8B-n6 4vK-6pM-D7d-k1 7gM-3sB-J5F-x9 m5N-8vR-S2d-k4 8sD-2pK-G7z-n7 F3R-9vB-J8d-k2 T9M-6pF-S5B-x5 p6B-3sD-G2R-n8 2gK-7vN-F9z-k1 5vJ-8sM-G7d-x6 m8R-2pB-S5F-k3 7sM-6vD-J2B-n9 F2N-9bK-G8z-x4 T5F-3pJ-D7R-k7 p9D-7vM-S6B-x2 8gB-2sR-G5d-n5 3vM-6pN-J9z-k8 F6K-9sB-D2F-x1 T2R-7vJ-G7B-w6 p5N-8sD-J5R-n3 7gD-3pM-S8z-k4 m9F-2vB-G2d-n7 5sB-6pR-J7F-k1 F8M-3vK-S5d-n9 T6D-7bJ-G8B-x3 p2R-9sM-D5z-k6 4vN-6pB-G7d-n2 7gK-3sF-J8R-x5 m5J-8vD-S2B-k8 8sM-2pN-G9z-x1 F3B-9vR-J5d-k7 T9F-6pK-S8B-x4 p6D-3sM-G2z-n9 2gR-7vB-J5F-k3 5vM-8sD-G7B-n6 m8N-2pF-S9d-k2 7sJ-6vK-G5z-x8 F2B-9bM-D8R-n1 T5K-3pB-J7d-x4 p9M-7vF-S2B-k7 8gD-2sN-G5R-x3 3vB-6pJ-J8z-k6 F6R-9sM-D7B-n2 T2N-7vK-G9d-x5 p5F-8sB-J2R-k8 7gM-3pD-S5z-n1 m9B-2vN-G8d-k4 5sD-6pM-J7B-x7 F8R-3vF-S9z-k2 T6M-7bK-G5d-n5 p2B-9sD-J8F-x3 4vJ-6pR-G2B-n8 7gN-3sM-D5z-k1 m5K-8vB-S7R-x6 8sF-2pD-G9B-k4 F3D-9vM-J5d-n7 T9B-6pF-S2z-x2 p6R-3sK-G7d-n9 2gM-7vD-J8B-k5 5vN-8sR-G2d-x1 m8J-2pB-S5z-k6 7sB-6vM-G8R-x3 F2K-9bD-J5B-n4 T5M-3pN-S7d-k8 p9F-7vB-G2z-x5 8gR-2sM-J8d-n2 3vD-6pK-G5B-x7 F6B-9sJ-S9R-k1 T2F-7vM-G7d-n4 p5D-8sN-J2B-k6 7gJ-3pR-S5z-n9 m9M-2vD-G8B-x3 5sN-6pF-J7d-k5 F8D-3vK-S2R-n8
-T6B-7bM-G5z-x2 p2M-9sD-J8R-k7 4vR-6pB-G2d-n1 7gB-3sN-J5F-x4 m5F-8vM-S7B-k6 8sK-2pD-G9R-n3 F3M-9vJ-S5z-x8 T9D-6pR-G2B-k5 p6F-3sB-J7d-n1 2gN-7vK-G8z-x7 5vB-8sM-S2d-k4 m8R-2pJ-G5B-n9 7sD-6vF-J8z-x2 F2R-9bN-S7R-k5 T5B-3pM-G2d-n8 p9K-7vD-J5B-x3 8gM-2sR-S9z-k6 3vJ-6pF-G7d-n1 F6D-9sK-J2R-x4 T2B-7vM-G8B-n7 p5M-8sD-S5z-k2 7gF-3pB-J9d-n5 m9D-2vR-G2B-k8 5sR-6pM-S7z-x3 F8B-3vN-J5d-k6 T6F-7bK-G8R-n1 p2D-9sM-S2B-k4 4vM-6pJ-G5z-n7 7gK-3sD-J8d-k2 m5B-8vF-S9R-x5 8sM-2pN-G7B-k8 F3R-9vD-J2z-n3 T9M-6pB-S5d-k6 p6B-3sM-G8z-k1 2gF-7vR-J7B-n4 5vD-8sK-G2d-k9 m8N-2pM-S5z-x2 7sJ-6vB-G8d-k5 F2D-9bR-J7R-x7 T5R-3pK-S2B-n3 p9B-7vM-G5z-k8 8gD-2sF-J8B-x1 3vM-6pD-S7R-k4 F6N-9sB-G2d-n6 T2K-7vJ-S5z-k9 p5R-8sM-J8d-n2 7gB-3pF-G7B-x5 m9F-2vK-S2d-k7 5sM-6pR-J5z-n3 F8R-3vD-G8B-k6 T6D-7bN-S5R-x1 p2N-9sK-J7d-k4 4vB-6pM-G2z-n8 7gJ-3sR-S9B-k5 m5K-8vD-G7R-x2 8sD-2pF-J5B-k7 F3B-9vM-S2z-n1 T9R-6pD-G8d-k3 p6M-3sB-J7z-n6 2gD-7vF-S5B-k8 5vN-8sM-G7d-n4 m8F-2pK-S9z-x9 7sR-6vM-J8B-k2 F2M-9bD-G5R-x5 T5F-3pB-J7B-n7 p9D-7vK-S2z-x3 8gB-2sM-G8d-k6 3vK-6pR-S7B-n1 F6M-9sD-J2z-k4 T2D-7vB-G5d-k8 p5B-8sF-S8R-x2 7gR-3pM-J5z-n5 m9J-2vD-G7B-k3 5sB-6pK-S2d-n9 F8M-3vR-J8z-x6 T6R-7bM-G5B-k1 p2F-9sD-J7R-n4 4vD-6pB-G8z-x7 7gN-3sM-S5d-k2 m5M-8vK-J2B-n5 8sB-2pR-G7z-k8 F3D-9vF-S9B-k3 T9F-6pM-J5d-n6 p6D-3sK-G2z-x1 2gR-7vB-S7R-k4 5vM-8sD-G8B-n7 m8B-2pF-J5z-k2 7sM-6vD-S5d-k5 F2B-9bK-G7R-x8 T5K-3pN-J8B-n1 p9M-7vD-S2z-k6 8gF-2sR-G5d-k3 3vB-6pM-J7B-n9 F6R-9sF-S8z-x4 T2M-7vK-G5R-x7 p5D-8sB-J2d-k1 7gD-3pR-S9z-n5 m9B-2vM-G8B-k8 5sR-6pD-J7z-n2 F8B-3vN-S5B-k6 T6F-7bJ-G2d-k4 p2R-9sM-S7z-x9 4vJ-6pK-G8R-n3 7gM-3sB-J5B-k7 m5N-8vF-S2z-x1 8sF-2pD-G7d-k5 F3R-9vM-S9B-k8 T9B-6pF-G5z-n4 p6K-3sD-J8d-k2 2gB-7vR-S7B-n6 5vD-8sM-J2z-k9 m8M-2pB-G5d-k3 7sD-6vK-S8R-x7 F2D-9bM-J7B-n1 T5R-3pF-S2z-k4 p9F-7vD-G8d-k6 8gJ-2sM-S5B-k2 3vD-6pB-G7R-n5 F6B-9sK-J2z-k8 T2R-7vM-S9d-k3 p5M-8sD-G5B-x1 7gK-3pN-J8R-n4 m9F-2vB-S7z-k7 5sM-6pF-G2d-k5 F8D-3vK-J7B-k8 T6B-7bR-S5z-x2 p2M-9sD-G8R-n6 4vR-6pM-J5d-k1 7gB-3sF-S9B-k4 m5B-8vD-G7z-n3 8sR-2pK-J8B-k5 F3M-9vB-S2d-k7 T9D-6pR-G5z-n8 p6F-3s
-M-J7d-k2 2gN-7vF-G8B-n1 5vB-8sM-S5R-x4 m8K-2pD-J2z-k6 7sB-6vM-G7d-k3 F2R-9bK-S8B-n5 T5B-3pM-G7z-x8 p9D-7vR-J5B-k1 8gM-2sD-S2d-k4 3vJ-6pF-G5B-n7 F6D-9sB-J8z-k2 T2F-7vM-S7R-x5 p5R-8sK-G8d-k9 7gJ-3pB-S5B-k3 m9M-2vD-J7z-n6 5sD-6pM-G8R-k8 F8R-3vF-S2d-k1 T6M-7bD-G7B-x4 p2B-9sR-J5z-n5 4vM-6pD-G7d-k7 7gF-3sM-S9z-k2 m5F-8vB-G8B-n6 8sM-2pR-S5d-k4 F3B-9vK-J7z-n9 T9M-6pB-S8R-x3 p6B-3sD-G5B-k5 2gK-7vD-J2d-k8 5vN-8sF-G7z-n1 m8D-2pM-S5B-k4 7sJ-6vB-G8R-x6 F2M-9bF-J5z-k3 T5D-3pK-S7d-k7 p9B-7vM-G2B-n2 8gR-2sB-J5z-k5 3vM-6pN-G8B-k8 F6N-9sD-S5R-x1 T2K-7vJ-G7d-k4 p5B-8sM-J8z-n6 7gD-3pF-S2B-k3 m9B-2vR-G5z-k7 5sR-6pD-J8B-n2 F8M-3vM-S7z-k5 T6R-7bK-G2d-k8 p2D-9sB-S5B-x4 4vB-6pR-J7d-k1 7gM-3sD-G8z-n6 m5K-8vF-G5B-k3 8sD-2pM-S7R-x7 F3R-9vD-J2B-k9 T9R-6pF-G8d-k2 p6M-3sB-S5z-n5 2gF-7vB-J7B-k8 5vD-8sM-G5z-n4 m8B-2pK-J8d-k6 7sR-6vD-G2B-k1 F2B-9bM-S5R-x3 T5F-3pB-J7z-k7 p9M-7vK-G8B-n2 8gD-2sR-S5d-k5 3vK-6pM-J7B-k8 F6M-9sD-G2z-n1 T2B-7vF-G5R-x4 p5D-8sK-J8B-k6 7gB-3pR-S7z-n3 m9J-2vM-G8d-k7 5sM-6pB-J5B-k2 F8B-3vD-S2R-n5 T6D-7bF-G7z-x8 p2F-9sM-G5d-k4 4vD-6pK-G8B-n1 7gN-3sM-J2z-k6 m5M-8vD-S5B-k3 8sB-2pF-G7R-x7 F3D-9vB-J8z-k5 T9F-6pM-S5d-k8 p6D-3sK-G2B-k2 2gR-7vD-S7z-n4 5vM-8sB-G5B-k1 m8F-2pR-J7d-k6 7sM-6vK-G8z-n3 F2R-9bD-S5B-k7 T5R-3pM-J2R-n5 p9D-7vB-G7d-k8 8gB-2sM-S2z-k4 3vB-6pD-G5B-n1 F6R-9sF-J8B-k6 T2M-7vM-S7z-x2 p5M-8sD-G8R-n3 7gJ-3pK-S5d-k5 m9D-2vB-J7z-k8 5sB-6pM-G8B-k4 F8R-3vF-S7B-k1 T6F-7bM-G2z-n6 p2R-9sD-J5d-k3 4vJ-6pB-G7R-n7 7gK-3sR-J8B-k2 m5N-8vM-S2z-k5 8sF-2pD-G8d-k8 F3M-9vK-J5B-n4 T9B-6pF-S7z-x1 p6B-3sD-G5R-k6 2gD-7vF-J7B-k3 5vN-8sM-G8z-n7 m8M-2pB-S5d-k2 7sD-6vM-J5R-x5 F2D-9bK-G5B-k8 T5K-3pD-S7z-n4 p9F-7vD-J8d-k1 8gJ-2sB-G2B-n6 3vD-6pM-S5R-k3 F6B-9sM-G7z-k5 T2R-7vJ-G8B-k7 p5R-8sF-S2d-k2 7gM-3pB-J5z-n4 m9F-2vK-G7B-k6 5sR-6pD-G8d-k8 F8D-3vM-J2B-k1 T6B-7bR-S5z-n3 p2M-9sB-G7R-n5 4vR-6pK-J8B-k7 7gB-3sF-S5d-k2 m5B-8vD-J2z-n4 8sR-2pM-G8B-k6 F3R-9vB-S7z-k8 T9D-6pF-G5B-n1 p6K-3sM-J8d-k3 2gB-7vR-S2B-k5 5vD-8sM-G7R-n7 m8K-2pD-G2z-k2 7sB-6vF-J8B-k4 F2M-9bM-S5d-k6 T5B-3pF-G8z-n8 p9M-7vM-J7B-k1 8gM-2sD-S5z-
-k3 3vJ-6pB-G8B-n5 F6D-9sK-J7R-x7 T2F-7vD-S5B-k2 p5D-8sM-G2z-n4 7gD-3pM-J8d-k6 m9M-2vB-G5B-k8 5sM-6pF-J7z-n1 F8B-3vK-G7R-x3 T6M-7bD-S8B-k5 p2B-9sR-J2d-k7 4vM-6pD-G5z-k2 7gF-3sB-S7B-n4 m5F-8vM-J8R-x6 8sM-2pK-G2d-k8 F3B-9vF-G8z-n1 T9M-6pM-S5B-k3 p6F-3sD-J7B-k5 2gN-7vD-G8R-n7 5vB-8sF-J5z-k2 m8D-2pB-G7B-k4 7sJ-6vB-S5d-k6 F2R-9bF-J8z-k8 T5R-3pK-G2B-n1 p9B-7vD-G7R-x3 8gR-2sM-J5d-k5 3vM-6pD-S8B-k7 F6N-9sB-G5z-n2 T2K-7vJ-J7B-k4 p5B-8sM-G8R-n6 m9B-2vR-G7d-k1 5sD-6pM-J5R-x3 F8M-3vM-G2B-k5 T6R-7bK-S7z-n7 p2D-9sD-G8B-k2 4vB-6pR-S5d-k4 7gK-3sD-J7z-n6 m5K-8vF-G7B-k8 8sD-2pM-G5R-x1 F3D-9vK-J8B-k3 T9R-6pF-G7d-k5 p6M-3sB-S2z-n7 2gF-7vB-J5B-k2 5vM-8sM-G8R-n4 m8B-2pK-G2z-k6 7sR-6vD-G7B-k8 F2B-9bM-S5R-x1 T5F-3pB-J8z-k3 p9D-7vM-G5d-k5 8gD-2sB-S7B-k7 3vK-6pM-G2R-n2 F6M-9sD-J7z-k4 T2D-7vF-G8B-k6 p5R-8sK-G5B-k8 7gB-3pR-J8d-k1 m9J-2vM-S5z-n3 5sB-6pD-G7R-x5 F8R-3vD-G8B-k7 T6D-7bF-S2d-k2 p2F-9sM-G7z-n4 4vD-6pB-J5R-k6 7gM-3sM-G5B-k8 m5M-8vD-J2z-n1 8sB-2pF-G8d-k3 F3R-9vB-S7B-k5 T9F-6pM-J5z-n7 p6D-3sK-G2d-k2 2gR-7vD-J7B-k4 5vD-8sB-S5R-n6 m8F-2pR-G8B-k8 7sM-6vK-G7d-k1 F2D-9bD-J2z-k3 T5D-3pM-G7B-n5 p9M-7vB-G5R-x7 8gB-2sM-S2z-k2 3vB-6pF-G7B-k4 F6R-9sK-G8d-k6 T2M-7vJ-S5z-k8 p5M-8sD-J7B-k1 7gD-3pB-G8R-n3 m9D-2vB-S5d-k5 5sR-6pM-J2z-n7 F8B-3vF-G5B-k2 T6R-7bM-G8z-n4 p2R-9sD-J7d-k6 4vJ-6pK-G2B-k8 7gN-3sR-J5z-n1 m5F-8vM-G8B-k3 8sF-2pD-S7R-x5 F3M-9vM-J7d-k7 T9B-6pF-G2z-k2 p6B-3sD-G7B-k4 2gK-7vF-J8R-n6 5vN-8sM-G5d-k8 m8M-2pB-J7z-k1 7sD-6vM-G8B-k3 F2R-9bK-S5R-x5 T5B-3pD-J2B-n7 p9F-7vD-G7z-k2 8gJ-2sB-G5R-n4 3vD-6pM-G8B-k6 F6B-9sM-S5d-k8 T2R-7vJ-J7z-n1 p5D-8sF-G8d-k3 7gM-3pK-J5B-k5 m9F-2vR-G2R-x7 5sM-6pB-G7B-k2 F8D-3vM-J8z-n4 T6B-7bR-G5d-k6 p2M-9sB-J7B-k8 4vR-6pM-S2z-n1 7gB-3sF-J8d-k3 m5B-8vD-G7R-x5 8sR-2pM-G2B-k7 F3B-9vB-S5z-k2 T9D-6pF-G8B-n4 p6K-3sM-J5d-k6 2gD-7vR-G7z-k8 5vM-8sB-J2R-n1 m8K-2pD-G5B-k3 7sB-6vF-J7R-x5 F2M-9bM-G8d-k7 T5M-3pF-S5z-k2 p9B-7vM-J8B-k4 8gM-2sD-G2z-n6 3vJ-6pB-G7d-k8 F6D-9sK-J5B-k1 T2F-7vD-G7R-x3 p5R-8sM-S5B-k5 7gJ-3pM-J8z-n7 m9M-2vB-G5d-k2 5sB-6pF-G8B-k4 F8R-3vK-J2R-n6 T6F-7bD-S7z-k8 p2B
--9sR-G5B-k1 4vM-6pD-J7d-k3 7gF-3sB-J2z-n5 m5K-8vM-G8R-x7 8sM-2pK-G7B-k2 F3R-9vF-G5d-k4 T9M-6pM-J8z-n6 p6F-3sD-S5B-k8 2gN-7vD-J7R-n1 5vB-8sF-G2B-k3 m8D-2pB-G5z-n5 7sJ-6vB-J8d-k7 F2B-9bF-S7B-k2 T5R-3pK-G7R-n4 p9D-7vB-G8z-n6 8gR-2sM-G5B-k8 3vM-6pD-J2B-k1 F6N-9sB-G8R-n3 T2K-7vJ-S5d-k5 p5M-8sM-G7z-n7 7gD-3pF-G5B-k2 m9B-2vR-J8R-x4 5sD-6pM-S7z-k6 F8M-3vM-G8d-k8 T6R-7bK-J2B-k1 p2D-9sD-G5R-n3 4vB-6pR-J7B-k5 7gK-3sD-J8z-n7 m5N-8vF-G5d-k2 8sD-2pM-G2R-n4 F3D-9vK-G7B-k6 T9R-6pF-G8z-k8 p6M-3sB-J5d-k1 2gF-7vB-S7B-k3 5vD-8sM-J8R-n5 m8B-2pK-G7z-n7 7sR-6vD-G5B-k2 F2R-9bM-G8R-n4 T5F-3pB-G7d-k6 p9M-7vM-J2z-k8 8gD-2sB-G5R-x1 3vK-6pM-G8B-k3 F6M-9sD-S7z-n5 T2D-7vF-J7B-k7 p5B-8sK-G8d-k2 7gB-3pR-J5B-k4 m9J-2vM-G7R-x6 5sR-6pD-G2z-n8 F8B-3vD-G5d-k1 T6D-7bF-J8B-k3 p2F-9sM-G7R-n5 4vD-6pB-S5z-k7 7gM-3sM-J8d-k2 m5M-8vD-G5B-k4 8sB-2pF-G7z-n6 F3M-9vB-G8B-k8 T9F-6pM-J5d-k1 p6D-3sK-G7B-k3 2gR-7vD-J2R-n5 5vM-8sB-G5z-n7 m8F-2pR-G8d-k2 7sM-6vK-J7B-k4 F2D-9bD-G5R-x6 T5D-3pM-G8z-k8 p9B-7vB-J5d-k1 8gB-2sM-G7B-k3 3vB-6pF-G8R-n5 F6R-9sK-J2z-n7 T2M-7vJ-G5d-k2 p5D-8sD-G7B-k4 7gJ-3pB-S5z-n6 m9D-2vB-G8B-k8 5sM-6pM-J7R-x1 F8R-3vF-G5B-k3 T6M-7bM-J8d-k5 p2R-9sR-G2z-n7 4vJ-6pK-G7B-k2 7gN-3sR-G8d-k4 m5F-8vM-J7z-n6 8sF-2pD-G5B-k8 F3B-9vM-G8R-n1 T9B-6pF-J2B-k3 p6B-3sD-G5z-n5 2gK-7vF-J7d-k7 5vN-8sM-G7B-k2 m8M-2pB-G8R-n4 7sD-6vM-G5z-n6 F2M-9bK-J8B-k8 T5K-3pD-G7R-x1 p9F-7vD-G2d-k3 8gJ-2sB-G8z-n5 3vD-6pM-G5B-k7 F6B-9sM-J8R-n2 T2R-7vJ-G5d-k4 p5M-8sF-G7B-k6 7gM-3pK-J2z-n8 m9F-2vR-G8B-k1 5sB-6pB-G7R-x3 F8D-3vM-J5d-k5 T6B-7bR-G2z-n7 p2M-9sB-G8B-k2 4vR-6pM-G7d-k4 7gB-3sF-J5R-n6 m5B-8vD-G5z-k8 8sR-2pM-J8B-k1 F3R-9vB-G7R-n3 T9D-6pF-G5B-k5 p6K-3sM-J8z-n7 2gD-7vR-G5d-k2 5vM-8sB-G8B-k4 m8K-2pD-J7R-n6 7sB-6vF-G2z-n8 F2R-9bM-G7d-k1 T5B-3pF-G5B-k3 p9M-7vM-G8R-n5 8gM-2sD-J7z-n7 3vJ-6pB-G8B-k2 F6D-9sK-G5d-k4 T2F-7vD-J2B-k6 p5R-8sM-G7R-n8 7gD-3pM-G5z-k1 m9M-2vB-J8d-k3 5sR-6pF-G7B-k5 F8B-3vK-G8R-n7 T6R-7bD-G5B-k2 p2B-9sR-J7z-n4 4vM-6pD-G8d-k6 7gF-3sB-J5B-k8 m5K-8vM-G7R-x1 8sM-2pK-J2z-n3 F3M-9vF-G5B-k5 T9M-6pM-G7d-k7 p6F-3sD-J8B-k2 2gN-7vD-G
-5R-n4 5vB-8sF-G7z-n6 m8D-2pB-G8B-k8 7sJ-6vB-G5d-k1 F2D-9bF-G7B-k3 T5R-3pK-J8R-n5 p9D-7vB-G2z-n7 8gR-2sM-G7d-k2 3vM-6pD-J5B-k4 F6N-9sB-G5R-n6 T2K-7vJ-G8B-k8 p5B-8sM-G2d-k1 7gJ-3pF-G7z-n3 m9B-2vR-G5B-k5 5sD-6pM-J8R-x7 F8M-3vM-G7B-k2 T6R-7bK-G5d-k4 p2D-9sD-J8z-n6 4vB-6pR-G7B-k8 7gK-3sD-G5B-k1 m5N-8vF-G8R-n3 8sD-2pM-J7z-n5 F3D-9vK-G5d-k7 T9R-6pF-G7B-k2 p6M-3sB-G8R-n4 2gF-7vB-G5z-n6 5vD-8sM-J2B-k8 m8B-2pK-G7d-k1 7sR-6vD-G8B-k3 F2B-9bM-G5R-n5 T5F-3pB-G7z-n7 p9M-7vM-G8d-k2 8gD-2sB-G5B-k4 3vK-6pM-J7R-n6 F6M-9sD-G8B-k8 T2D-7vF-G5z-n1 p5R-8sK-G7d-k3 7gB-3pR-J2B-k5 m9J-2vM-G5R-x7 5sM-6pD-G7B-k2 F8R-3vD-G8z-n4 T6D-7bF-G5B-k6 p2F-9sM-G7d-k8 4vD-6pB-G2R-n1 7gM-3sM-G8B-k3 m5M-8vD-G7R-x5 8sB-2pF-G5z-n7 F3R-9vB-G5d-k2 T9F-6pM-G8B-k4 p6D-3sK-G7z-n6 2gR-7vD-G5B-k8 5vM-8sB-J8R-n1 m8F-2pR-G7B-k3 7sM-6vK-G5d-k5 F2R-9bD-G8z-n7 T5D-3pM-G5B-k2 p9B-7vB-J7R-n4 8gB-2sM-G8B-k6 3vB-6pF-G5z-n8 F6R-9sK-G7d-k1 T2M-7vJ-G5B-k3 p5D-8sD-G8R-n5 7gD-3pB-G7B-k7 m9D-2vB-G5z-n2 5sB-6pM-G8d-k4 F8B-3vF-G7R-n6 T6M-7bM-G5B-k8 p2R-9sR-G8z-n1 4vJ-6pK-G5d-k3 7gN-3sR-G7B-k5 m5F-8vM-G8R-x7 8sF-2pD-G5z-n2 F3B-9vM-G7d-k4 T9B-6pF-G5B-k6 p6B-3sD-G8R-n8 2gK-7vF-G5B-k1 5vN-8sM-G7z-n3 m8M-2pB-G5d-k5 7sD-6vM-G8B-k7 F2M-9bK-G7R-n2 T5K-3pD-G8B-k4 p9F-7vD-G5z-n6 8gJ-2sB-G7d-k8 3vD-6pM-G5R-n1 F6B-9sM-G8B-k3 T2R-7vJ-G5B-k5 p5M-8sF-G7z-n7 7gM-3pK-G8d-k2 m9F-2vR-G5B-k4 5sR-6pB-G7R-x6 F8D-3vM-G8z-n8 T6B-7bR-G5d-k1 p2M-9sB-G7B-k3 4vR-6pM-G8R-n5 7gB-3sF-G5z-n7 m5B-8vD-G8B-k2 8sR-2pM-G7d-k4 F3D-9vB-G5B-k6 T9D-6pF-G7R-n8 p6K-3sM-G8B-k1 2gD-7vR-G5z-n3 5vM-8sB-G7d-k5 m8K-2pD-G8B-k7 7sB-6vF-G5R-n2 F2B-9bM-G8B-k4 T5M-3pF-G7z-n6 p9B-7vM-G5d-k8 8gM-2sD-G7B-k1 3vJ-6pB-G8R-n3 F6D-9sK-G5z-n5 T2F-7vD-G7d-k7 p5B-8sM-G5B-k2 7gJ-3pM-G8B-k4 m9M-2vB-G7R-n6 5sM-6pF-G5z-n8 F8R-3vK-G7d-k1 T6F-7bD-G8B-k3 p2B-9sR-G5R-n5 4vM-6pD-G7z-n7 7gF-3sB-G5B-k2 m5K-8vM-G8d-k4 8sM-2pK-G7B-k6 F3R-9vF-G5R-n8 T9M-6pM-G7B-k1 p6F-3sD-G5z-n3 2gN-7vD-G7d-k5 5vB-8sF-G8B-k7 m8D-2pB-G5R-n2 7sJ-6vB-G7z-n4 F2R-9bF-G8B-k6 T5R-3pK-G5d-k8 p9D-7vB-G7B-k1 8gR-2sM-G8R-n3 3vM-6pD-G7z-n5
-F6N-9sB-G8d-k7 T2K-7vJ-G5B-k2 p5M-8sM-G5R-n4 7gD-3pF-G8B-k6 m9B-2vR-G5z-n8 5sD-6pM-G7d-k1 F8M-3vM-G5B-k3 T6R-7bK-G8R-n5 p2D-9sD-G5z-n7 4vB-6pR-G8d-k2 7gK-3sD-G7B-k4 m5N-8vF-G5R-n6 8sD-2pM-G5B-k8 F3M-9vK-G7z-n1 T9R-6pF-G5d-k3 p6M-3sB-G7B-k5 2gF-7vB-G5R-n7 5vD-8sM-G8B-k2 m8B-2pK-G5z-n4 7sR-6vD-G7d-k6 F2D-9bM-G8B-k8 T5F-3pB-G5R-n1 p9M-7vM-G7B-k3 8gD-2sB-G5z-n5 3vK-6pM-G7d-k7 F6M-9sD-G5B-k2 T2D-7vF-G8R-n4 p5D-8sK-G5z-n6 7gB-3pR-G8B-k8 m9J-2vM-G7d-k1 5sR-6pD-G5B-k3 F8B-3vD-G7R-n5 T6D-7bF-G8z-n7 p2F-9sM-G5d-k2 4vD-6pB-G8B-k4 7gM-3sM-G5R-n6 m5M-8vD-G7z-n8 8sB-2pF-G8d-k1 F3B-9vB-G5B-k3 T9F-6pM-G7R-n5 p6D-3sK-G8B-k7 2gR-7vD-G5z-n2 5vM-8sB-G7d-k4 m8F-2pR-G5B-k6 7sM-6vK-G8R-n8 F2B-9bD-G5z-n1 T5D-3pM-G7d-k3 p9B-7vB-G5B-k5 8gB-2sM-G7R-n7 3vB-6pF-G8B-k2 F6R-9sK-G5z-n4 T2M-7vJ-G7d-k6 p5R-8sD-G5B-k8 7gD-3pB-G5R-n1 m9D-2vB-G7B-k3 5sB-6pM-G5z-n5 F8R-3vF-G8d-k7 T6M-7bM-G5R-n2 p2R-9sR-G8B-k4 4vJ-6pK-G5z-n6 7gN-3sR-G5d-k8 m5F-8vM-G5B-k1 8sF-2pD-G7B-k3 F3M-9vM-G8R-n5 T9B-6pF-G5z-n7 p6B-3sD-G7d-k2 2gK-7vF-G8B-k4 5vN-8sM-G5R-n6 m8M-2pB-G5z-n8 7sD-6vM-G7d-k1 F2R-9bK-G5B-k3 T5K-3pD-G7R-n5 p9F-7vD-G8z-n7 8gJ-2sB-G5d-k2 3vD-6pM-G5B-k4 F6B-9sM-G7B-k6 T2R-7vJ-G5R-n8 p5M-8sF-G5z-n1 7gM-3pK-G7d-k3 m9F-2vR-G8B-k5 5sM-6pB-G5B-k7 F8D-3vM-G7R-n2 T6B-7bR-G8z-n4 p2M-9sB-G5d-k6 4vR-6pM-G7B-k8 7gB-3sF-G8R-n1 m5B-8vD-G5z-n3 8sR-2pM-G7d-k5 F3R-9vB-G5B-k7 T9D-6pF-G5R-n2 p6K-3sM-G5z-n4 2gD-7vR-G8d-k6 5vM-8sB-G5B-k8 m8K-2pD-G7R-n1 7sB-6vF-G5z-n3 F2M-9bM-G7d-k5 T5B-3pF-G8B-k7 p9M-7vM-G5R-n2 8gM-2sD-G5z-n4 3vJ-6pB-G7B-k6 F6D-9sK-G8R-n8 T2F-7vD-G5d-k1 p5R-8sM-G5B-k3 7gJ-3pM-G5z-n5 m9M-2vB-G8B-k7 5sR-6pF-G7d-k2 F8B-3vK-G5R-n4 T6R-7bD-G5z-n6 p2B-9sR-G7B-k8 4vM-6pD-G5d-k1 7gF-3sB-G8R-n3 m5K-8vM-G5B-k5 8sM-2pK-G7z-n7 F3B-9vF-G5d-k2 T9M-6pM-G8B-k4 p6F-3sD-G5R-n6 2gN-7vD-G5z-n8 5vB-8sF-G7B-k1 m8D-2pB-G8R-n3 7sJ-6vB-G5d-k5 F2D-9bF-G5z-n7 T5R-3pK-G7B-k2 p9D-7vB-G5R-n4 8gR-2sM-G8B-k6 3vM-6pD-G5z-n8 F6N-9sB-G7d-k1 T2K-7vJ-G5B-k3 p5B-8sM-G7R-n5 7gD-3pF-G5z-n7 m9B-2vR-G8d-k2 5sD-6pM-G5B-k4 F8M-3vM-G7B-k6 T6R-7bK-G5z-n8 p2D-9s
-D-G8B-k1 4vB-6pR-G5R-n3 7gK-3sD-G5B-k5 m5N-8vF-G7z-n7 8sD-2pM-G7d-k2 F3D-9vK-G8B-k4 T9R-6pF-G5B-k6 p6M-3sB-G7z-n8 2gF-7vB-G8d-k1 5vD-8sM-G7B-k3 m8B-2pK-G5R-n5 7sR-6vD-G5z-n7 F2R-9bM-G7d-k2 T5F-3pB-G8B-k4 p9M-7vM-G7R-n6 8gD-2sB-G5z-n8 3vK-6pM-G7d-k1 F6M-9sD-G5B-k3 T2D-7vF-G7R-n5 p5R-8sK-G7z-n7 7gB-3pR-G8d-k2 m9J-2vM-G5B-k4 5sM-6pD-G7B-k6 F8R-3vD-G5z-n8 T6D-7bF-G8B-k1 p2F-9sM-G7R-n3 4vD-6pB-G5B-k5 7gM-3sM-G5z-n7 m5M-8vD-G8d-k2 8sB-2pF-G7B-k4 F3M-9vB-G5R-n6 T9F-6pM-G5z-n8 p6D-3sK-G8B-k1 2gR-7vD-G7d-k3 5vM-8sB-G5B-k5 m8F-2pR-G7R-n7 7sM-6vK-G5z-n2 F2B-9bD-G8d-k4 T5D-3pM-G5B-k6 p9B-7vB-G7z-n8 8gB-2sM-G5d-k1 3vB-6pF-G8B-k3 F6R-9sK-G7R-n5 T2M-7vJ-G5z-n7 p5D-8sD-G8d-k2 7gD-3pB-G8B-k4 m9D-2vB-G5R-n6 5sB-6pM-G5z-n8 F8B-3vF-G7B-k1 T6M-7bM-G5R-n3 p2R-9sR-G5d-k5 4vJ-6pK-G7z-n7 7gN-3sR-G8B-k2 m5F-8vM-G5d-k4 8sF-2pD-G5B-k6 F3R-9vM-G7z-n8 T9B-6pF-G8d-k1 p6B-3sD-G5B-k3 2gK-7vF-G7R-n5 5vN-8sM-G5z-n7 m8M-2pB-G8d-k2 7sD-6vM-G5B-k4 F2M-9bK-G7B-k6 T5K-3pD-G5z-n8 p9F-7vD-G5R-n1 8gJ-2sB-G8B-k3 3vD-6pM-G5d-k5 F6B-9sM-G7z-n7 T2R-7vJ-G8B-k2 p5M-8sF-G5d-k4 7gM-3pK-G5B-k6 m9F-2vR-G7z-n8 5sR-6pB-G8B-k1 F8D-3vM-G7d-k3 T6B-7bR-G5R-n5 p2M-9sB-G5z-n7 4vR-6pM-G8d-k2 7gB-3sF-G5B-k4 m5B-8vD-G7R-n6 8sR-2pM-G5z-n8 F3B-9vB-G8B-k1 T9D-6pF-G7d-k3 p6K-3sM-G5B-k5 2gD-7vR-G7z-n7 5vM-8sB-G8d-k2 m8K-2pD-G5B-k4 7sB-6vF-G7R-n6 F2R-9bM-G5z-n8 T5M-3pF-G8B-k1 p9B-7vM-G7d-k3 8gM-2sD-G5B-k5 3vJ-6pB-G7z-n7 F6D-9sK-G7d-k2 T2F-7vD-G5B-k4 7gJ-3pM-G5z-n8 m9M-2vB-G5d-k1 5sM-6pF-G8B-k3 F8R-3vK-G7B-k5 T6F-7bD-G5z-n7 p2B-9sR-G7d-k2 4vM-6pD-G5B-k4 7gF-3sB-G7R-n6 m5K-8vM-G5z-n8 8sM-2pK-G8B-k1 F3M-9vF-G5d-k3 T9M-6pM-G7B-k5 p6F-3sD-G5z-n7 2gN-7vD-G7d-k2 5vB-8sF-G5B-k4 m8D-2pB-G7R-n6 7sJ-6vB-G5z-n8 F2B-9bF-G8d-k1 T5R-3pK-G5B-k3 p9D-7vB-G7z-n5 8gR-2sM-G7d-k7 3vM-6pD-G8B-k2 F6N-9sB-G5R-n4 T2K-7vJ-G5z-n6 p5M-8sM-G8B-k8 7gD-3pF-G7d-k1 m9B-2vR-G5B-k3 5sD-6pM-G7z-n5 F8M-3vM-G7d-k7 T6R-7bK-G5B-k2 p2D-9sD-G7R-n4 4vB-6pR-G5z-n6 7gK-3sD-G8B-k8 m5N-8vF-G5d-k1 8sD-2pM-G7B-k3 F3R-9vK-G7z-n5 T9R-6pF-G8d-k7 p6M-3sB-G5B-k2 2gF-7vB-G7R-n4 5vD-8sM-G5z-
-n6 m8B-2pK-G8B-k8 7sR-6vD-G5d-k1 F2D-9bM-G7B-k3 T5F-3pB-G7z-n5 p9M-7vM-G8d-k7 8gD-2sB-G5B-k2 3vK-6pM-G7R-n4 F6M-9sD-G5z-n6 T2D-7vF-G8B-k8 p5R-8sK-G7d-k1 7gB-3pR-G7B-k3 m9J-2vM-G5z-n5 5sR-6pD-G7d-k7 F8B-3vD-G8B-k2 T6D-7bF-G5R-n4 p2F-9sM-G5z-n6 4vD-6pB-G8d-k8 7gM-3sM-G5B-k1 m5M-8vD-G7R-n3 8sB-2pF-G5z-n5 F3D-9vB-G7d-k7 T9F-6pM-G8B-k2 p6D-3sK-G7R-n4 2gR-7vD-G5z-n6 5vM-8sB-G8d-k8 m8F-2pR-G5B-k1 7sM-6vK-G7B-k3 F2R-9bD-G5z-n5 T5D-3pM-G7R-n7 p9B-7vB-G5B-k2 8gB-2sM-G5d-k4 3vB-6pF-G7z-n6 F6R-9sK-G8B-k8 T2M-7vJ-G5d-k1 p5D-8sD-G7B-k3 7gD-3pB-G7R-n5 m9D-2vB-G5z-n7 5sB-6pM-G8d-k2 F8R-3vF-G5B-k4 T6M-7bM-G7z-n6 p2R-9sR-G8B-k8 4vJ-6pK-G5d-k1 7gN-3sR-G7B-k3 m5F-8vM-G7z-n5 8sF-2pD-G8d-k7 F3B-9vM-G5B-k2 T9B-6pF-G7R-n4 p6B-3sD-G5z-n6 2gK-7vF-G8B-k8 5vN-8sM-G5d-k1 m8M-2pB-G7B-k3 7sD-6vM-G7R-n5 F2M-9bK-G5z-n7 T5K-3pD-G8d-k2 p9F-7vD-G5B-k4 8gJ-2sB-G7z-n6 3vD-6pM-G8B-k8 F6B-9sM-G5d-k1 T2R-7vJ-G7B-k3 p5M-8sF-G7z-n5 7gM-3pK-G8d-k7 m9F-2vR-G5B-k2 5sM-6pB-G7R-n4 F8D-3vM-G5z-n6 T6B-7bR-G8B-k8 p2M-9sB-G5d-k1 4vR-6pM-G7B-k3 7gB-3sF-G7z-n5 m5B-8vD-G8d-k7 8sR-2pM-G5B-k2 F3R-9vB-G7R-n4 T9D-6pF-G5z-n6 p6K-3sM-G8B-k8 2gD-7vR-G5d-k1 5vM-8sB-G7B-k3 m8K-2pD-G7z-n5 7sB-6vF-G8d-k7 F2B-9bM-G5B-k2 T5B-3pF-G7R-n4 p9M-7vM-G5z-n6 8gM-2sD-G8B-k8 3vJ-6pB-G5d-k1 F6D-9sK-G7B-k3 T2F-7vD-G7z-n5 p5R-8sM-G7d-k7 7gJ-3pM-G5B-k2 m9M-2vB-G7R-n4 5sR-6pF-G5z-n6 F8B-3vK-G8B-k8 T6R-7bD-G5d-k1 p2B-9sR-G7B-k3 4vM-6pD-G7z-n5 7gF-3sB-G5d-k7 m5K-8vM-G7R-n2 8sM-2pK-G5B-k4 F3B-9vF-G7z-n6 T9M-6pM-G8d-k8 p6F-3sD-G5B-k1 2gN-7vD-G7R-n3 5vB-8sF-G5z-n5 m8D-2pB-G8d-k7 7sJ-6vB-G5B-k2 F2R-9bF-G7R-n4 T5R-3pK-G5z-n6 p9D-7vB-G8B-k8 8gR-2sM-G5d-k1 3vM-6pD-G7B-k3 F6N-9sB-G7z-n5 T2K-7vJ-G5d-k7 p5B-8sM-G7B-k2 7gD-3pF-G5R-n4 m9B-2vR-G5z-n6 5sD-6pM-G8B-k8 F8M-3vM-G5d-k1 T6R-7bK-G7B-k3 p2D-9sD-G7z-n5 4vB-6pR-G8d-k7 7gK-3sD-G5B-k2 m5N-8vF-G7R-n4 8sD-2pM-G5z-n6 F3M-9vK-G8B-k8 T9R-6pF-G5d-k1 p6M-3sB-G7B-k3 2gF-7vB-G7z-n5 5vD-8sM-G5d-k7 m8B-2pK-G7R-n2 7sR-6vD-G5B-k4 F2D-9bM-G5z-n6 T5F-3pB-G8B-k8 p9M-7vM-G7d-k1 8gD-2sB-G7B-k3 3vK-6pM-G5z-n5 F6M-9sD-G5d-k7 T2D
--7vF-G7B-k2 p5R-8sK-G7R-n4 7gB-3pR-G5z-n6 m9J-2vM-G8B-k8 5sM-6pD-G5d-k1 F8R-3vD-G7B-k3 T6D-7bF-G7z-n5 p2F-9sM-G8d-k7 4vD-6pB-G7B-k2 7gM-3sM-G5R-n4 m5M-8vD-G5z-n6 8sB-2pF-G8B-k8 F3R-9vB-G5d-k1 T9F-6pM-G7B-k3 p6D-3sK-G7z-n5 2gR-7vD-G5B-k7 5vM-8sB-G7R-n2 m8F-2pR-G5z-n4 7sM-6vK-G8d-k6 F2B-9bD-G7B-k8 T5D-3pM-G5z-n1 p9B-7vB-G5d-k3 8gB-2sM-G7R-n5 3vB-6pF-G5z-n7 F6R-9sK-G5B-k2 T2M-7vJ-G7d-k4 p5D-8sD-G7z-n6 7gD-3pB-G8B-k8 m9D-2vB-G5d-k1 5sB-6pM-G7B-k3 F8B-3vF-G7R-n5 T6M-7bM-G5z-n7 p2R-9sR-G5d-k2 4vJ-6pK-G8B-k4 7gN-3sR-G5z-n6 m5F-8vM-G5B-k8 8sF-2pD-G7d-k1 F3M-9vM-G7B-k3 T9B-6pF-G5z-n5 p6B-3sD-G5d-k7 2gK-7vF-G7R-n2 5vN-8sM-G7z-n4 m8M-2pB-G8B-k6 7sD-6vM-G5d-k8 F2R-9bK-G7B-k1 T5K-3pD-G5R-n3 p9F-7vD-G5z-n5 8gJ-2sB-G7d-k7 3vD-6pM-G5B-k2 F6B-9sM-G7R-n4 T2R-7vJ-G5z-n6 p5M-8sF-G8B-k8 7gM-3pK-G5d-k1 m9F-2vR-G7B-k3 5sR-6pB-G7z-n5 F8D-3vM-G7d-k7 T6B-7bR-G5B-k2 p2M-9sB-G7R-n4 4vR-6pM-G5z-n6 7gB-3sF-G5B-k8 m5B-8vD-G7d-k1 8sR-2pM-G7B-k3 F3B-9vB-G7z-n5 T9D-6pF-G5d-k7 p6K-3sM-G7B-k2 2gD-7vR-G7R-n4 5vM-8sB-G5z-n6 m8K-2pD-G8B-k8 7sB-6vF-G5d-k1 F2M-9bM-G7B-k3 T5M-3pF-G7z-n5 p9B-7vM-G7d-k7 8gM-2sD-G5B-k2 3vJ-6pB-G7R-n4 F6D-9sK-G5z-n6 T2F-7vD-G8B-k8 p5B-8sM-G5d-k1 7gJ-3pM-G7B-k3 m9M-2vB-G7z-n5 5sM-6pF-G5B-k7 F8R-3vK-G5R-n2 T6F-7bD-G7d-k4 p2B-9sR-G5z-n6 4vM-6pD-G8B-k8 7gF-3sB-G5d-k1 m5K-8vM-G7B-k3 8sM-2pK-G7R-n5 F3R-9vF-G5z-n7 T9M-6pM-G8d-k2 p6F-3sD-G7B-k4 2gN-7vD-G7z-n6 5vB-8sF-G8B-k8 m8D-2pB-G5d-k1 7sJ-6vB-G7R-n3 F2D-9bF-G7z-n5 T5R-3pK-G8B-k7 p9D-7vB-G5d-k2 8gR-2sM-G7B-k4 3vM-6pD-G5z-n6 F6N-9sB-G8B-k8 T2K-7vJ-G5d-k1 p5M-8sM-G7B-k3 7gD-3pF-G7z-n5 m9B-2vR-G5d-k7 5sD-6pM-G7R-n2 F8M-3vM-G5B-k4 T6R-7bK-G7z-n6 p2D-9sD-G8B-k8 4vB-6pR-G5d-k1 7gK-3sD-G7B-k3 m5N-8vF-G7R-n5 8sD-2pM-G5z-n7 F3D-9vK-G5B-k2 T9R-6pF-G7z-n4 p6M-3sB-G8d-k6 2gF-7vB-G5B-k8 5vD-8sM-G7R-n1 m8B-2pK-G7B-k3 7sR-6vD-G5z-n5 F2R-9bM-G7d-k7 T5F-3pB-G5B-k2 p9M-7vM-G7R-n4 8gD-2sB-G5z-n6 3vK-6pM-G8B-k8 F6M-9sD-G5d-k1 T2D-7vF-G7B-k3 p5R-8sK-G7z-n5 7gB-3pR-G5B-k7 m9J-2vM-G7R-n2 5sR-6pD-G5z-n4 F8B-3vD-G8d-k6 T6D-7bF-G7B-k8 p2F-9sM-G5z-n1 4vD-6pB-G
-7B-k3 7gM-3sM-G5R-n5 m5M-8vD-G7z-n7 8sB-2pF-G5B-k2 F3M-9vB-G7R-n4 T9F-6pM-G5z-n6 p6D-3sK-G8d-k8 2gR-7vD-G5B-k1 m8F-2pR-G7z-n5 7sM-6vK-G5d-k7 F2B-9bD-G5B-k2 T5D-3pM-G7R-n4 p9B-7vB-G5z-n6 8gB-2sM-G8B-k8 3vB-6pF-G5d-k1 F6R-9sK-G7B-k3 T2M-7vJ-G7R-n5 p5D-8sD-G5z-n7 7gD-3pB-G8d-k2 m9D-2vB-G5B-k4 5sB-6pM-G7z-n6 F8R-3vF-G5B-k8 T6M-7bM-G5d-k1 p2R-9sR-G7B-k3 4vJ-6pK-G7R-n5 7gN-3sR-G5z-n7 m5F-8vM-G5B-k2 8sF-2pD-G5d-k4 F3B-9vM-G7z-n6 T9B-6pF-G5B-k8 p6B-3sD-G5d-k1 2gK-7vF-G7B-k3 5vN-8sM-G7R-n5 m8M-2pB-G5z-n7 7sD-6vM-G8B-k2 F2M-9bK-G7R-n4 T5K-3pD-G5z-n6 p9F-7vD-G5B-k8 8gJ-2sB-G5d-k1 3vD-6pM-G7B-k3 F6B-9sM-G7z-n5 T2R-7vJ-G5B-k7 p5M-8sF-G5d-k2 7gM-3pK-G7R-n4 m9F-2vR-G5z-n6 5sM-6pB-G8B-k8 F8D-3vM-G5d-k1 T6B-7bR-G7B-k3 p2M-9sB-G7z-n5 4vR-6pM-G5B-k7 7gB-3sF-G7R-n2 m5B-8vD-G5z-n4 8sR-2pM-G8d-k6 F3R-9vB-G5B-k8 T9D-6pF-G7z-n1 p6K-3sM-G7B-k3 2gD-7vR-G5d-k5 5vM-8sB-G7B-k7 m8K-2pD-G5z-n2 7sB-6vF-G7R-n4 F2B-9bM-G5z-n6'.split(' ');
-  var KEYS = Object.create(null);
+  var CODES = '7s9-2Gk-8pR-5x B6d-zT3-9F7-h2 4N2-vQ7-J5g-s8 t5P-6cM-2W9-k4 G3x-8rS-D2b-7n 9hK-4A6-qY2-m5 Z7f-3nR-5B8-p1 d2V-7X9-sC4-g6 5Jm-8wP-F3z-r9 L4b-6T2-kD7-x3 q8S-2N5-G9c-h7 3vM-7Kp-B6d-s2 R5z-9gA-4Xn-w8 c7D-2J6-pF3-k1 8Yr-4sV-N5b-m6 W2k-6G9-hB7-q4 n3F-8pS-A5d-z9 6bP-2rK-D7g-x5 S9v-5J3-cM8-h2 2Xm-7Bf-N4q-p6 k5G-9dR-V3s-w7 4pA-6nT-F8b-j1 h8D-3zY-M5c-r9 7rB-2W6-sK4-g3 N6x-5J9-vP2-d8 m3S-8G7-bF5-q4 9cK-4nR-A6p-z2 F5d-7xV-2sN-k6 p2G-9rM-C4b-h8 v8K-3fS-7Dn-x1 5zB-6Pm-W2g-q9 d7N-4sJ-F9c-r3 T2x-8bV-G5k-m7 w4R-9pD-3Jz-n2 8cF-2gM-S7b-k5 n5V-6Kp-B3d-z8 r9A-4xJ-D7s-m1 3Pm-7bF-N2g-k6 G6z-8sR-5Bd-w4 k2D-9vM-J7n-x3 7bN-4pS-F5g-r8 m8J-3zV-9Dc-h2 S5d-6Gk-2Bn-q7 p3R-8vA-7Jf-w1 2Fz-9bM-D5s-k4 W7c-4nP-G8d-r6 v5B-6sK-3Jm-x9 9gA-2pN-F7b-h3 d6R-8zM-5Bk-w2 T3m-7sD-J9c-n5 4bF-6vG-2Pz-k8 n7K-9pM-D3s-r1 5Jz-2sB-G8d-x6 m2P-7vF-N9c-h4 8sR-3bD-5Gk-w7 B6z-9pJ-F2d-n3 v3N-7sM-D5b-k9 2gK-6pA-J8r-x1 F7d-9bP-3Sz-m5 T5R-2vG-N8c-h6 p9B-6sJ-D2k-w3 4zM-7bF-G5d-n8 k6s-9pD-J3B-r2 7vN-2gP-F8c-x4 m5D-6sR-B9k-h7 3Jz-8pM-G2d-n1 8bA-5vS-N7F-k6 F2R-9pD-3Gm-w5 T6N-2sB-J5d-r8 p7K-4vM-D9z-x3 5gB-8sP-F2c-n7 m9R-3bJ-G6d-k1 2vD-7pN-S5B-w4 8Jz-6sF-N9k-r2 F5M-2bP-G7d-x6 T3B-9vD-J5s-n8 p6R-7gN-D2F-k3 4sK-8bM-F9z-w5 7vJ-2pB-G5d-n1 m2N-6sD-S8k-r7 9gR-3pF-J5B-x4 F6D-8vN-G2s-k9 T5P-2bJ-D7z-n3 p3M-9sB-F5d-w6 8vK-6pR-J2G-r1 2gN-7bD-S9F-x5 m7B-3pJ-G6s-k8 5sR-8vM-D2z-n4 F9P-2bN-J7d-w1 T6D-7gK-S5B-r3 p2J-9sM-F8G-x6 4vN-6pD-J5z-k2 7gB-3sR-G9d-n5 m5K-8bP-D2F-w7 8sD-2vJ-N6r-k9 F3R-7pM-G5B-x1 T9N-6bD-J2s-r4 p6M-3vF-S8d-k7 2gK-7sB-D5z-n2 5
+vJ-9pR-F6G-x8 m8B-2sN-G7d-k3 7sF-6vM-J5B-r1 F2D-8pK-N9z-x4 T5R-3bM-G6s-w9 p9J-7vB-D2F-n5 8gN-2sP-J7d-k6 3vM-6pD-S5R-x2 F6B-9sK-G2d-n8 T2P-7vJ-D5z-r3 p5D-8bN-F9G-x1 7gR-3sM-J6B-k4 m9K-2vF-S8d-n7 5sB-6pJ-G7z-x9 F8M-3vD-N2R-k5 T6J-7bP-D5s-w2 p2N-9sF-G8B-x6 4vR-6pM-J9d-k1 7gD-3sB-F5z-n8 m5P-8vK-S2G-r4 8sJ-2bN-G7d-x3 F3B-9vM-D6R-k7 T9D-6pF-J5z-n2 p6K-3sN-G8B-x5 2gM-7vD-F5d-w9 5vB-8sR-J7G-k1 m8D-2pN-S9z-x6 7sP-6vJ-G2B-r3 F2R-9bM-D5d-n4 T5N-3pK-J8s-w7 p9F-7vB-S6G-k2 8gJ-2sM-F5z-n9 3vD-6pB-G7R-x1 F6N-9sK-J2d-k5 T2B-7vM-D8z-r6 p5M-8sF-G9B-k3 7gK-3pD-J5R-n8 m9B-2vN-S6d-x4 5sD-6pJ-F7z-k1 F8R-3vM-G2d-n7 T6P-7bN-J5B-x2 p2J-9sD-S8z-k6 4vM-6pR-G5F-n3 7gN-3sB-J9d-k8 m5B-8vK-S2R-x4 8sF-2pM-G7z-n9 F3D-9vJ-D6B-k1 T9R-6pN-J2s-w5 p6M-3sK-G8d-n7 2gB-7vF-S5z-x3 5vN-8sJ-G7B-k6 m8K-2pD-F9R-n1 7sB-6vM-J5d-x4 F2P-9bR-G8z-n8 T5D-3pM-S6B-k2 p9N-7vJ-D5F-x7 8gR-2sK-G2d-n3 3vF-6pB-J7z-k5 F6M-9sN-D8R-x1 T2K-7vD-G5B-w6 p5B-8sM-J9d-n4 7gJ-3pF-S2z-k8 m9D-2vR-G7B-x2 5sN-6pK-F8d-n5 F8B-3vM-J2R-k7 T6R-7bD-S5z-x3 p2F-9sJ-G8B-n6 4vK-6pM-D7d-k1 7gM-3sB-J5F-x9 m5N-8vR-S2d-k4 8sD-2pK-G7z-n7 F3R-9vB-J8d-k2 T9M-6pF-S5B-x5 p6B-3sD-G2R-n8 2gK-7vN-F9z-k1 5vJ-8sM-G7d-x6 m8R-2pB-S5F-k3 7sM-6vD-J2B-n9 F2N-9bK-G8z-x4 T5F-3pJ-D7R-k7 p9D-7vM-S6B-x2 8gB-2sR-G5d-n5 3vM-6pN-J9z-k8 F6K-9sB-D2F-x1 T2R-7vJ-G7B-w6 p5N-8sD-J5R-n3 7gD-3pM-S8z-k4 m9F-2vB-G2d-n7 5sB-6pR-J7F-k1 F8M-3vK-S5d-n9 T6D-7bJ-G8B-x3 p2R-9sM-D5z-k6 4vN-6pB-G7d-n2 7gK-3sF-J8R-x5 m5J-8vD-S2B-k8 8sM-2pN-G9z-x1 F3B-9vR-J5d-k7 T9F-6pK-S8B-x4 p6D-3sM-G2z-n9 2gR-7vB-J5F-k3 5vM-8sD-G7B-n6 m8N-2pF-S9d-k2 7sJ-6vK-G5z-x8 F2B-9bM-D8R-n1 T5K-3pB-J7d-x4 p9M-7vF-S2B-k7 8gD-2sN-G5R-x3 3vB-6pJ-J8z-k6 F6R-9sM-D7B-n2 T2N-7vK-G9d-x5 p5F-8sB-J2R-k8 7gM-3pD-S5z-n1 m9B-2vN-G8d-k4 5sD-6pM-J7B-x7 F8R-3vF-S9z-k2 T6M-7bK-G5d-n5 p2B-9sD-J8F-x3 4vJ-6pR-G2B-n8 7gN-3sM-D5z-k1 m5K-8vB-S7R-x6 8sF-2pD-G9B-k4 F3D-9vM-J5d-n7 T9B-6pF-S2z-x2 p6R-3sK-G7d-n9 2gM-7vD-J8B-k5 5vN-8sR-G2d-x1 m8J-2pB-S5z-k6 7sB-6vM-G8R-x3 F2K-9bD-J5B-n4 T5M-3pN-S7d-k8 p9F-7vB-G2z-x5 8gR-2sM-J8d-n2 3vD-6pK-G5B-x7 F6B-9sJ
+-S9R-k1 T2F-7vM-G7d-n4 p5D-8sN-J2B-k6 7gJ-3pR-S5z-n9 m9M-2vD-G8B-x3 5sN-6pF-J7d-k5 F8D-3vK-S2R-n8 T6B-7bM-G5z-x2 p2M-9sD-J8R-k7 4vR-6pB-G2d-n1 7gB-3sN-J5F-x4 m5F-8vM-S7B-k6 8sK-2pD-G9R-n3 F3M-9vJ-S5z-x8 T9D-6pR-G2B-k5 p6F-3sB-J7d-n1 2gN-7vK-G8z-x7 5vB-8sM-S2d-k4 m8R-2pJ-G5B-n9 7sD-6vF-J8z-x2 F2R-9bN-S7R-k5 T5B-3pM-G2d-n8 p9K-7vD-J5B-x3 8gM-2sR-S9z-k6 3vJ-6pF-G7d-n1 F6D-9sK-J2R-x4 T2B-7vM-G8B-n7 p5M-8sD-S5z-k2 7gF-3pB-J9d-n5 m9D-2vR-G2B-k8 5sR-6pM-S7z-x3 F8B-3vN-J5d-k6 T6F-7bK-G8R-n1 p2D-9sM-S2B-k4 4vM-6pJ-G5z-n7 7gK-3sD-J8d-k2 m5B-8vF-S9R-x5 8sM-2pN-G7B-k8 F3R-9vD-J2z-n3 T9M-6pB-S5d-k6 p6B-3sM-G8z-k1 2gF-7vR-J7B-n4 5vD-8sK-G2d-k9 m8N-2pM-S5z-x2 7sJ-6vB-G8d-k5 F2D-9bR-J7R-x7 T5R-3pK-S2B-n3 p9B-7vM-G5z-k8 8gD-2sF-J8B-x1 3vM-6pD-S7R-k4 F6N-9sB-G2d-n6 T2K-7vJ-S5z-k9 p5R-8sM-J8d-n2 7gB-3pF-G7B-x5 m9F-2vK-S2d-k7 5sM-6pR-J5z-n3 F8R-3vD-G8B-k6 T6D-7bN-S5R-x1 p2N-9sK-J7d-k4 4vB-6pM-G2z-n8 7gJ-3sR-S9B-k5 m5K-8vD-G7R-x2 8sD-2pF-J5B-k7 F3B-9vM-S2z-n1 T9R-6pD-G8d-k3 p6M-3sB-J7z-n6 2gD-7vF-S5B-k8 5vN-8sM-G7d-n4 m8F-2pK-S9z-x9 7sR-6vM-J8B-k2 F2M-9bD-G5R-x5 T5F-3pB-J7B-n7 p9D-7vK-S2z-x3 8gB-2sM-G8d-k6 3vK-6pR-S7B-n1 F6M-9sD-J2z-k4 T2D-7vB-G5d-k8 p5B-8sF-S8R-x2 7gR-3pM-J5z-n5 m9J-2vD-G7B-k3 5sB-6pK-S2d-n9 F8M-3vR-J8z-x6 T6R-7bM-G5B-k1 p2F-9sD-J7R-n4 4vD-6pB-G8z-x7 7gN-3sM-S5d-k2 m5M-8vK-J2B-n5 8sB-2pR-G7z-k8 F3D-9vF-S9B-k3 T9F-6pM-J5d-n6 p6D-3sK-G2z-x1 2gR-7vB-S7R-k4 5vM-8sD-G8B-n7 m8B-2pF-J5z-k2 7sM-6vD-S5d-k5 F2B-9bK-G7R-x8 T5K-3pN-J8B-n1 p9M-7vD-S2z-k6 8gF-2sR-G5d-k3 3vB-6pM-J7B-n9 F6R-9sF-S8z-x4 T2M-7vK-G5R-x7 p5D-8sB-J2d-k1 7gD-3pR-S9z-n5 m9B-2vM-G8B-k8 5sR-6pD-J7z-n2 F8B-3vN-S5B-k6 T6F-7bJ-G2d-k4 p2R-9sM-S7z-x9 4vJ-6pK-G8R-n3 7gM-3sB-J5B-k7 m5N-8vF-S2z-x1 8sF-2pD-G7d-k5 F3R-9vM-S9B-k8 T9B-6pF-G5z-n4 p6K-3sD-J8d-k2 2gB-7vR-S7B-n6 5vD-8sM-J2z-k9 m8M-2pB-G5d-k3 7sD-6vK-S8R-x7 F2D-9bM-J7B-n1 T5R-3pF-S2z-k4 p9F-7vD-G8d-k6 8gJ-2sM-S5B-k2 3vD-6pB-G7R-n5 F6B-9sK-J2z-k8 T2R-7vM-S9d-k3 p5M-8sD-G5B-x1 7gK-3pN-J8R-n4 m9F-2vB-S7z-k7 5sM-6pF-G2d-k5 F8D-3vK-J7B-k8 T6B-7bR-S5z-x2 p2M-9sD-G8R-n
+6 4vR-6pM-J5d-k1 7gB-3sF-S9B-k4 m5B-8vD-G7z-n3 8sR-2pK-J8B-k5 F3M-9vB-S2d-k7 T9D-6pR-G5z-n8 p6F-3sM-J7d-k2 2gN-7vF-G8B-n1 5vB-8sM-S5R-x4 m8K-2pD-J2z-k6 7sB-6vM-G7d-k3 F2R-9bK-S8B-n5 T5B-3pM-G7z-x8 p9D-7vR-J5B-k1 8gM-2sD-S2d-k4 3vJ-6pF-G5B-n7 F6D-9sB-J8z-k2 T2F-7vM-S7R-x5 p5R-8sK-G8d-k9 7gJ-3pB-S5B-k3 m9M-2vD-J7z-n6 5sD-6pM-G8R-k8 F8R-3vF-S2d-k1 T6M-7bD-G7B-x4 p2B-9sR-J5z-n5 4vM-6pD-G7d-k7 7gF-3sM-S9z-k2 m5F-8vB-G8B-n6 8sM-2pR-S5d-k4 F3B-9vK-J7z-n9 T9M-6pB-S8R-x3 p6B-3sD-G5B-k5 2gK-7vD-J2d-k8 5vN-8sF-G7z-n1 m8D-2pM-S5B-k4 7sJ-6vB-G8R-x6 F2M-9bF-J5z-k3 T5D-3pK-S7d-k7 p9B-7vM-G2B-n2 8gR-2sB-J5z-k5 3vM-6pN-G8B-k8 F6N-9sD-S5R-x1 T2K-7vJ-G7d-k4 p5B-8sM-J8z-n6 7gD-3pF-S2B-k3 m9B-2vR-G5z-k7 5sR-6pD-J8B-n2 F8M-3vM-S7z-k5 T6R-7bK-G2d-k8 p2D-9sB-S5B-x4 4vB-6pR-J7d-k1 7gM-3sD-G8z-n6 m5K-8vF-G5B-k3 8sD-2pM-S7R-x7 F3R-9vD-J2B-k9 T9R-6pF-G8d-k2 p6M-3sB-S5z-n5 2gF-7vB-J7B-k8 5vD-8sM-G5z-n4 m8B-2pK-J8d-k6 7sR-6vD-G2B-k1 F2B-9bM-S5R-x3 T5F-3pB-J7z-k7 p9M-7vK-G8B-n2 8gD-2sR-S5d-k5 3vK-6pM-J7B-k8 F6M-9sD-G2z-n1 T2B-7vF-G5R-x4 p5D-8sK-J8B-k6 7gB-3pR-S7z-n3 m9J-2vM-G8d-k7 5sM-6pB-J5B-k2 F8B-3vD-S2R-n5 T6D-7bF-G7z-x8 p2F-9sM-G5d-k4 4vD-6pK-G8B-n1 7gN-3sM-J2z-k6 m5M-8vD-S5B-k3 8sB-2pF-G7R-x7 F3D-9vB-J8z-k5 T9F-6pM-S5d-k8 p6D-3sK-G2B-k2 2gR-7vD-S7z-n4 5vM-8sB-G5B-k1 m8F-2pR-J7d-k6 7sM-6vK-G8z-n3 F2R-9bD-S5B-k7 T5R-3pM-J2R-n5 p9D-7vB-G7d-k8 8gB-2sM-S2z-k4 3vB-6pD-G5B-n1 F6R-9sF-J8B-k6 T2M-7vM-S7z-x2 p5M-8sD-G8R-n3 7gJ-3pK-S5d-k5 m9D-2vB-J7z-k8 5sB-6pM-G8B-k4 F8R-3vF-S7B-k1 T6F-7bM-G2z-n6 p2R-9sD-J5d-k3 4vJ-6pB-G7R-n7 7gK-3sR-J8B-k2 m5N-8vM-S2z-k5 8sF-2pD-G8d-k8 F3M-9vK-J5B-n4 T9B-6pF-S7z-x1 p6B-3sD-G5R-k6 2gD-7vF-J7B-k3 5vN-8sM-G8z-n7 m8M-2pB-S5d-k2 7sD-6vM-J5R-x5 F2D-9bK-G5B-k8 T5K-3pD-S7z-n4 p9F-7vD-J8d-k1 8gJ-2sB-G2B-n6 3vD-6pM-S5R-k3 F6B-9sM-G7z-k5 T2R-7vJ-G8B-k7 p5R-8sF-S2d-k2 7gM-3pB-J5z-n4 m9F-2vK-G7B-k6 5sR-6pD-G8d-k8 F8D-3vM-J2B-k1 T6B-7bR-S5z-n3 p2M-9sB-G7R-n5 4vR-6pK-J8B-k7 7gB-3sF-S5d-k2 m5B-8vD-J2z-n4 8sR-2pM-G8B-k6 F3R-9vB-S7z-k8 T9D-6pF-G5B-n1 p6K-3sM-J8d-k3 2gB-7vR-S2B-k5 5vD-
+8sM-G7R-n7 m8K-2pD-G2z-k2 7sB-6vF-J8B-k4 F2M-9bM-S5d-k6 T5B-3pF-G8z-n8 p9M-7vM-J7B-k1 8gM-2sD-S5z-k3 3vJ-6pB-G8B-n5 F6D-9sK-J7R-x7 T2F-7vD-S5B-k2 p5D-8sM-G2z-n4 7gD-3pM-J8d-k6 m9M-2vB-G5B-k8 5sM-6pF-J7z-n1 F8B-3vK-G7R-x3 T6M-7bD-S8B-k5 p2B-9sR-J2d-k7 4vM-6pD-G5z-k2 7gF-3sB-S7B-n4 m5F-8vM-J8R-x6 8sM-2pK-G2d-k8 F3B-9vF-G8z-n1 T9M-6pM-S5B-k3 p6F-3sD-J7B-k5 2gN-7vD-G8R-n7 5vB-8sF-J5z-k2 m8D-2pB-G7B-k4 7sJ-6vB-S5d-k6 F2R-9bF-J8z-k8 T5R-3pK-G2B-n1 p9B-7vD-G7R-x3 8gR-2sM-J5d-k5 3vM-6pD-S8B-k7 F6N-9sB-G5z-n2 T2K-7vJ-J7B-k4 p5B-8sM-G8R-n6 m9B-2vR-G7d-k1 5sD-6pM-J5R-x3 F8M-3vM-G2B-k5 T6R-7bK-S7z-n7 p2D-9sD-G8B-k2 4vB-6pR-S5d-k4 7gK-3sD-J7z-n6 m5K-8vF-G7B-k8 8sD-2pM-G5R-x1 F3D-9vK-J8B-k3 T9R-6pF-G7d-k5 p6M-3sB-S2z-n7 2gF-7vB-J5B-k2 5vM-8sM-G8R-n4 m8B-2pK-G2z-k6 7sR-6vD-G7B-k8 F2B-9bM-S5R-x1 T5F-3pB-J8z-k3 p9D-7vM-G5d-k5 8gD-2sB-S7B-k7 3vK-6pM-G2R-n2 F6M-9sD-J7z-k4 T2D-7vF-G8B-k6 p5R-8sK-G5B-k8 7gB-3pR-J8d-k1 m9J-2vM-S5z-n3 5sB-6pD-G7R-x5 F8R-3vD-G8B-k7 T6D-7bF-S2d-k2 p2F-9sM-G7z-n4 4vD-6pB-J5R-k6 7gM-3sM-G5B-k8 m5M-8vD-J2z-n1 8sB-2pF-G8d-k3 F3R-9vB-S7B-k5 T9F-6pM-J5z-n7 p6D-3sK-G2d-k2 2gR-7vD-J7B-k4 5vD-8sB-S5R-n6 m8F-2pR-G8B-k8 7sM-6vK-G7d-k1 F2D-9bD-J2z-k3 T5D-3pM-G7B-n5 p9M-7vB-G5R-x7 8gB-2sM-S2z-k2 3vB-6pF-G7B-k4 F6R-9sK-G8d-k6 T2M-7vJ-S5z-k8 p5M-8sD-J7B-k1 7gD-3pB-G8R-n3 m9D-2vB-S5d-k5 5sR-6pM-J2z-n7 F8B-3vF-G5B-k2 T6R-7bM-G8z-n4 p2R-9sD-J7d-k6 4vJ-6pK-G2B-k8 7gN-3sR-J5z-n1 m5F-8vM-G8B-k3 8sF-2pD-S7R-x5 F3M-9vM-J7d-k7 T9B-6pF-G2z-k2 p6B-3sD-G7B-k4 2gK-7vF-J8R-n6 5vN-8sM-G5d-k8 m8M-2pB-J7z-k1 7sD-6vM-G8B-k3 F2R-9bK-S5R-x5 T5B-3pD-J2B-n7 p9F-7vD-G7z-k2 8gJ-2sB-G5R-n4 3vD-6pM-G8B-k6 F6B-9sM-S5d-k8 T2R-7vJ-J7z-n1 p5D-8sF-G8d-k3 7gM-3pK-J5B-k5 m9F-2vR-G2R-x7 5sM-6pB-G7B-k2 F8D-3vM-J8z-n4 T6B-7bR-G5d-k6 p2M-9sB-J7B-k8 4vR-6pM-S2z-n1 7gB-3sF-J8d-k3 m5B-8vD-G7R-x5 8sR-2pM-G2B-k7 F3B-9vB-S5z-k2 T9D-6pF-G8B-n4 p6K-3sM-J5d-k6 2gD-7vR-G7z-k8 5vM-8sB-J2R-n1 m8K-2pD-G5B-k3 7sB-6vF-J7R-x5 F2M-9bM-G8d-k7 T5M-3pF-S5z-k2 p9B-7vM-J8B-k4 8gM-2sD-G2z-n6 3vJ-6pB-G7d-k8 F6D-9sK-J5B-k1 T2F-7vD-G7
+R-x3 p5R-8sM-S5B-k5 7gJ-3pM-J8z-n7 m9M-2vB-G5d-k2 5sB-6pF-G8B-k4 F8R-3vK-J2R-n6 T6F-7bD-S7z-k8 p2B-9sR-G5B-k1 4vM-6pD-J7d-k3 7gF-3sB-J2z-n5 m5K-8vM-G8R-x7 8sM-2pK-G7B-k2 F3R-9vF-G5d-k4 T9M-6pM-J8z-n6 p6F-3sD-S5B-k8 2gN-7vD-J7R-n1 5vB-8sF-G2B-k3 m8D-2pB-G5z-n5 7sJ-6vB-J8d-k7 F2B-9bF-S7B-k2 T5R-3pK-G7R-n4 p9D-7vB-G8z-n6 8gR-2sM-G5B-k8 3vM-6pD-J2B-k1 F6N-9sB-G8R-n3 T2K-7vJ-S5d-k5 p5M-8sM-G7z-n7 7gD-3pF-G5B-k2 m9B-2vR-J8R-x4 5sD-6pM-S7z-k6 F8M-3vM-G8d-k8 T6R-7bK-J2B-k1 p2D-9sD-G5R-n3 4vB-6pR-J7B-k5 7gK-3sD-J8z-n7 m5N-8vF-G5d-k2 8sD-2pM-G2R-n4 F3D-9vK-G7B-k6 T9R-6pF-G8z-k8 p6M-3sB-J5d-k1 2gF-7vB-S7B-k3 5vD-8sM-J8R-n5 m8B-2pK-G7z-n7 7sR-6vD-G5B-k2 F2R-9bM-G8R-n4 T5F-3pB-G7d-k6 p9M-7vM-J2z-k8 8gD-2sB-G5R-x1 3vK-6pM-G8B-k3 F6M-9sD-S7z-n5 T2D-7vF-J7B-k7 p5B-8sK-G8d-k2 7gB-3pR-J5B-k4 m9J-2vM-G7R-x6 5sR-6pD-G2z-n8 F8B-3vD-G5d-k1 T6D-7bF-J8B-k3 p2F-9sM-G7R-n5 4vD-6pB-S5z-k7 7gM-3sM-J8d-k2 m5M-8vD-G5B-k4 8sB-2pF-G7z-n6 F3M-9vB-G8B-k8 T9F-6pM-J5d-k1 p6D-3sK-G7B-k3 2gR-7vD-J2R-n5 5vM-8sB-G5z-n7 m8F-2pR-G8d-k2 7sM-6vK-J7B-k4 F2D-9bD-G5R-x6 T5D-3pM-G8z-k8 p9B-7vB-J5d-k1 8gB-2sM-G7B-k3 3vB-6pF-G8R-n5 F6R-9sK-J2z-n7 T2M-7vJ-G5d-k2 p5D-8sD-G7B-k4 7gJ-3pB-S5z-n6 m9D-2vB-G8B-k8 5sM-6pM-J7R-x1 F8R-3vF-G5B-k3 T6M-7bM-J8d-k5 p2R-9sR-G2z-n7 4vJ-6pK-G7B-k2 7gN-3sR-G8d-k4 m5F-8vM-J7z-n6 8sF-2pD-G5B-k8 F3B-9vM-G8R-n1 T9B-6pF-J2B-k3 p6B-3sD-G5z-n5 2gK-7vF-J7d-k7 5vN-8sM-G7B-k2 m8M-2pB-G8R-n4 7sD-6vM-G5z-n6 F2M-9bK-J8B-k8 T5K-3pD-G7R-x1 p9F-7vD-G2d-k3 8gJ-2sB-G8z-n5 3vD-6pM-G5B-k7 F6B-9sM-J8R-n2 T2R-7vJ-G5d-k4 p5M-8sF-G7B-k6 7gM-3pK-J2z-n8 m9F-2vR-G8B-k1 5sB-6pB-G7R-x3 F8D-3vM-J5d-k5 T6B-7bR-G2z-n7 p2M-9sB-G8B-k2 4vR-6pM-G7d-k4 7gB-3sF-J5R-n6 m5B-8vD-G5z-k8 8sR-2pM-J8B-k1 F3R-9vB-G7R-n3 T9D-6pF-G5B-k5 p6K-3sM-J8z-n7 2gD-7vR-G5d-k2 5vM-8sB-G8B-k4 m8K-2pD-J7R-n6 7sB-6vF-G2z-n8 F2R-9bM-G7d-k1 T5B-3pF-G5B-k3 p9M-7vM-G8R-n5 8gM-2sD-J7z-n7 3vJ-6pB-G8B-k2 F6D-9sK-G5d-k4 T2F-7vD-J2B-k6 p5R-8sM-G7R-n8 7gD-3pM-G5z-k1 m9M-2vB-J8d-k3 5sR-6pF-G7B-k5 F8B-3vK-G8R-n7 T6R-7bD-G5B-k2 p2B-9sR-J7z-n4 4vM-6pD-G8d-k6 7
+gF-3sB-J5B-k8 m5K-8vM-G7R-x1 8sM-2pK-J2z-n3 F3M-9vF-G5B-k5 T9M-6pM-G7d-k7 p6F-3sD-J8B-k2 2gN-7vD-G5R-n4 5vB-8sF-G7z-n6 m8D-2pB-G8B-k8 7sJ-6vB-G5d-k1 F2D-9bF-G7B-k3 T5R-3pK-J8R-n5 p9D-7vB-G2z-n7 8gR-2sM-G7d-k2 3vM-6pD-J5B-k4 F6N-9sB-G5R-n6 T2K-7vJ-G8B-k8 p5B-8sM-G2d-k1 7gJ-3pF-G7z-n3 m9B-2vR-G5B-k5 5sD-6pM-J8R-x7 F8M-3vM-G7B-k2 T6R-7bK-G5d-k4 p2D-9sD-J8z-n6 4vB-6pR-G7B-k8 7gK-3sD-G5B-k1 m5N-8vF-G8R-n3 8sD-2pM-J7z-n5 F3D-9vK-G5d-k7 T9R-6pF-G7B-k2 p6M-3sB-G8R-n4 2gF-7vB-G5z-n6 5vD-8sM-J2B-k8 m8B-2pK-G7d-k1 7sR-6vD-G8B-k3 F2B-9bM-G5R-n5 T5F-3pB-G7z-n7 p9M-7vM-G8d-k2 8gD-2sB-G5B-k4 3vK-6pM-J7R-n6 F6M-9sD-G8B-k8 T2D-7vF-G5z-n1 p5R-8sK-G7d-k3 7gB-3pR-J2B-k5 m9J-2vM-G5R-x7 5sM-6pD-G7B-k2 F8R-3vD-G8z-n4 T6D-7bF-G5B-k6 p2F-9sM-G7d-k8 4vD-6pB-G2R-n1 7gM-3sM-G8B-k3 m5M-8vD-G7R-x5 8sB-2pF-G5z-n7 F3R-9vB-G5d-k2 T9F-6pM-G8B-k4 p6D-3sK-G7z-n6 2gR-7vD-G5B-k8 5vM-8sB-J8R-n1 m8F-2pR-G7B-k3 7sM-6vK-G5d-k5 F2R-9bD-G8z-n7 T5D-3pM-G5B-k2 p9B-7vB-J7R-n4 8gB-2sM-G8B-k6 3vB-6pF-G5z-n8 F6R-9sK-G7d-k1 T2M-7vJ-G5B-k3 p5D-8sD-G8R-n5 7gD-3pB-G7B-k7 m9D-2vB-G5z-n2 5sB-6pM-G8d-k4 F8B-3vF-G7R-n6 T6M-7bM-G5B-k8 p2R-9sR-G8z-n1 4vJ-6pK-G5d-k3 7gN-3sR-G7B-k5 m5F-8vM-G8R-x7 8sF-2pD-G5z-n2 F3B-9vM-G7d-k4 T9B-6pF-G5B-k6 p6B-3sD-G8R-n8 2gK-7vF-G5B-k1 5vN-8sM-G7z-n3 m8M-2pB-G5d-k5 7sD-6vM-G8B-k7 F2M-9bK-G7R-n2 T5K-3pD-G8B-k4 p9F-7vD-G5z-n6 8gJ-2sB-G7d-k8 3vD-6pM-G5R-n1 F6B-9sM-G8B-k3 T2R-7vJ-G5B-k5 p5M-8sF-G7z-n7 7gM-3pK-G8d-k2 m9F-2vR-G5B-k4 5sR-6pB-G7R-x6 F8D-3vM-G8z-n8 T6B-7bR-G5d-k1 p2M-9sB-G7B-k3 4vR-6pM-G8R-n5 7gB-3sF-G5z-n7 m5B-8vD-G8B-k2 8sR-2pM-G7d-k4 F3D-9vB-G5B-k6 T9D-6pF-G7R-n8 p6K-3sM-G8B-k1 2gD-7vR-G5z-n3 5vM-8sB-G7d-k5 m8K-2pD-G8B-k7 7sB-6vF-G5R-n2 F2B-9bM-G8B-k4 T5M-3pF-G7z-n6 p9B-7vM-G5d-k8 8gM-2sD-G7B-k1 3vJ-6pB-G8R-n3 F6D-9sK-G5z-n5 T2F-7vD-G7d-k7 p5B-8sM-G5B-k2 7gJ-3pM-G8B-k4 m9M-2vB-G7R-n6 5sM-6pF-G5z-n8 F8R-3vK-G7d-k1 T6F-7bD-G8B-k3 p2B-9sR-G5R-n5 4vM-6pD-G7z-n7 7gF-3sB-G5B-k2 m5K-8vM-G8d-k4 8sM-2pK-G7B-k6 F3R-9vF-G5R-n8 T9M-6pM-G7B-k1 p6F-3sD-G5z-n3 2gN-7vD-G7d-k5 5vB-8sF-G8B-k7 m8D-2pB
+-G5R-n2 7sJ-6vB-G7z-n4 F2R-9bF-G8B-k6 T5R-3pK-G5d-k8 p9D-7vB-G7B-k1 8gR-2sM-G8R-n3 3vM-6pD-G7z-n5 F6N-9sB-G8d-k7 T2K-7vJ-G5B-k2 p5M-8sM-G5R-n4 7gD-3pF-G8B-k6 m9B-2vR-G5z-n8 5sD-6pM-G7d-k1 F8M-3vM-G5B-k3 T6R-7bK-G8R-n5 p2D-9sD-G5z-n7 4vB-6pR-G8d-k2 7gK-3sD-G7B-k4 m5N-8vF-G5R-n6 8sD-2pM-G5B-k8 F3M-9vK-G7z-n1 T9R-6pF-G5d-k3 p6M-3sB-G7B-k5 2gF-7vB-G5R-n7 5vD-8sM-G8B-k2 m8B-2pK-G5z-n4 7sR-6vD-G7d-k6 F2D-9bM-G8B-k8 T5F-3pB-G5R-n1 p9M-7vM-G7B-k3 8gD-2sB-G5z-n5 3vK-6pM-G7d-k7 F6M-9sD-G5B-k2 T2D-7vF-G8R-n4 p5D-8sK-G5z-n6 7gB-3pR-G8B-k8 m9J-2vM-G7d-k1 5sR-6pD-G5B-k3 F8B-3vD-G7R-n5 T6D-7bF-G8z-n7 p2F-9sM-G5d-k2 4vD-6pB-G8B-k4 7gM-3sM-G5R-n6 m5M-8vD-G7z-n8 8sB-2pF-G8d-k1 F3B-9vB-G5B-k3 T9F-6pM-G7R-n5 p6D-3sK-G8B-k7 2gR-7vD-G5z-n2 5vM-8sB-G7d-k4 m8F-2pR-G5B-k6 7sM-6vK-G8R-n8 F2B-9bD-G5z-n1 T5D-3pM-G7d-k3 p9B-7vB-G5B-k5 8gB-2sM-G7R-n7 3vB-6pF-G8B-k2 F6R-9sK-G5z-n4 T2M-7vJ-G7d-k6 p5R-8sD-G5B-k8 7gD-3pB-G5R-n1 m9D-2vB-G7B-k3 5sB-6pM-G5z-n5 F8R-3vF-G8d-k7 T6M-7bM-G5R-n2 p2R-9sR-G8B-k4 4vJ-6pK-G5z-n6 7gN-3sR-G5d-k8 m5F-8vM-G5B-k1 8sF-2pD-G7B-k3 F3M-9vM-G8R-n5 T9B-6pF-G5z-n7 p6B-3sD-G7d-k2 2gK-7vF-G8B-k4 5vN-8sM-G5R-n6 m8M-2pB-G5z-n8 7sD-6vM-G7d-k1 F2R-9bK-G5B-k3 T5K-3pD-G7R-n5 p9F-7vD-G8z-n7 8gJ-2sB-G5d-k2 3vD-6pM-G5B-k4 F6B-9sM-G7B-k6 T2R-7vJ-G5R-n8 p5M-8sF-G5z-n1 7gM-3pK-G7d-k3 m9F-2vR-G8B-k5 5sM-6pB-G5B-k7 F8D-3vM-G7R-n2 T6B-7bR-G8z-n4 p2M-9sB-G5d-k6 4vR-6pM-G7B-k8 7gB-3sF-G8R-n1 m5B-8vD-G5z-n3 8sR-2pM-G7d-k5 F3R-9vB-G5B-k7 T9D-6pF-G5R-n2 p6K-3sM-G5z-n4 2gD-7vR-G8d-k6 5vM-8sB-G5B-k8 m8K-2pD-G7R-n1 7sB-6vF-G5z-n3 F2M-9bM-G7d-k5 T5B-3pF-G8B-k7 p9M-7vM-G5R-n2 8gM-2sD-G5z-n4 3vJ-6pB-G7B-k6 F6D-9sK-G8R-n8 T2F-7vD-G5d-k1 p5R-8sM-G5B-k3 7gJ-3pM-G5z-n5 m9M-2vB-G8B-k7 5sR-6pF-G7d-k2 F8B-3vK-G5R-n4 T6R-7bD-G5z-n6 p2B-9sR-G7B-k8 4vM-6pD-G5d-k1 7gF-3sB-G8R-n3 m5K-8vM-G5B-k5 8sM-2pK-G7z-n7 F3B-9vF-G5d-k2 T9M-6pM-G8B-k4 p6F-3sD-G5R-n6 2gN-7vD-G5z-n8 5vB-8sF-G7B-k1 m8D-2pB-G8R-n3 7sJ-6vB-G5d-k5 F2D-9bF-G5z-n7 T5R-3pK-G7B-k2 p9D-7vB-G5R-n4 8gR-2sM-G8B-k6 3vM-6pD-G5z-n8 F6N-9sB-G7d-k1 T2K-7vJ-G5B-k
+3 p5B-8sM-G7R-n5 7gD-3pF-G5z-n7 m9B-2vR-G8d-k2 5sD-6pM-G5B-k4 F8M-3vM-G7B-k6 T6R-7bK-G5z-n8 p2D-9sD-G8B-k1 4vB-6pR-G5R-n3 7gK-3sD-G5B-k5 m5N-8vF-G7z-n7 8sD-2pM-G7d-k2 F3D-9vK-G8B-k4 T9R-6pF-G5B-k6 p6M-3sB-G7z-n8 2gF-7vB-G8d-k1 5vD-8sM-G7B-k3 m8B-2pK-G5R-n5 7sR-6vD-G5z-n7 F2R-9bM-G7d-k2 T5F-3pB-G8B-k4 p9M-7vM-G7R-n6 8gD-2sB-G5z-n8 3vK-6pM-G7d-k1 F6M-9sD-G5B-k3 T2D-7vF-G7R-n5 p5R-8sK-G7z-n7 7gB-3pR-G8d-k2 m9J-2vM-G5B-k4 5sM-6pD-G7B-k6 F8R-3vD-G5z-n8 T6D-7bF-G8B-k1 p2F-9sM-G7R-n3 4vD-6pB-G5B-k5 7gM-3sM-G5z-n7 m5M-8vD-G8d-k2 8sB-2pF-G7B-k4 F3M-9vB-G5R-n6 T9F-6pM-G5z-n8 p6D-3sK-G8B-k1 2gR-7vD-G7d-k3 5vM-8sB-G5B-k5 m8F-2pR-G7R-n7 7sM-6vK-G5z-n2 F2B-9bD-G8d-k4 T5D-3pM-G5B-k6 p9B-7vB-G7z-n8 8gB-2sM-G5d-k1 3vB-6pF-G8B-k3 F6R-9sK-G7R-n5 T2M-7vJ-G5z-n7 p5D-8sD-G8d-k2 7gD-3pB-G8B-k4 m9D-2vB-G5R-n6 5sB-6pM-G5z-n8 F8B-3vF-G7B-k1 T6M-7bM-G5R-n3 p2R-9sR-G5d-k5 4vJ-6pK-G7z-n7 7gN-3sR-G8B-k2 m5F-8vM-G5d-k4 8sF-2pD-G5B-k6 F3R-9vM-G7z-n8 T9B-6pF-G8d-k1 p6B-3sD-G5B-k3 2gK-7vF-G7R-n5 5vN-8sM-G5z-n7 m8M-2pB-G8d-k2 7sD-6vM-G5B-k4 F2M-9bK-G7B-k6 T5K-3pD-G5z-n8 p9F-7vD-G5R-n1 8gJ-2sB-G8B-k3 3vD-6pM-G5d-k5 F6B-9sM-G7z-n7 T2R-7vJ-G8B-k2 p5M-8sF-G5d-k4 7gM-3pK-G5B-k6 m9F-2vR-G7z-n8 5sR-6pB-G8B-k1 F8D-3vM-G7d-k3 T6B-7bR-G5R-n5 p2M-9sB-G5z-n7 4vR-6pM-G8d-k2 7gB-3sF-G5B-k4 m5B-8vD-G7R-n6 8sR-2pM-G5z-n8 F3B-9vB-G8B-k1 T9D-6pF-G7d-k3 p6K-3sM-G5B-k5 2gD-7vR-G7z-n7 5vM-8sB-G8d-k2 m8K-2pD-G5B-k4 7sB-6vF-G7R-n6 F2R-9bM-G5z-n8 T5M-3pF-G8B-k1 p9B-7vM-G7d-k3 8gM-2sD-G5B-k5 3vJ-6pB-G7z-n7 F6D-9sK-G7d-k2 T2F-7vD-G5B-k4 7gJ-3pM-G5z-n8 m9M-2vB-G5d-k1 5sM-6pF-G8B-k3 F8R-3vK-G7B-k5 T6F-7bD-G5z-n7 p2B-9sR-G7d-k2 4vM-6pD-G5B-k4 7gF-3sB-G7R-n6 m5K-8vM-G5z-n8 8sM-2pK-G8B-k1 F3M-9vF-G5d-k3 T9M-6pM-G7B-k5 p6F-3sD-G5z-n7 2gN-7vD-G7d-k2 5vB-8sF-G5B-k4 m8D-2pB-G7R-n6 7sJ-6vB-G5z-n8 F2B-9bF-G8d-k1 T5R-3pK-G5B-k3 p9D-7vB-G7z-n5 8gR-2sM-G7d-k7 3vM-6pD-G8B-k2 F6N-9sB-G5R-n4 T2K-7vJ-G5z-n6 p5M-8sM-G8B-k8 7gD-3pF-G7d-k1 m9B-2vR-G5B-k3 5sD-6pM-G7z-n5 F8M-3vM-G7d-k7 T6R-7bK-G5B-k2 p2D-9sD-G7R-n4 4vB-6pR-G5z-n6 7gK-3sD-G8B-k8 m5N-
+8vF-G5d-k1 8sD-2pM-G7B-k3 F3R-9vK-G7z-n5 T9R-6pF-G8d-k7 p6M-3sB-G5B-k2 2gF-7vB-G7R-n4 5vD-8sM-G5z-n6 m8B-2pK-G8B-k8 7sR-6vD-G5d-k1 F2D-9bM-G7B-k3 T5F-3pB-G7z-n5 p9M-7vM-G8d-k7 8gD-2sB-G5B-k2 3vK-6pM-G7R-n4 F6M-9sD-G5z-n6 T2D-7vF-G8B-k8 p5R-8sK-G7d-k1 7gB-3pR-G7B-k3 m9J-2vM-G5z-n5 5sR-6pD-G7d-k7 F8B-3vD-G8B-k2 T6D-7bF-G5R-n4 p2F-9sM-G5z-n6 4vD-6pB-G8d-k8 7gM-3sM-G5B-k1 m5M-8vD-G7R-n3 8sB-2pF-G5z-n5 F3D-9vB-G7d-k7 T9F-6pM-G8B-k2 p6D-3sK-G7R-n4 2gR-7vD-G5z-n6 5vM-8sB-G8d-k8 m8F-2pR-G5B-k1 7sM-6vK-G7B-k3 F2R-9bD-G5z-n5 T5D-3pM-G7R-n7 p9B-7vB-G5B-k2 8gB-2sM-G5d-k4 3vB-6pF-G7z-n6 F6R-9sK-G8B-k8 T2M-7vJ-G5d-k1 p5D-8sD-G7B-k3 7gD-3pB-G7R-n5 m9D-2vB-G5z-n7 5sB-6pM-G8d-k2 F8R-3vF-G5B-k4 T6M-7bM-G7z-n6 p2R-9sR-G8B-k8 4vJ-6pK-G5d-k1 7gN-3sR-G7B-k3 m5F-8vM-G7z-n5 8sF-2pD-G8d-k7 F3B-9vM-G5B-k2 T9B-6pF-G7R-n4 p6B-3sD-G5z-n6 2gK-7vF-G8B-k8 5vN-8sM-G5d-k1 m8M-2pB-G7B-k3 7sD-6vM-G7R-n5 F2M-9bK-G5z-n7 T5K-3pD-G8d-k2 p9F-7vD-G5B-k4 8gJ-2sB-G7z-n6 3vD-6pM-G8B-k8 F6B-9sM-G5d-k1 T2R-7vJ-G7B-k3 p5M-8sF-G7z-n5 7gM-3pK-G8d-k7 m9F-2vR-G5B-k2 5sM-6pB-G7R-n4 F8D-3vM-G5z-n6 T6B-7bR-G8B-k8 p2M-9sB-G5d-k1 4vR-6pM-G7B-k3 7gB-3sF-G7z-n5 m5B-8vD-G8d-k7 8sR-2pM-G5B-k2 F3R-9vB-G7R-n4 T9D-6pF-G5z-n6 p6K-3sM-G8B-k8 2gD-7vR-G5d-k1 5vM-8sB-G7B-k3 m8K-2pD-G7z-n5 7sB-6vF-G8d-k7 F2B-9bM-G5B-k2 T5B-3pF-G7R-n4 p9M-7vM-G5z-n6 8gM-2sD-G8B-k8 3vJ-6pB-G5d-k1 F6D-9sK-G7B-k3 T2F-7vD-G7z-n5 p5R-8sM-G7d-k7 7gJ-3pM-G5B-k2 m9M-2vB-G7R-n4 5sR-6pF-G5z-n6 F8B-3vK-G8B-k8 T6R-7bD-G5d-k1 p2B-9sR-G7B-k3 4vM-6pD-G7z-n5 7gF-3sB-G5d-k7 m5K-8vM-G7R-n2 8sM-2pK-G5B-k4 F3B-9vF-G7z-n6 T9M-6pM-G8d-k8 p6F-3sD-G5B-k1 2gN-7vD-G7R-n3 5vB-8sF-G5z-n5 m8D-2pB-G8d-k7 7sJ-6vB-G5B-k2 F2R-9bF-G7R-n4 T5R-3pK-G5z-n6 p9D-7vB-G8B-k8 8gR-2sM-G5d-k1 3vM-6pD-G7B-k3 F6N-9sB-G7z-n5 T2K-7vJ-G5d-k7 p5B-8sM-G7B-k2 7gD-3pF-G5R-n4 m9B-2vR-G5z-n6 5sD-6pM-G8B-k8 F8M-3vM-G5d-k1 T6R-7bK-G7B-k3 p2D-9sD-G7z-n5 4vB-6pR-G8d-k7 7gK-3sD-G5B-k2 m5N-8vF-G7R-n4 8sD-2pM-G5z-n6 F3M-9vK-G8B-k8 T9R-6pF-G5d-k1 p6M-3sB-G7B-k3 2gF-7vB-G7z-n5 5vD-8sM-G5d-k7 m8B-2pK-G7R-n2 7sR-6vD-G5
+B-k4 F2D-9bM-G5z-n6 T5F-3pB-G8B-k8 p9M-7vM-G7d-k1 8gD-2sB-G7B-k3 3vK-6pM-G5z-n5 F6M-9sD-G5d-k7 T2D-7vF-G7B-k2 p5R-8sK-G7R-n4 7gB-3pR-G5z-n6 m9J-2vM-G8B-k8 5sM-6pD-G5d-k1 F8R-3vD-G7B-k3 T6D-7bF-G7z-n5 p2F-9sM-G8d-k7 4vD-6pB-G7B-k2 7gM-3sM-G5R-n4 m5M-8vD-G5z-n6 8sB-2pF-G8B-k8 F3R-9vB-G5d-k1 T9F-6pM-G7B-k3 p6D-3sK-G7z-n5 2gR-7vD-G5B-k7 5vM-8sB-G7R-n2 m8F-2pR-G5z-n4 7sM-6vK-G8d-k6 F2B-9bD-G7B-k8 T5D-3pM-G5z-n1 p9B-7vB-G5d-k3 8gB-2sM-G7R-n5 3vB-6pF-G5z-n7 F6R-9sK-G5B-k2 T2M-7vJ-G7d-k4 p5D-8sD-G7z-n6 7gD-3pB-G8B-k8 m9D-2vB-G5d-k1 5sB-6pM-G7B-k3 F8B-3vF-G7R-n5 T6M-7bM-G5z-n7 p2R-9sR-G5d-k2 4vJ-6pK-G8B-k4 7gN-3sR-G5z-n6 m5F-8vM-G5B-k8 8sF-2pD-G7d-k1 F3M-9vM-G7B-k3 T9B-6pF-G5z-n5 p6B-3sD-G5d-k7 2gK-7vF-G7R-n2 5vN-8sM-G7z-n4 m8M-2pB-G8B-k6 7sD-6vM-G5d-k8 F2R-9bK-G7B-k1 T5K-3pD-G5R-n3 p9F-7vD-G5z-n5 8gJ-2sB-G7d-k7 3vD-6pM-G5B-k2 F6B-9sM-G7R-n4 T2R-7vJ-G5z-n6 p5M-8sF-G8B-k8 7gM-3pK-G5d-k1 m9F-2vR-G7B-k3 5sR-6pB-G7z-n5 F8D-3vM-G7d-k7 T6B-7bR-G5B-k2 p2M-9sB-G7R-n4 4vR-6pM-G5z-n6 7gB-3sF-G5B-k8 m5B-8vD-G7d-k1 8sR-2pM-G7B-k3 F3B-9vB-G7z-n5 T9D-6pF-G5d-k7 p6K-3sM-G7B-k2 2gD-7vR-G7R-n4 5vM-8sB-G5z-n6 m8K-2pD-G8B-k8 7sB-6vF-G5d-k1 F2M-9bM-G7B-k3 T5M-3pF-G7z-n5 p9B-7vM-G7d-k7 8gM-2sD-G5B-k2 3vJ-6pB-G7R-n4 F6D-9sK-G5z-n6 T2F-7vD-G8B-k8 p5B-8sM-G5d-k1 7gJ-3pM-G7B-k3 m9M-2vB-G7z-n5 5sM-6pF-G5B-k7 F8R-3vK-G5R-n2 T6F-7bD-G7d-k4 p2B-9sR-G5z-n6 4vM-6pD-G8B-k8 7gF-3sB-G5d-k1 m5K-8vM-G7B-k3 8sM-2pK-G7R-n5 F3R-9vF-G5z-n7 T9M-6pM-G8d-k2 p6F-3sD-G7B-k4 2gN-7vD-G7z-n6 5vB-8sF-G8B-k8 m8D-2pB-G5d-k1 7sJ-6vB-G7R-n3 F2D-9bF-G7z-n5 T5R-3pK-G8B-k7 p9D-7vB-G5d-k2 8gR-2sM-G7B-k4 3vM-6pD-G5z-n6 F6N-9sB-G8B-k8 T2K-7vJ-G5d-k1 p5M-8sM-G7B-k3 7gD-3pF-G7z-n5 m9B-2vR-G5d-k7 5sD-6pM-G7R-n2 F8M-3vM-G5B-k4 T6R-7bK-G7z-n6 p2D-9sD-G8B-k8 4vB-6pR-G5d-k1 7gK-3sD-G7B-k3 m5N-8vF-G7R-n5 8sD-2pM-G5z-n7 F3D-9vK-G5B-k2 T9R-6pF-G7z-n4 p6M-3sB-G8d-k6 2gF-7vB-G5B-k8 5vD-8sM-G7R-n1 m8B-2pK-G7B-k3 7sR-6vD-G5z-n5 F2R-9bM-G7d-k7 T5F-3pB-G5B-k2 p9M-7vM-G7R-n4 8gD-2sB-G5z-n6 3vK-6pM-G8B-k8 F6M-9sD-G5d-k1 T2D-7vF-G7B-k3 p5R-8sK-G7z-n5 7
+gB-3pR-G5B-k7 m9J-2vM-G7R-n2 5sR-6pD-G5z-n4 F8B-3vD-G8d-k6 T6D-7bF-G7B-k8 p2F-9sM-G5z-n1 4vD-6pB-G7B-k3 7gM-3sM-G5R-n5 m5M-8vD-G7z-n7 8sB-2pF-G5B-k2 F3M-9vB-G7R-n4 T9F-6pM-G5z-n6 p6D-3sK-G8d-k8 2gR-7vD-G5B-k1 m8F-2pR-G7z-n5 7sM-6vK-G5d-k7 F2B-9bD-G5B-k2 T5D-3pM-G7R-n4 p9B-7vB-G5z-n6 8gB-2sM-G8B-k8 3vB-6pF-G5d-k1 F6R-9sK-G7B-k3 T2M-7vJ-G7R-n5 p5D-8sD-G5z-n7 7gD-3pB-G8d-k2 m9D-2vB-G5B-k4 5sB-6pM-G7z-n6 F8R-3vF-G5B-k8 T6M-7bM-G5d-k1 p2R-9sR-G7B-k3 4vJ-6pK-G7R-n5 7gN-3sR-G5z-n7 m5F-8vM-G5B-k2 8sF-2pD-G5d-k4 F3B-9vM-G7z-n6 T9B-6pF-G5B-k8 p6B-3sD-G5d-k1 2gK-7vF-G7B-k3 5vN-8sM-G7R-n5 m8M-2pB-G5z-n7 7sD-6vM-G8B-k2 F2M-9bK-G7R-n4 T5K-3pD-G5z-n6 p9F-7vD-G5B-k8 8gJ-2sB-G5d-k1 3vD-6pM-G7B-k3 F6B-9sM-G7z-n5 T2R-7vJ-G5B-k7 p5M-8sF-G5d-k2 7gM-3pK-G7R-n4 m9F-2vR-G5z-n6 5sM-6pB-G8B-k8 F8D-3vM-G5d-k1 T6B-7bR-G7B-k3 p2M-9sB-G7z-n5 4vR-6pM-G5B-k7 7gB-3sF-G7R-n2 m5B-8vD-G5z-n4 8sR-2pM-G8d-k6 F3R-9vB-G5B-k8 T9D-6pF-G7z-n1 p6K-3sM-G7B-k3 2gD-7vR-G5d-k5 5vM-8sB-G7B-k7 m8K-2pD-G5z-n2 7sB-6vF-G7R-n4 F2B-9bM-G5z-n6'.split(' ');
+var KEYS = Object.create(null);
   CODES.forEach(function(c){ KEYS[c.replace(/-/g,'').toUpperCase()] = c; });
-var PRIZES = {
+
+  var PRIZES = {
     zh: ['一等奖','二等奖','三等奖','四等奖','再来一次','神秘奖励','谢谢参与','差一点'],
     en: ['First prize','Second prize','Third prize','Fourth prize','One more spin','Mystery prize','Thanks for playing','So close']
   };
@@ -1439,11 +1423,11 @@ var PRIZES = {
   function readUsed(){
     try{
       var v = JSON.parse(localStorage.getItem(USED_KEY) || '[]');
-      return Array.isArray(v) ? v : [];
+return Array.isArray(v) ? v : [];
     }catch(e){ return []; }
   }
   var used = readUsed();
-function remember(key){
+  function remember(key){
     if (used.indexOf(key) >= 0) return;
     used.push(key);
     try{ localStorage.setItem(USED_KEY, JSON.stringify(used)); }catch(e){}
@@ -1477,9 +1461,9 @@ function remember(key){
       return;
     }
     if (used.indexOf(key) >= 0){
-      stateEl.textContent = '';
+stateEl.textContent = '';
       prizeEl.textContent = T('lotUsed');
-input.value = '';
+      input.value = '';
       return;
     }
 
@@ -1515,8 +1499,8 @@ input.value = '';
   document.addEventListener('sirius:i18n', function(){
     if (spinning) return;
     if (!prizeEl.textContent || prizeEl.textContent === T('lotIdle')){ setIdle(); return; }
-    if (prizeEl.textContent === '你未中奖' || prizeEl.textContent === 'No prize this time') prizeEl.textContent = T('lotNone');
-if (prizeEl.textContent === '兑换码已使用' || prizeEl.textContent === 'Code already used') prizeEl.textContent = T('lotUsed');
+if (prizeEl.textContent === '你未中奖' || prizeEl.textContent === 'No prize this time') prizeEl.textContent = T('lotNone');
+    if (prizeEl.textContent === '兑换码已使用' || prizeEl.textContent === 'Code already used') prizeEl.textContent = T('lotUsed');
   });
 
   /* ---- 赞助者名单：点开才展开 ---- */
@@ -1544,10 +1528,11 @@ if (prizeEl.textContent === '兑换码已使用' || prizeEl.textContent === 'Cod
   var sun = bar.querySelector('.ic-sun');
   var moon = bar.querySelector('.ic-moon');
   var veil = document.getElementById('veil');
-  var ask = document.getElementById('ask');
+var ask = document.getElementById('ask');
   var mqDark = window.matchMedia('(prefers-color-scheme: dark)');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var CKEY = 'sirius.pref.consent';
+
+  var CKEY = 'sirius.pref.consent';
   var TKEY = 'sirius.pref.theme';
   var consent = get(CKEY);
   var mode = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
@@ -1568,11 +1553,10 @@ var b = moon.getBoundingClientRect();
   }
   function mid(){ return (MIN + MAX) / 2; }
   function clamp(v){ return Math.min(MAX, Math.max(MIN, v)); }
-
-  function setX(x){ slab.style.setProperty('--x', x.toFixed(1) + 'px'); }
+function setX(x){ slab.style.setProperty('--x', x.toFixed(1) + 'px'); }
   function setRY(d){ slab.style.setProperty('--ry', d.toFixed(1) + 'deg'); }
   function setSC(v){ slab.style.setProperty('--sc', String(v)); }
-function nowX(){ return parseFloat(slab.style.getPropertyValue('--x')) || (mode === 'dark' ? MAX : MIN); }
+  function nowX(){ return parseFloat(slab.style.getPropertyValue('--x')) || (mode === 'dark' ? MAX : MIN); }
 
   function place(instant){
     measure();
@@ -1597,7 +1581,7 @@ mode = m;
   }
 
   /* ---- 切换主流程 ---- */
-  var busy = false, seq = 0;
+var busy = false, seq = 0;
   function run(next){
     measure();
     seq++;
@@ -1609,7 +1593,7 @@ mode = m;
     }
     if (next === mode){
       veil.classList.remove('on');
-busy = false;
+      busy = false;
       place(false);
       return;
     }
@@ -1639,7 +1623,7 @@ busy = false;
           if (myseq !== seq) return;
           veil.classList.remove('on');   /* 5. 转回来了再化开 */
           setTimeout(function(){ if (myseq === seq) busy = false; }, 460);
-        }, 300);
+}, 300);
       }, 160);
     }, 280);
   }
@@ -1648,7 +1632,7 @@ busy = false;
   var down = false, hold = false, moved = false, sx = 0, x0 = 0, holdTimer = 0;
 
   bar.addEventListener('pointerdown', function(e){
-if (busy) return;
+    if (busy) return;
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     down = true; hold = false; moved = false;
     sx = e.clientX;
@@ -1685,7 +1669,7 @@ var x = clamp(x0 + dx);
     if (!down) return;
     down = false;
     clearTimeout(holdTimer);
-bar.classList.remove('drag', 'hold');
+    bar.classList.remove('drag', 'hold');
     var x = nowX();
     var next = x > mid() ? 'dark' : 'light';
     setSC(1);
@@ -1712,7 +1696,7 @@ else if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); if (!busy) run
 
   /* 系统主题变了：没记过偏好就继续跟 */
   function follow(){
-if (busy) return;
+    if (busy) return;
     if (consent === 'yes'){ var t = get(TKEY); if (t === 'light' || t === 'dark') return; }
     var m = mqDark.matches ? 'dark' : 'light';
     if (m !== mode){ apply(m, false); place(false); }
